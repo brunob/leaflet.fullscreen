@@ -37,11 +37,11 @@ L.Control.FullScreen = L.Control.extend({
 			var container = this._container;
 			if(fullScreenApi.isFullScreen(container)){
 				fullScreenApi.cancelFullScreen(container);
-				map.fire('exitFullscreen');
+				this.fire('exitFullscreen');
 			}
 			else {
 				fullScreenApi.requestFullScreen(container);
-				map.fire('enterFullscreen');
+				this.fire('enterFullscreen');
 			}
 		}
 	}
