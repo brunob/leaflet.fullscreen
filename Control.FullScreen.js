@@ -34,7 +34,7 @@ L.Control.FullScreen = L.Control.extend({
 	
 	toogleFullScreen: function () {
 		if (fullScreenApi.supportsFullScreen){
-			var container = map._container;
+			var container = this._container;
 			if(fullScreenApi.isFullScreen(container)){
 				fullScreenApi.cancelFullScreen(container);
 				map.fire('exitFullscreen');
