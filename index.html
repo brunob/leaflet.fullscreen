@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Leaflet.Control.FullScreen Demo</title>
+	<link rel="stylesheet" href="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.css" />
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.ie.css" />
+	<![endif]-->
+	<style type="text/css">
+		.leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen.png); }
+		.leaflet-control-zoom-fullscreen.last { margin-top: 5px }
+	</style>
+	<script src="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.js"></script>
+	<script src="Control.FullScreen.js"></script>
+</head>
+<body>
+	
+	<div id="map" style="width: 700px; height: 433px;"></div>
+	
+	<script>
+		var mapbox = new L.TileLayer('http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-light/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var map = new L.Map('map', {layers: [mapbox], center: new L.LatLng(48.5, -4.5), zoom: 5});
+		
+		// create fullscreen control
+		var fullScreen = new L.Control.FullScreen();
+		// add fullscreen control to the map
+		map.addControl(fullScreen);
+
+		// detect fullscreen toggling
+		map.on('enterFullscreen', function(){
+			if(window.console) window.console.log('enterFullscreen');
+		});
+		map.on('exitFullscreen', function(){
+			if(window.console) window.console.log('exitFullscreen');
+		});
+	</script>
+</body>
+</html>
