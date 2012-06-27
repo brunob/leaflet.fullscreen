@@ -8,15 +8,20 @@
 	<link rel="stylesheet" href="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.ie.css" />
 	<![endif]-->
 	<style type="text/css">
+		#map { width: 700px; height: 433px; }
 		.leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen.png); }
 		.leaflet-control-zoom-fullscreen.last { margin-top: 5px }
+		/* on selector per rule as explained here : http://www.sitepoint.com/html5-full-screen-api/ */
+		#map:-webkit-full-screen { width: 100% !important; height: 100% !important; }
+		#map:-moz-full-screen { width: 100% !important; height: 100% !important; }
+		#map:full-screen { width: 100% !important; height: 100% !important; }
 	</style>
 	<script src="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.js"></script>
 	<script src="Control.FullScreen.js"></script>
 </head>
 <body>
 	
-	<div id="map" style="width: 700px; height: 433px;"></div>
+	<div id="map"></div>
 	
 	<script>
 		var mapbox = new L.TileLayer('http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-light/{z}/{x}/{y}.png', {
