@@ -17,6 +17,11 @@
 		a { color: #809bc0; }
 		.description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
 		.download { float: right; }
+		#map { width: 700px; height: 600px; border: 1px solid #ccc }
+		/* on selector per rule as explained here : http://www.sitepoint.com/html5-full-screen-api/ */
+		#map:-webkit-full-screen { width: 100% !important; height: 100% !important; }
+		#map:-moz-full-screen { width: 100% !important; height: 100% !important; }
+		#map:full-screen { width: 100% !important; height: 100% !important; }
 		
 		.leaflet-control-zoom-fullscreen { background-image: url(https://github.com/brunob/leaflet.fullscreen/raw/master/icon-fullscreen.png); }
 		.leaflet-control-zoom-fullscreen.last { margin-top: 5px }
@@ -44,7 +49,7 @@
 			<p>Get all the details at <a href="https://github.com/brunob/leaflet.fullscreen">Github</a>.</p>
 		</div>
 		
-		<div id="map" style="width: 700px; height: 600px; border: 1px solid #ccc"></div>
+		<div id="map"></div>
 		
 	</div>
 
