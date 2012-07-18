@@ -28,6 +28,16 @@ L.Control.FullScreen = L.Control.extend({
 			.addListener(link, 'click', L.DomEvent.stopPropagation)
 			.addListener(link, 'click', L.DomEvent.preventDefault)
 			.addListener(link, 'click', fn, context);
+		
+		L.DomEvent
+			.addListener(container, fullScreenApi.fullScreenEventName, L.DomEvent.stopPropagation)
+			.addListener(container, fullScreenApi.fullScreenEventName, L.DomEvent.preventDefault)
+			.addListener(container, fullScreenApi.fullScreenEventName, this._handleEscKey, context);
+		
+		L.DomEvent
+			.addListener(document, fullScreenApi.fullScreenEventName, L.DomEvent.stopPropagation)
+			.addListener(document, fullScreenApi.fullScreenEventName, L.DomEvent.preventDefault)
+			.addListener(document, fullScreenApi.fullScreenEventName, this._handleEscKey, context);
 
 		return link;
 	},
@@ -43,6 +53,12 @@ L.Control.FullScreen = L.Control.extend({
 				fullScreenApi.requestFullScreen(container);
 				this.fire('enterFullscreen');
 			}
+		}
+	},
+	
+	_handleEscKey: function () {
+		if(!fullScreenApi.isFullScreen(this)){
+			this.fire('exitFullscreen');
 		}
 	}
 });
