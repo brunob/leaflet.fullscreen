@@ -43,11 +43,13 @@ L.Control.FullScreen = L.Control.extend({
 	},
 	
 	toogleFullScreen: function () {
+		this._exitFired = false;
 		if (fullScreenApi.supportsFullScreen){
 			var container = this._container;
 			if(fullScreenApi.isFullScreen(container)){
 				fullScreenApi.cancelFullScreen(container);
 				this.fire('exitFullscreen');
+				this._exitFired = true;
 			}
 			else {
 				fullScreenApi.requestFullScreen(container);
@@ -57,8 +59,9 @@ L.Control.FullScreen = L.Control.extend({
 	},
 	
 	_handleEscKey: function () {
-		if(!fullScreenApi.isFullScreen(this)){
+		if(!fullScreenApi.isFullScreen(this) && !this._exitFired){
 			this.fire('exitFullscreen');
+			this._exitFired = true;
 		}
 	}
 });
