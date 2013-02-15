@@ -8,7 +8,12 @@ L.Control.FullScreen = L.Control.extend({
 		
 		if(map.zoomControl) {
 			container = map.zoomControl._container;
-			className = '-fullscreen last';
+			className = '-fullscreen leaflet-bar-part leaflet-bar-part-bottom last';
+
+            // 0.5: zoom out button no longer at the bottom, update class
+            if (map.zoomControl._zoomOutButton) {
+                L.DomUtil.removeClass(map.zoomControl._zoomOutButton, 'leaflet-bar-part-bottom');
+            }
 		} else {
 			container = L.DomUtil.create('div', containerClass);
 			className = '-fullscreen';

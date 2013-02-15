@@ -37,10 +37,15 @@ map.on('exitFullscreen', function(){
 });
 ```
 
-Add this styles to your css :
+Add this style to your css:
 
 ```
 .leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen.png); }
+```
+
+And add this style to your css if you're using Leaflet < 0.5:
+
+```
 .leaflet-control-zoom-fullscreen.last { margin-top: 5px }
 ```
 
