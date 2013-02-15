@@ -23,11 +23,11 @@
 	<div id="map"></div>
 	
 	<script>
-		var mapbox = new L.TileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png', {
+		var base = new L.TileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png', {
 			maxZoom: 18,
 			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 		});
-		var map = new L.Map('map', {layers: [mapbox], center: new L.LatLng(48.5, -4.5), zoom: 5});
+		var map = new L.Map('map', {layers: [base], center: new L.LatLng(48.5, -4.5), zoom: 5});
 		
 		// create fullscreen control
 		var fullScreen = new L.Control.FullScreen();
