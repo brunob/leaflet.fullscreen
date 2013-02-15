@@ -3,7 +3,7 @@
 <head>
 	<meta charset='utf-8'>
 	<title>Leaflet.Control.FullScreen Demo</title>
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.css" />
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
 	<!--[if lte IE 8]>
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.ie.css" />
 	<![endif]-->
@@ -24,9 +24,8 @@
 		#map:full-screen { width: 100% !important; height: 100% !important; }
 		
 		.leaflet-control-zoom-fullscreen { background-image: url(https://github.com/brunob/leaflet.fullscreen/raw/master/icon-fullscreen.png); }
-		.leaflet-control-zoom-fullscreen.last { margin-top: 5px }
 	</style>
-	<script src="http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.js"></script>
+	<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 	<script src="https://raw.github.com/brunob/leaflet.fullscreen/master/Control.FullScreen.js"></script>
 </head>
 
@@ -45,7 +44,7 @@
 		</div>
 
 		<div class="description">
-			<p>Simple plugin for <a href="https://github.com/CloudMade/Leaflet">Leaflet 0.4</a> that adds fullscreen button to your maps.</p>
+			<p>Simple plugin for <a href="http://leafletjs.com/">Leaflet 0.5</a> that adds fullscreen button to your maps.</p>
 			<p>Get all the details at <a href="https://github.com/brunob/leaflet.fullscreen">Github</a>.</p>
 		</div>
 		
@@ -54,11 +53,11 @@
 	</div>
 
 	<script>
-		var mapbox = new L.TileLayer('http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-light/{z}/{x}/{y}.png', {
+		var base = new L.TileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png', {
 			maxZoom: 18,
-			attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 		});
-		var map = new L.Map('map', {layers: [mapbox], center: new L.LatLng(48.5, -4.5), zoom: 5});
+		var map = new L.Map('map', {layers: [base], center: new L.LatLng(48.5, -4.5), zoom: 5});
 		
 		// create fullscreen control
 		var fullScreen = new L.Control.FullScreen();
