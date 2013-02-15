@@ -24,9 +24,9 @@
 	<div id="map"></div>
 	
 	<script>
-		var mapbox = new L.TileLayer('http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-light/{z}/{x}/{y}.png', {
+		var mapbox = new L.TileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png', {
 			maxZoom: 18,
-			attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 		});
 		var map = new L.Map('map', {layers: [mapbox], center: new L.LatLng(48.5, -4.5), zoom: 5});
 		
