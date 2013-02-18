@@ -92,7 +92,7 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 		browserPrefixes = 'webkit moz o ms khtml'.split(' ');
 	
 	// check for native support
-	if (typeof document.cancelFullScreen != 'undefined') {
+	if (typeof document.exitFullscreen != 'undefined') {
 		fullScreenApi.supportsFullScreen = true;
 	} else {	 
 		// check for fullscreen support by vendor prefix
@@ -122,10 +122,10 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 			}
 		}
 		fullScreenApi.requestFullScreen = function(el) {
-			return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+			return (this.prefix === '') ? el.requestFullscreen() : el[this.prefix + 'RequestFullScreen']();
 		}
 		fullScreenApi.cancelFullScreen = function(el) {
-			return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+			return (this.prefix === '') ? document.exitFullscreen() : document[this.prefix + 'CancelFullScreen']();
 		}		
 	}
 
