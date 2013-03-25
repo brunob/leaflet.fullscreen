@@ -10,6 +10,8 @@ Inspired by http://elidupuis.github.com/leaflet.zoomfs/
 
 Use the native javascript fullscreen API http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugin/
 
+Released under the GNU GPL License http://www.gnu.org/licenses/gpl.html
+
 How ?
 ------
 
