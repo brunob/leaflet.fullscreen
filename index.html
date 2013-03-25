@@ -27,12 +27,26 @@
 			maxZoom: 18,
 			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 		});
-		var map = new L.Map('map', {layers: [base], center: new L.LatLng(48.5, -4.5), zoom: 5});
+
+		var map = new L.Map('map', {
+			layers: [base],
+			center: new L.LatLng(48.5, -4.5),
+			zoom: 5,
+			fullscreen: true // add fullscreen control to the map
+		});
 		
-		// create fullscreen control
-		var fullScreen = new L.Control.FullScreen();
-		// add fullscreen control to the map
-		map.addControl(fullScreen);
+		// Another option to add fullscreen control to the map
+		/*
+		var fullScreen = new L.Control.FullScreen(); //create fullscreen control
+		map.addControl(fullScreen); // add fullscreen control to the map
+		*/
+
+		// Another option to add fullscreen control to the map
+		/*
+		L.control.fullscreen({
+			position: 'topleft'
+		}).addTo(map);
+		*/
 
 		// detect fullscreen toggling
 		map.on('enterFullscreen', function(){

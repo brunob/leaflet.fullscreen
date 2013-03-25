@@ -145,3 +145,14 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 	// export api
 	window.fullScreenApi = fullScreenApi;	
 })();
+
+L.Map.addInitHook(function () {
+	if (this.options.fullscreen) {
+		this.fullscreen = L.control.fullscreen();
+		this.addControl(this.fullscreen);
+	}
+});
+
+L.control.fullscreen = function (options) {
+	return new L.Control.FullScreen(options);
+};
