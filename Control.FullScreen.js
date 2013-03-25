@@ -1,6 +1,7 @@
 L.Control.FullScreen = L.Control.extend({
 	options: {
-		position: 'topleft'
+		position: 'topleft',
+		title: 'Full Screen'
 	},
 	
 	onAdd: function (map) {
@@ -18,7 +19,7 @@ L.Control.FullScreen = L.Control.extend({
 			className = '-fullscreen';
 		}
 		
-		this._createButton('Full Screen', containerClass + className, container, this.toogleFullScreen, map);
+		this._createButton(this.options.title, containerClass + className, container, this.toogleFullScreen, map);
 
 		return container;
 	},
@@ -52,11 +53,13 @@ L.Control.FullScreen = L.Control.extend({
 			var container = this._container;
 			if(fullScreenApi.isFullScreen(container)){
 				fullScreenApi.cancelFullScreen(container);
+				this.invalidateSize();
 				this.fire('exitFullscreen');
 				this._exitFired = true;
 			}
 			else {
 				fullScreenApi.requestFullScreen(container);
+				this.invalidateSize();
 				this.fire('enterFullscreen');
 			}
 		}
@@ -69,6 +72,17 @@ L.Control.FullScreen = L.Control.extend({
 		}
 	}
 });
+
+L.Map.addInitHook(function () {
+	if (this.options.fullscreenControl) {
+		this.fullscreenControl = L.control.fullscreen();
+		this.addControl(this.fullscreenControl);
+	}
+});
+
+L.control.fullscreen = function (options) {
+	return new L.Control.FullScreen(options);
+};
 
 /* 
 Native FullScreen JavaScript API

@@ -23,6 +23,23 @@ var fullScreen = new L.Control.FullScreen();
 map.addControl(fullScreen);
 ```
 
+Other ways to add fullscreen control to the map:
+
+```
+var map = new L.Map('map', {
+  fullscreenControl: true
+});
+```
+
+or
+
+```
+L.control.fullscreen({
+  position: 'topleft',
+  title: 'Show me the fullscreen !'
+}).addTo(map);
+```
+
 If your map have a zoomControl the fullscreen button will be added at the bottom of this one.
 
 If your map doesn't have a zoomContron the fullscreen button will be added to topleft corner of the map (same as the zoomcontrol).
