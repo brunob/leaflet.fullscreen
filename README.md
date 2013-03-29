@@ -68,6 +68,11 @@ And add this style to your css if you're using Leaflet < 0.5:
 .leaflet-control-zoom-fullscreen.last { margin-top: 5px }
 ```
 
+And this style to get the fullscreen for Chrome
+```
+.leaflet-container:-webkit-full-screen { width: 100% !important; height: 100% !important; }
+```
+
 Where ?
 ------
 
