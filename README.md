@@ -15,6 +15,13 @@ Released under the MIT License http://opensource.org/licenses/mit-license.php
 How ?
 ------
 
+Include Control.FullScreen.js and Control.FullScreen.css in your page:
+
+```
+ <link rel="stylesheet" href="Control.FullScreen.css" />
+ <script src="Control.FullScreen.js"></script>
+```
+
 Add the fullscreen control to the map:
 
 ```
@@ -56,7 +63,8 @@ map.on('exitFullscreen', function(){
 });
 ```
 
-Add this style to your css:
+If you don't want to add the Control.FullScreen.css stylesheet to your
+HTML-head, Add this style to your css:
 
 ```
 .leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen.png); }
