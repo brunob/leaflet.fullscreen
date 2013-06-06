@@ -1,7 +1,8 @@
 L.Control.FullScreen = L.Control.extend({
 	options: {
 		position: 'topleft',
-		title: 'Full Screen'
+		title: 'Full Screen',
+		forceSeparateButton: false
 	},
 	
 	onAdd: function (map) {
@@ -11,7 +12,7 @@ L.Control.FullScreen = L.Control.extend({
 		
 		var containerClass = 'leaflet-control-zoom', className, container;
 		
-		if(map.zoomControl) {
+		if(map.zoomControl && !this.options.forceSeparateButton) {
 			container = map.zoomControl._container;
 			className = '-fullscreen leaflet-bar-part leaflet-bar-part-bottom last';
 			// Update class of the zoom out button (Leaflet v0.5)
@@ -79,7 +80,7 @@ L.Control.FullScreen = L.Control.extend({
 
 L.Map.addInitHook(function () {
 	if (this.options.fullscreenControl) {
-		this.fullscreenControl = L.control.fullscreen();
+		this.fullscreenControl = L.control.fullscreen(this.options.fullscreenControlOptions);
 		this.addControl(this.fullscreenControl);
 	}
 });
