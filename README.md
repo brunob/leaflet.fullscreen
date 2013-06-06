@@ -39,6 +39,8 @@ var map = new L.Map('map', {
 ```
 
 or
+
+```
 var map = new L.Map('map', {
   fullscreenControl: true,
   fullscreenControlOptions: {
