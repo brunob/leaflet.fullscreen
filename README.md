@@ -41,6 +41,19 @@ var map = new L.Map('map', {
 or
 
 ```
+var map = new L.Map('map', {
+  fullscreenControl: true,
+  fullscreenControlOptions: {
+    title:"Show me the fullscreen !",
+    forceSeparateButton:true
+  }
+});
+```
+
+or
+
+
+```
 L.control.fullscreen({
   position: 'topleft',
   title: 'Show me the fullscreen !'
