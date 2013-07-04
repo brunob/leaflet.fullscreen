@@ -1,6 +1,13 @@
 Leaflet.Control.FullScreen
 ============
 
+Downloads
+------
+
+[Master branch](https://github.com/brunob/leaflet.fullscreen/archive/master.zip) for Leaflet stable release
+
+[v1.0.0](https://github.com/brunob/leaflet.fullscreen/archive/1.0.0.zip) for Leaflet < 0.6
+
 What ?
 ------
 
