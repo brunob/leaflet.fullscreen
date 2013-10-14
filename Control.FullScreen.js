@@ -72,6 +72,7 @@ L.Control.FullScreen = L.Control.extend({
 		if (!fullScreenApi.isFullScreen(this) && !this._exitFired) {
 			this.fire('exitFullscreen');
 			this._exitFired = true;
+			this._isFullscreen = false;
 		}
 	}
 });
