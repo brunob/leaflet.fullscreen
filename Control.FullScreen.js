@@ -1,3 +1,5 @@
+(function() {
+
 L.Control.FullScreen = L.Control.extend({
 	options: {
 		position: 'topleft',
@@ -97,7 +99,6 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 
 */
 
-(function() {
 	var 
 		fullScreenApi = { 
 			supportsFullScreen: false,
