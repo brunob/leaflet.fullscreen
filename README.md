@@ -87,13 +87,13 @@ If you don't want to add the Control.FullScreen.css stylesheet to your
 HTML-head, Add this style to your css:
 
 ```
-.leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen.png); background-size: 26px 26px; }
+.leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen.png); }
 ```
 
 And add this style to use a 2x image on high resplution displays:
 
 ```
-.leaflet-retina .leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen-2x.png); }
+.leaflet-retina .leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen-2x.png); background-size: 26px 26px; }
 ```
 
 And add this style to your css if you're using Leaflet < 0.5:
