@@ -90,6 +90,12 @@ HTML-head, Add this style to your css:
 .leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen.png); }
 ```
 
+And add this style to use a 2x image on high resplution displays:
+
+```
+.leaflet-retina .leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen-2x.png); background-size: 26px 26px; }
+```
+
 And add this style to your css if you're using Leaflet < 0.5:
 
 ```
@@ -97,6 +103,7 @@ And add this style to your css if you're using Leaflet < 0.5:
 ```
 
 And this style to get the fullscreen for Chrome
+
 ```
 .leaflet-container:-webkit-full-screen { width: 100% !important; height: 100% !important; }
 ```
