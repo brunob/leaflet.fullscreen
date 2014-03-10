@@ -4,7 +4,8 @@ L.Control.FullScreen = L.Control.extend({
 	options: {
 		position: 'topleft',
 		title: 'Full Screen',
-		forceSeparateButton: false
+		forceSeparateButton: false,
+		forcePseudoFullscreen: false
 	},
 	
 	onAdd: function (map) {
@@ -48,7 +49,7 @@ L.Control.FullScreen = L.Control.extend({
 		this._exitFired = false;
 		var container = this._container;
 		if (this._isFullscreen) {
-			if (fullScreenApi.supportsFullScreen) {
+			if (fullScreenApi.supportsFullScreen && !this.options.forcePseudoFullscreen) {
 				fullScreenApi.cancelFullScreen(container);
 			} else {
 				L.DomUtil.removeClass(container, 'leaflet-pseudo-fullscreen');
@@ -59,7 +60,7 @@ L.Control.FullScreen = L.Control.extend({
 			this._isFullscreen = false;
 		}
 		else {
-			if (fullScreenApi.supportsFullScreen) {
+			if (fullScreenApi.supportsFullScreen && !this.options.forcePseudoFullscreen) {
 				fullScreenApi.requestFullScreen(container);
 			} else {
 				L.DomUtil.addClass(container, 'leaflet-pseudo-fullscreen');

@@ -24,88 +24,45 @@ How ?
 
 Include Control.FullScreen.js and Control.FullScreen.css in your page:
 
-```
+``` html
  <link rel="stylesheet" href="Control.FullScreen.css" />
  <script src="Control.FullScreen.js"></script>
 ```
 
 Add the fullscreen control to the map:
 
-```
-var map = new L.Map('map');
-var fullScreen = new L.Control.FullScreen(); 
-map.addControl(fullScreen);
-```
-
-Other ways to add fullscreen control to the map:
-
-```
-var map = new L.Map('map', {
-  fullscreenControl: true
-});
-```
-
-or
-
-```
+``` js
 var map = new L.Map('map', {
   fullscreenControl: true,
   fullscreenControlOptions: {
-    title:"Show me the fullscreen !",
-    forceSeparateButton:true
+    position: 'topleft'
   }
 });
-```
-
-or
-
-
-```
-L.control.fullscreen({
-  position: 'topleft',
-  title: 'Show me the fullscreen !'
-}).addTo(map);
 ```
 
 If your map have a zoomControl the fullscreen button will be added at the bottom of this one.
 
 If your map doesn't have a zoomContron the fullscreen button will be added to topleft corner of the map (same as the zoomcontrol).
 
-Detect fullscreen toggling:
+__Events and options__:
 
-```
+``` js
+// create a fullscreen button and add it to the map
+L.control.fullscreen({
+  position: 'topleft', // change the position of the button can be topleft, topright, bottomright or bottomleft, defaut topleft
+  title: 'Show me the fullscreen !', // change the title of the button, default Full Screen
+  forceSeparateButton: true, // force seperate button to detach from zoom buttons, default false
+  forcePseudoFullscreen: true // force use of pseudo full screen even if full screen API is available, default false
+}).addTo(map);
+
+// events are fired when entering or exiting fullscreen.
 map.on('enterFullscreen', function(){
-  if(window.console) window.console.log('enterFullscreen');
+  console.log('entered fullscreen');
 });
 
 map.on('exitFullscreen', function(){
-  if(window.console) window.console.log('exitFullscreen');
+  console.log('exited fullscreen');
 });
-```
-
-If you don't want to add the Control.FullScreen.css stylesheet to your
-HTML-head, Add this style to your css:
-
-```
-.leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen.png); }
-```
-
-And add this style to use a 2x image on high resplution displays:
-
-```
-.leaflet-retina .leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen-2x.png); background-size: 26px 26px; }
-```
-
-And add this style to your css if you're using Leaflet < 0.5:
-
-```
-.leaflet-control-zoom-fullscreen.last { margin-top: 5px }
-```
-
-And this style to get the fullscreen for Chrome
-
-```
-.leaflet-container:-webkit-full-screen { width: 100% !important; height: 100% !important; }
 ```
 
 Where ?
