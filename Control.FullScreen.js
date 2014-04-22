@@ -137,13 +137,13 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 				default:
 					return document[this.prefix + 'FullScreen'];
 			}
-		}
+		};
 		fullScreenApi.requestFullScreen = function(el) {
 			return (this.prefix === '') ? el.requestFullscreen() : el[this.prefix + 'RequestFullScreen']();
-		}
+		};
 		fullScreenApi.cancelFullScreen = function(el) {
 			return (this.prefix === '') ? document.exitFullscreen() : document[this.prefix + 'CancelFullScreen']();
-		}
+		};
 	}
 
 	// jQuery plugin
