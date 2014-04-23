@@ -4,7 +4,7 @@
   "description": "Simple plugin for Leaflet that adds fullscreen button to your maps.",
   "main": "Controll.FullScreen.js",
   "scripts": {
-    "test": "jshint Controll.FullScreen.js"
+    "test": "jshint Control.FullScreen.js"
   },
   "repository": {
     "type": "git",
