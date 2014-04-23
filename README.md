@@ -4,7 +4,7 @@ Leaflet.Control.FullScreen
 Downloads
 ------
 
-[v1.1.0](https://github.com/brunob/leaflet.fullscreen/releases/tag/1.1.0) for Leaflet stable release
+[v1.1.1](https://github.com/brunob/leaflet.fullscreen/releases/tag/1.1.0) for Leaflet stable release
 
 [v1.0.0](https://github.com/brunob/leaflet.fullscreen/archive/1.0.0.zip) for Leaflet < 0.6
 
