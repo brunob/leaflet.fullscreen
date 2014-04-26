@@ -112,13 +112,13 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 		browserPrefixes = 'webkit moz o ms khtml'.split(' ');
 	
 	// check for native support
-	if (typeof document.exitFullscreen != 'undefined') {
+	if (typeof document.exitFullscreen !== 'undefined') {
 		fullScreenApi.supportsFullScreen = true;
 	} else {
 		// check for fullscreen support by vendor prefix
 		for (var i = 0, il = browserPrefixes.length; i < il; i++ ) {
 			fullScreenApi.prefix = browserPrefixes[i];
-			if (typeof document[fullScreenApi.prefix + 'CancelFullScreen' ] != 'undefined' ) {
+			if (typeof document[fullScreenApi.prefix + 'CancelFullScreen' ] !== 'undefined' ) {
 				fullScreenApi.supportsFullScreen = true;
 				break;
 			}
@@ -147,7 +147,7 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 	}
 
 	// jQuery plugin
-	if (typeof jQuery != 'undefined') {
+	if (typeof jQuery !== 'undefined') {
 		jQuery.fn.requestFullScreen = function() {
 			return this.each(function() {
 				var el = jQuery(this);

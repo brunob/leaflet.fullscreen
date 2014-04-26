@@ -1,0 +1,12 @@
+{
+	"browser": true,
+	"curly": true,
+	"eqeqeq": true,
+	"undef": true,
+	"quotmark": "single",
+	"trailing": true,
+	"globals": {
+		"L": true,
+		"jQuery": true
+	}
+}
