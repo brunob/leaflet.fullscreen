@@ -17,7 +17,7 @@ L.Control.FullScreen = L.Control.extend({
 			container = L.DomUtil.create('div', 'leaflet-bar');
 		}
 		
-		this._createButton(this.options.title, className, container, this.toogleFullScreen, map);
+		this._createButton(this.options.title, className, container, this.toggleFullScreen, map);
 
 		return container;
 	},
@@ -45,7 +45,7 @@ L.Control.FullScreen = L.Control.extend({
 		return link;
 	},
 	
-	toogleFullScreen: function () {
+	toggleFullScreen: function () {
 		this._exitFired = false;
 		var container = this._container;
 		if (this._isFullscreen) {
