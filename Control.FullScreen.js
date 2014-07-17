@@ -17,7 +17,7 @@ L.Control.FullScreen = L.Control.extend({
 			container = L.DomUtil.create('div', 'leaflet-bar');
 		}
 		
-		this._createButton(this.options.title, className, container, this.toggleFullScreen, map);
+		this._createButton(this.options.title, className, container, this.toggleFullScreen, this);
 
 		return container;
 	},
@@ -46,36 +46,37 @@ L.Control.FullScreen = L.Control.extend({
 	},
 	
 	toggleFullScreen: function () {
-		this._exitFired = false;
-		var container = this._container;
-		if (this._isFullscreen) {
+		var map = this._map;
+		map._exitFired = false;
+		if (map._isFullscreen) {
 			if (fullScreenApi.supportsFullScreen && !this.options.forcePseudoFullscreen) {
-				fullScreenApi.cancelFullScreen(container);
+				fullScreenApi.cancelFullScreen(map._container);
 			} else {
-				L.DomUtil.removeClass(container, 'leaflet-pseudo-fullscreen');
+				L.DomUtil.removeClass(map._container, 'leaflet-pseudo-fullscreen');
 			}
-			this.invalidateSize();
-			this.fire('exitFullscreen');
-			this._exitFired = true;
-			this._isFullscreen = false;
+			map.invalidateSize();
+			map.fire('exitFullscreen');
+			map._exitFired = true;
+			map._isFullscreen = false;
 		}
 		else {
 			if (fullScreenApi.supportsFullScreen && !this.options.forcePseudoFullscreen) {
-				fullScreenApi.requestFullScreen(container);
+				fullScreenApi.requestFullScreen(map._container);
 			} else {
-				L.DomUtil.addClass(container, 'leaflet-pseudo-fullscreen');
+				L.DomUtil.addClass(map._container, 'leaflet-pseudo-fullscreen');
 			}
-			this.invalidateSize();
-			this.fire('enterFullscreen');
-			this._isFullscreen = true;
+			map.invalidateSize();
+			map.fire('enterFullscreen');
+			map._isFullscreen = true;
 		}
 	},
 	
 	_handleEscKey: function () {
-		if (!fullScreenApi.isFullScreen(this) && !this._exitFired) {
-			this.fire('exitFullscreen');
-			this._exitFired = true;
-			this._isFullscreen = false;
+		var map = this._map;
+		if (!fullScreenApi.isFullScreen(map) && !map._exitFired) {
+			map.fire('exitFullscreen');
+			map._exitFired = true;
+			map._isFullscreen = false;
 		}
 	}
 });
