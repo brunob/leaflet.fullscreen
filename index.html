@@ -58,9 +58,9 @@
 		var map = new L.Map('map', {layers: [base], center: new L.LatLng(48.5, -4.5), zoom: 5});
 		
 		// create fullscreen control
-		var fullScreen = new L.Control.FullScreen();
+		var fsControl = new L.Control.FullScreen();
 		// add fullscreen control to the map
-		map.addControl(fullScreen);
+		map.addControl(fsControl);
 
 		// detect fullscreen toggling
 		map.on('enterFullscreen', function(){
