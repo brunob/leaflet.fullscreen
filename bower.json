@@ -1,0 +1,22 @@
+{
+    "name": "leaflet-fullscreen",
+    "homepage": "https://github.com/johanneswilm/leaflet.fullscreen",
+    "version": "1.1.5",
+    "main": [
+    	"Control.FullScreen.css",
+    	"Control.FullScreen.js",
+   	  "icon-fullscreen-2x.png",
+    	"icon-fullscreen.png"
+  ],
+    "ignore": [
+    "**/.*",
+    "index.html",
+    "Gruntfile.js",
+    "package.json",
+    "LICENCE",
+    "README.md"
+  ],
+    "dependencies": {
+      "leaflet": "0.7.3"
+    }
+}
