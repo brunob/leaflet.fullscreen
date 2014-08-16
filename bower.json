@@ -16,5 +16,7 @@
     "LICENCE",
     "README.md"
   ],
-    "dependencies": {}
+    "dependencies": {
+      "leaflet": "0.7.3"
+    }
 }

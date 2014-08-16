@@ -1,3 +1,5 @@
+'use strict';
+
 (function() {
 
 L.Control.FullScreen = L.Control.extend({
@@ -7,21 +9,21 @@ L.Control.FullScreen = L.Control.extend({
 		forceSeparateButton: false,
 		forcePseudoFullscreen: false
 	},
-	
+
 	onAdd: function (map) {
 		var className = 'leaflet-control-zoom-fullscreen', container;
-		
+
 		if (map.zoomControl && !this.options.forceSeparateButton) {
 			container = map.zoomControl._container;
 		} else {
 			container = L.DomUtil.create('div', 'leaflet-bar');
 		}
-		
+
 		this._createButton(this.options.title, className, container, this.toggleFullScreen, this);
 
 		return container;
 	},
-	
+
 	_createButton: function (title, className, container, fn, context) {
 		var link = L.DomUtil.create('a', className, container);
 		link.href = '#';
@@ -31,12 +33,12 @@ L.Control.FullScreen = L.Control.extend({
 			.addListener(link, 'click', L.DomEvent.stopPropagation)
 			.addListener(link, 'click', L.DomEvent.preventDefault)
 			.addListener(link, 'click', fn, context);
-		
+
 		L.DomEvent
 			.addListener(container, fullScreenApi.fullScreenEventName, L.DomEvent.stopPropagation)
 			.addListener(container, fullScreenApi.fullScreenEventName, L.DomEvent.preventDefault)
 			.addListener(container, fullScreenApi.fullScreenEventName, this._handleEscKey, context);
-		
+
 		L.DomEvent
 			.addListener(document, fullScreenApi.fullScreenEventName, L.DomEvent.stopPropagation)
 			.addListener(document, fullScreenApi.fullScreenEventName, L.DomEvent.preventDefault)
@@ -44,7 +46,7 @@ L.Control.FullScreen = L.Control.extend({
 
 		return link;
 	},
-	
+
 	toggleFullScreen: function () {
 		var map = this._map;
 		map._exitFired = false;
@@ -70,7 +72,7 @@ L.Control.FullScreen = L.Control.extend({
 			map._isFullscreen = true;
 		}
 	},
-	
+
 	_handleEscKey: function () {
 		var map = this._map;
 		if (!fullScreenApi.isFullScreen(map) && !map._exitFired) {
@@ -92,7 +94,7 @@ L.control.fullscreen = function (options) {
 	return new L.Control.FullScreen(options);
 };
 
-/* 
+/*
 Native FullScreen JavaScript API
 -------------
 Assumes Mozilla naming conventions instead of W3C for now
@@ -101,36 +103,37 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 
 */
 
-	var 
-		fullScreenApi = { 
+	var
+		fullScreenApi = {
 			supportsFullScreen: false,
-			isFullScreen: function() { return false; }, 
-			requestFullScreen: function() {}, 
+			isFullScreen: function() { return false; },
+			requestFullScreen: function() {},
 			cancelFullScreen: function() {},
 			fullScreenEventName: '',
 			prefix: ''
 		},
-		browserPrefixes = 'webkit moz o ms khtml'.split(' ');
-	
+		browserPrefixes = ['webkit','moz','o','ms','khtml'],
+		il, i;
+
 	// check for native support
-	if (typeof document.exitFullscreen !== 'undefined') {
+	if (document.exitFullscreen !== undefined) {
 		fullScreenApi.supportsFullScreen = true;
 	} else {
 		// check for fullscreen support by vendor prefix
-		for (var i = 0, il = browserPrefixes.length; i < il; i++ ) {
+		for (i = 0, il = browserPrefixes.length; i < il; i++ ) {
 			fullScreenApi.prefix = browserPrefixes[i];
-			if (typeof document[fullScreenApi.prefix + 'CancelFullScreen' ] !== 'undefined' ) {
+			if (document[fullScreenApi.prefix + 'CancelFullScreen' ] !== undefined ) {
 				fullScreenApi.supportsFullScreen = true;
 				break;
 			}
 		}
 	}
-	
+
 	// update methods to do something useful
 	if (fullScreenApi.supportsFullScreen) {
 		fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
 		fullScreenApi.isFullScreen = function() {
-			switch (this.prefix) {	
+			switch (this.prefix) {
 				case '':
 					return document.fullScreen;
 				case 'webkit':
@@ -148,7 +151,7 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 	}
 
 	// jQuery plugin
-	if (typeof jQuery !== 'undefined') {
+	if (jQuery !== undefined) {
 		jQuery.fn.requestFullScreen = function() {
 			return this.each(function() {
 				var el = jQuery(this);
