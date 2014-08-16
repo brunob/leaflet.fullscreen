@@ -1,12 +1,12 @@
 {
     "name": "leaflet-fullscreen",
     "homepage": "https://github.com/johanneswilm/leaflet.fullscreen",
-    "version": "1.1.3b",
+    "version": "1.1.4",
     "main": [
-    "Control.FullScreen.css",
-    "Control.FullScreen.js",
-    "icon-fullscreen-2x.png"
-    "icon-fullscreen.png"
+    	"Control.FullScreen.css",
+    	"Control.FullScreen.js",
+   	 "icon-fullscreen-2x.png"
+    	"icon-fullscreen.png"
   ],
     "ignore": [
     "**/.*",
