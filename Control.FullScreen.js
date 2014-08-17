@@ -148,7 +148,7 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 	}
 
 	// jQuery plugin
-	if (typeof jQuery !== 'undefined') {
+	if (window.jQuery) {
 		jQuery.fn.requestFullScreen = function() {
 			return this.each(function() {
 				var el = jQuery(this);
