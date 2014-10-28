@@ -23,12 +23,12 @@ L.Control.FullScreen = L.Control.extend({
 			className += ' fullscreen-icon';
 		}
 
-		this._createButton(content, this.options.title, className, container, this.toggleFullScreen, this);
+		this._createButton(this.options.title, className, content, container, this.toggleFullScreen, this);
 
 		return container;
 	},
 	
-	_createButton: function (content, title, className, container, fn, context) {
+	_createButton: function (title, className, content,container, fn, context) {
 		var link = L.DomUtil.create('a', className, container);
 		link.href = '#';
 		link.title = title;
