@@ -44,6 +44,7 @@ __Events and options__:
 L.control.fullscreen({
   position: 'topleft', // change the position of the button can be topleft, topright, bottomright or bottomleft, defaut topleft
   title: 'Show me the fullscreen !', // change the title of the button, default Full Screen
+  content: null // change the content of the button, can be HTML, default null
   forceSeparateButton: true, // force seperate button to detach from zoom buttons, default false
   forcePseudoFullscreen: true // force use of pseudo full screen even if full screen API is available, default false
 }).addTo(map);
