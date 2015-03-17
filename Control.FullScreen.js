@@ -9,7 +9,7 @@ L.Control.FullScreen = L.Control.extend({
 	},
 	
 	onAdd: function (map) {
-		var className = 'leaflet-control-zoom-fullscreen', container;
+		var className = 'leaflet-control-zoom-fullscreen', container, content = '';
 		
 		if (map.zoomControl && !this.options.forceSeparateButton) {
 			container = map.zoomControl._container;
@@ -17,15 +17,22 @@ L.Control.FullScreen = L.Control.extend({
 			container = L.DomUtil.create('div', 'leaflet-bar');
 		}
 		
-		this._createButton(this.options.title, className, container, this.toggleFullScreen, this);
+		if (this.options.content) {
+			content = this.options.content;
+		} else {
+			className += ' fullscreen-icon';
+		}
+
+		this._createButton(this.options.title, className, content, container, this.toggleFullScreen, this);
 
 		return container;
 	},
 	
-	_createButton: function (title, className, container, fn, context) {
+	_createButton: function (title, className, content,container, fn, context) {
 		var link = L.DomUtil.create('a', className, container);
 		link.href = '#';
 		link.title = title;
+		link.innerHTML = content;
 
 		L.DomEvent
 			.addListener(link, 'click', L.DomEvent.stopPropagation)
