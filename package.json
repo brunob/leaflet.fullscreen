@@ -17,7 +17,7 @@
     "fullscreen"
   ],
   "devDependencies": {
-    "jshint": "2.5.0"
+    "eslint": "2.3.0"
   },
   "author": "b_b",
   "license": "MIT License",
