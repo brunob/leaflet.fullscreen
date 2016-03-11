@@ -156,7 +156,7 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 		fullScreenApi.requestFullScreen = function (el) {
 			return (this.prefix === '') ? el.requestFullscreen() : el[this.prefix + 'RequestFullScreen']();
 		};
-		fullScreenApi.cancelFullScreen = function (el) {
+		fullScreenApi.cancelFullScreen = function () {
 			return (this.prefix === '') ? document.exitFullscreen() : document[this.prefix + 'CancelFullScreen']();
 		};
 	}
