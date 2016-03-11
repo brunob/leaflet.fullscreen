@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
 L.Control.FullScreen = L.Control.extend({
 	options: {
@@ -81,7 +81,7 @@ L.Control.FullScreen = L.Control.extend({
 		}
 	},
 	
-	_toggleTitle: function() {
+	_toggleTitle: function () {
 		this.link.title = this._map._isFullscreen ? this.options.title : this.options.titleCancel;
 	},
 	
@@ -118,9 +118,9 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 	var 
 		fullScreenApi = { 
 			supportsFullScreen: false,
-			isFullScreen: function() { return false; }, 
-			requestFullScreen: function() {}, 
-			cancelFullScreen: function() {},
+			isFullScreen: function () { return false; }, 
+			requestFullScreen: function () {}, 
+			cancelFullScreen: function () {},
 			fullScreenEventName: '',
 			prefix: ''
 		},
@@ -131,9 +131,9 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 		fullScreenApi.supportsFullScreen = true;
 	} else {
 		// check for fullscreen support by vendor prefix
-		for (var i = 0, il = browserPrefixes.length; i < il; i++ ) {
+		for (var i = 0, il = browserPrefixes.length; i < il; i++) {
 			fullScreenApi.prefix = browserPrefixes[i];
-			if (typeof document[fullScreenApi.prefix + 'CancelFullScreen' ] !== 'undefined' ) {
+			if (typeof document[fullScreenApi.prefix + 'CancelFullScreen'] !== 'undefined') {
 				fullScreenApi.supportsFullScreen = true;
 				break;
 			}
@@ -143,7 +143,7 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 	// update methods to do something useful
 	if (fullScreenApi.supportsFullScreen) {
 		fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
-		fullScreenApi.isFullScreen = function() {
+		fullScreenApi.isFullScreen = function () {
 			switch (this.prefix) {	
 				case '':
 					return document.fullScreen;
@@ -153,18 +153,18 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 					return document[this.prefix + 'FullScreen'];
 			}
 		};
-		fullScreenApi.requestFullScreen = function(el) {
+		fullScreenApi.requestFullScreen = function (el) {
 			return (this.prefix === '') ? el.requestFullscreen() : el[this.prefix + 'RequestFullScreen']();
 		};
-		fullScreenApi.cancelFullScreen = function(el) {
+		fullScreenApi.cancelFullScreen = function (el) {
 			return (this.prefix === '') ? document.exitFullscreen() : document[this.prefix + 'CancelFullScreen']();
 		};
 	}
 
 	// jQuery plugin
 	if (typeof jQuery !== 'undefined') {
-		jQuery.fn.requestFullScreen = function() {
-			return this.each(function() {
+		jQuery.fn.requestFullScreen = function () {
+			return this.each(function () {
 				var el = jQuery(this);
 				if (fullScreenApi.supportsFullScreen) {
 					fullScreenApi.requestFullScreen(el);
