@@ -6,7 +6,8 @@ L.Control.FullScreen = L.Control.extend({
 		title: 'Full Screen',
 		titleCancel: 'Exit Full Screen',
 		forceSeparateButton: false,
-		forcePseudoFullscreen: false
+		forcePseudoFullscreen: false,
+		fullscreenElement: false
 	},
 	
 	onAdd: function (map) {
@@ -60,7 +61,7 @@ L.Control.FullScreen = L.Control.extend({
 		map._exitFired = false;
 		if (map._isFullscreen) {
 			if (fullScreenApi.supportsFullScreen && !this.options.forcePseudoFullscreen) {
-				fullScreenApi.cancelFullScreen(map._container);
+				fullScreenApi.cancelFullScreen(this.options.FullscreenElement ? this.options.fullscreenElement : map._container);
 			} else {
 				L.DomUtil.removeClass(map._container, 'leaflet-pseudo-fullscreen');
 			}
@@ -71,7 +72,7 @@ L.Control.FullScreen = L.Control.extend({
 		}
 		else {
 			if (fullScreenApi.supportsFullScreen && !this.options.forcePseudoFullscreen) {
-				fullScreenApi.requestFullScreen(map._container);
+				fullScreenApi.requestFullScreen(this.options.FullscreenElement ? this.options.fullscreenElement : map._container);
 			} else {
 				L.DomUtil.addClass(map._container, 'leaflet-pseudo-fullscreen');
 			}
