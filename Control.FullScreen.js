@@ -139,26 +139,50 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 				break;
 			}
 		}
+		if (typeof document['msExitFullscreen'] !== 'undefined') {
+			fullScreenApi.prefix = 'ms';
+			fullScreenApi.supportsFullScreen = true;
+		}
 	}
 	
 	// update methods to do something useful
 	if (fullScreenApi.supportsFullScreen) {
-		fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+		if (fullScreenApi.prefix === 'ms') {
+			fullScreenApi.fullScreenEventName = 'MSFullscreenChange';
+		} else {
+			fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+		}
 		fullScreenApi.isFullScreen = function () {
-			switch (this.prefix) {	
+			switch (this.prefix) {
 				case '':
 					return document.fullScreen;
 				case 'webkit':
 					return document.webkitIsFullScreen;
+				case 'ms':
+					return document.msFullscreenElement;
 				default:
 					return document[this.prefix + 'FullScreen'];
 			}
 		};
 		fullScreenApi.requestFullScreen = function (el) {
-			return (this.prefix === '') ? el.requestFullscreen() : el[this.prefix + 'RequestFullScreen']();
+			switch (this.prefix) {
+				case '':
+					return el.requestFullscreen();
+				case 'ms':
+					return el.msRequestFullscreen();
+				default:
+					return el[this.prefix + 'RequestFullScreen']();
+			}
 		};
 		fullScreenApi.cancelFullScreen = function () {
-			return (this.prefix === '') ? document.exitFullscreen() : document[this.prefix + 'CancelFullScreen']();
+			switch (this.prefix) {
+				case '':
+					return document.exitFullscreen();
+				case 'ms':
+					return document.msExitFullscreen();
+				default:
+					return document[this.prefix + 'CancelFullScreen']();
+			}
 		};
 	}
 
