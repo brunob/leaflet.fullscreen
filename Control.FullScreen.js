@@ -65,7 +65,7 @@ L.Control.FullScreen = L.Control.extend({
 			} else {
 				L.DomUtil.removeClass(map._container, 'leaflet-pseudo-fullscreen');
 			}
-			map.invalidateSize();
+			setTimeout(L.bind(map.invalidateSize, map), 200);
 			map.fire('exitFullscreen');
 			map._exitFired = true;
 			map._isFullscreen = false;
@@ -76,7 +76,7 @@ L.Control.FullScreen = L.Control.extend({
 			} else {
 				L.DomUtil.addClass(map._container, 'leaflet-pseudo-fullscreen');
 			}
-			map.invalidateSize();
+			setTimeout(L.bind(map.invalidateSize, map), 200);
 			map.fire('enterFullscreen');
 			map._isFullscreen = true;
 		}
