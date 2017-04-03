@@ -155,7 +155,7 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 		fullScreenApi.isFullScreen = function () {
 			switch (this.prefix) {
 				case '':
-					return document.fullScreen;
+					return document.fullscreen;
 				case 'webkit':
 					return document.webkitIsFullScreen;
 				case 'ms':
