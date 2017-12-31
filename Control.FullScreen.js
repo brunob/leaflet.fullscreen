@@ -63,7 +63,7 @@ L.Control.FullScreen = L.Control.extend({
 			if (fullScreenApi.supportsFullScreen && !this.options.forcePseudoFullscreen) {
 				fullScreenApi.cancelFullScreen(this.options.fullscreenElement ? this.options.fullscreenElement : map._container);
 			} else {
-				L.DomUtil.removeClass(map._container, 'leaflet-pseudo-fullscreen');
+				L.DomUtil.removeClass(this.options.fullscreenElement ? this.options.fullscreenElement : map._container, 'leaflet-pseudo-fullscreen');
 			}
 			map.invalidateSize();
 			map.fire('exitFullscreen');
@@ -74,7 +74,7 @@ L.Control.FullScreen = L.Control.extend({
 			if (fullScreenApi.supportsFullScreen && !this.options.forcePseudoFullscreen) {
 				fullScreenApi.requestFullScreen(this.options.fullscreenElement ? this.options.fullscreenElement : map._container);
 			} else {
-				L.DomUtil.addClass(map._container, 'leaflet-pseudo-fullscreen');
+				L.DomUtil.addClass(this.options.fullscreenElement ? this.options.fullscreenElement : map._container, 'leaflet-pseudo-fullscreen');
 			}
 			map.invalidateSize();
 			map.fire('enterFullscreen');
