@@ -37,6 +37,8 @@ If your map have a zoomControl the fullscreen button will be added at the bottom
 
 If your map doesn't have a zoomContron the fullscreen button will be added to topleft corner of the map (same as the zoomcontrol).
 
+If you want to use the plugin on a map embedded in an iframe, don't forget to set `allowfullscreen` attribute on your iframe.
+
 __Events and options__:
 
 ``` js
