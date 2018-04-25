@@ -88,7 +88,7 @@ L.Control.FullScreen = L.Control.extend({
 	
 	_handleEscKey: function () {
 		var map = this._map;
-		if (!fullScreenApi.isFullScreen(map) && !map._exitFired) {
+		if (!fullScreenApi.isFullScreen() && !map._exitFired) {
 			map.fire('exitFullscreen');
 			map._exitFired = true;
 			map._isFullscreen = false;
