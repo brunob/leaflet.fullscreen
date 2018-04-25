@@ -61,7 +61,7 @@ L.Control.FullScreen = L.Control.extend({
 		map._exitFired = false;
 		if (map._isFullscreen) {
 			if (fullScreenApi.supportsFullScreen && !this.options.forcePseudoFullscreen) {
-				fullScreenApi.cancelFullScreen(this.options.fullscreenElement ? this.options.fullscreenElement : map._container);
+				fullScreenApi.cancelFullScreen();
 			} else {
 				L.DomUtil.removeClass(this.options.fullscreenElement ? this.options.fullscreenElement : map._container, 'leaflet-pseudo-fullscreen');
 			}
