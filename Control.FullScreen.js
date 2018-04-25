@@ -46,12 +46,12 @@ L.Control.FullScreen = L.Control.extend({
 		L.DomEvent
 			.addListener(container, fullScreenApi.fullScreenEventName, L.DomEvent.stopPropagation)
 			.addListener(container, fullScreenApi.fullScreenEventName, L.DomEvent.preventDefault)
-			.addListener(container, fullScreenApi.fullScreenEventName, this._handleEscKey, context);
+			.addListener(container, fullScreenApi.fullScreenEventName, this._handleFullscreenChange, context);
 		
 		L.DomEvent
 			.addListener(document, fullScreenApi.fullScreenEventName, L.DomEvent.stopPropagation)
 			.addListener(document, fullScreenApi.fullScreenEventName, L.DomEvent.preventDefault)
-			.addListener(document, fullScreenApi.fullScreenEventName, this._handleEscKey, context);
+			.addListener(document, fullScreenApi.fullScreenEventName, this._handleFullscreenChange, context);
 
 		return this.link;
 	},
@@ -65,7 +65,6 @@ L.Control.FullScreen = L.Control.extend({
 			} else {
 				L.DomUtil.removeClass(this.options.fullscreenElement ? this.options.fullscreenElement : map._container, 'leaflet-pseudo-fullscreen');
 			}
-			map.invalidateSize();
 			map.fire('exitFullscreen');
 			map._exitFired = true;
 			map._isFullscreen = false;
@@ -76,7 +75,6 @@ L.Control.FullScreen = L.Control.extend({
 			} else {
 				L.DomUtil.addClass(this.options.fullscreenElement ? this.options.fullscreenElement : map._container, 'leaflet-pseudo-fullscreen');
 			}
-			map.invalidateSize();
 			map.fire('enterFullscreen');
 			map._isFullscreen = true;
 		}
@@ -86,8 +84,9 @@ L.Control.FullScreen = L.Control.extend({
 		this.link.title = this._map._isFullscreen ? this.options.title : this.options.titleCancel;
 	},
 	
-	_handleEscKey: function () {
+	_handleFullscreenChange: function () {
 		var map = this._map;
+		map.invalidateSize();
 		if (!fullScreenApi.isFullScreen() && !map._exitFired) {
 			map.fire('exitFullscreen');
 			map._exitFired = true;
