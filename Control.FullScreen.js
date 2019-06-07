@@ -26,6 +26,7 @@ L.Control.FullScreen = L.Control.extend({
 		}
 
 		this._createButton(this.options.title, className, content, container, this.toggleFullScreen, this);
+		this._map.fullscreenControl = this;
 
 		this._map.on('enterFullscreen exitFullscreen', this._toggleTitle, this);
 
@@ -95,10 +96,15 @@ L.Control.FullScreen = L.Control.extend({
 	}
 });
 
+L.Map.include({
+	toggleFullscreen: function () {
+		this.fullscreenControl.toggleFullScreen();
+	}
+});
+
 L.Map.addInitHook(function () {
 	if (this.options.fullscreenControl) {
-		this.fullscreenControl = L.control.fullscreen(this.options.fullscreenControlOptions);
-		this.addControl(this.fullscreenControl);
+		this.addControl(L.control.fullscreen(this.options.fullscreenControlOptions));
 	}
 });
 
