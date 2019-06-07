@@ -3,18 +3,19 @@
 <head>
 	<meta charset='utf-8'>
 	<title>Leaflet.Control.FullScreen Demo</title>
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
 	<style type="text/css">
 		#map { width: 700px; height: 433px; }
 		.fullscreen-icon { background-image: url(icon-fullscreen.png); }
+		.leaflet-retina .fullscreen-icon { background-image: url(icon-fullscreen-2x.png); background-size: 26px 26px; }
 		/* one selector per rule as explained here : http://www.sitepoint.com/html5-full-screen-api/ */
-		#map:-webkit-full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
-		#map:-ms-fullscreen { width: 100% !important; height: 100% !important; z-index: 99999; }
-		#map:full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
-		#map:fullscreen { width: 100% !important; height: 100% !important; z-index: 99999; }
+		.leaflet-container:-webkit-full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
+		.leaflet-container:-ms-fullscreen { width: 100% !important; height: 100% !important; z-index: 99999; }
+		.leaflet-container:full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
+		.leaflet-container:fullscreen { width: 100% !important; height: 100% !important; z-index: 99999; }
 		.leaflet-pseudo-fullscreen { position: fixed !important; width: 100% !important; height: 100% !important; top: 0px !important; left: 0px !important; z-index: 99999; }
 	</style>
-	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
 	<script src="Control.FullScreen.js"></script>
 </head>
 <body>
@@ -22,13 +23,13 @@
 	<div id="map"></div>
 	
 	<script>
-		var base = new L.TileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+		var base = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
 			maxZoom: 19,
 			subdomains: 'abcd',
-			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 		});
 		
-		var map = new L.Map('map', {
+		var map = L.map('map', {
 			layers: [base],
 			center: new L.LatLng(48.5, -4.5),
 			zoom: 5,
