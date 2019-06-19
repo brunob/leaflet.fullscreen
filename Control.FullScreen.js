@@ -39,6 +39,9 @@ L.Control.FullScreen = L.Control.extend({
 		this.link.title = title;
 		this.link.innerHTML = content;
 
+		this.link.setAttribute('role', 'button');
+		this.link.setAttribute('aria-label', title);
+
 		L.DomEvent
 			.addListener(this.link, 'click', L.DomEvent.stopPropagation)
 			.addListener(this.link, 'click', L.DomEvent.preventDefault)
