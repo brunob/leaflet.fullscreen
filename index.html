@@ -60,7 +60,7 @@
 		var map = L.map('map', {layers: [base], center: new L.LatLng(48.5, -4.5), zoom: 5});
 		
 		// create fullscreen control
-		var fsControl = L.control.fullscreen;
+		var fsControl = L.control.fullscreen();
 		// add fullscreen control to the map
 		map.addControl(fsControl);
 
