@@ -90,11 +90,13 @@ L.Control.FullScreen = L.Control.extend({
 	
 	_handleFullscreenChange: function () {
 		var map = this._map;
-		map.invalidateSize();
-		if (!fullScreenApi.isFullScreen() && !map._exitFired) {
-			map.fire('exitFullscreen');
-			map._exitFired = true;
-			map._isFullscreen = false;
+		if (map) {
+			map.invalidateSize();
+			if (!fullScreenApi.isFullScreen() && !map._exitFired) {
+				map.fire('exitFullscreen');
+				map._exitFired = true;
+				map._isFullscreen = false;
+			}
 		}
 	}
 });
