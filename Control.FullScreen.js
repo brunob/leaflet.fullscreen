@@ -33,6 +33,23 @@ L.Control.FullScreen = L.Control.extend({
 		return container;
 	},
 	
+	onRemove: function (map) {
+		L.DomEvent
+			.off(this.link, 'click', L.DomEvent.stopPropagation)
+			.off(this.link, 'click', L.DomEvent.preventDefault)
+			.off(this.link, 'click', this.toggleFullScreen, this);
+		
+		L.DomEvent
+			.off(this._container, fullScreenApi.fullScreenEventName, L.DomEvent.stopPropagation)
+			.off(this._container, fullScreenApi.fullScreenEventName, L.DomEvent.preventDefault)
+			.off(this._container, fullScreenApi.fullScreenEventName, this._handleFullscreenChange, this);
+		
+		L.DomEvent
+			.off(document, fullScreenApi.fullScreenEventName, L.DomEvent.stopPropagation)
+			.off(document, fullScreenApi.fullScreenEventName, L.DomEvent.preventDefault)
+			.off(document, fullScreenApi.fullScreenEventName, this._handleFullscreenChange, this);
+	},
+	
 	_createButton: function (title, className, content, container, fn, context) {
 		this.link = L.DomUtil.create('a', className, container);
 		this.link.href = '#';
