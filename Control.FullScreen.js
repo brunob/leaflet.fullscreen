@@ -43,19 +43,19 @@ L.Control.FullScreen = L.Control.extend({
 		this.link.setAttribute('aria-label', title);
 
 		L.DomEvent
-			.addListener(this.link, 'click', L.DomEvent.stopPropagation)
-			.addListener(this.link, 'click', L.DomEvent.preventDefault)
-			.addListener(this.link, 'click', fn, context);
+			.on(this.link, 'click', L.DomEvent.stopPropagation)
+			.on(this.link, 'click', L.DomEvent.preventDefault)
+			.on(this.link, 'click', fn, context);
 		
 		L.DomEvent
-			.addListener(container, fullScreenApi.fullScreenEventName, L.DomEvent.stopPropagation)
-			.addListener(container, fullScreenApi.fullScreenEventName, L.DomEvent.preventDefault)
-			.addListener(container, fullScreenApi.fullScreenEventName, this._handleFullscreenChange, context);
+			.on(container, fullScreenApi.fullScreenEventName, L.DomEvent.stopPropagation)
+			.on(container, fullScreenApi.fullScreenEventName, L.DomEvent.preventDefault)
+			.on(container, fullScreenApi.fullScreenEventName, this._handleFullscreenChange, context);
 		
 		L.DomEvent
-			.addListener(document, fullScreenApi.fullScreenEventName, L.DomEvent.stopPropagation)
-			.addListener(document, fullScreenApi.fullScreenEventName, L.DomEvent.preventDefault)
-			.addListener(document, fullScreenApi.fullScreenEventName, this._handleFullscreenChange, context);
+			.on(document, fullScreenApi.fullScreenEventName, L.DomEvent.stopPropagation)
+			.on(document, fullScreenApi.fullScreenEventName, L.DomEvent.preventDefault)
+			.on(document, fullScreenApi.fullScreenEventName, this._handleFullscreenChange, context);
 
 		return this.link;
 	},
