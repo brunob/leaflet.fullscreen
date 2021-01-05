@@ -1,8 +1,6 @@
-Leaflet.Control.FullScreen
-============
+# Leaflet.Control.FullScreen
 
-What ?
-------
+## What ?
 
 Simple plugin for Leaflet that adds fullscreen button to your maps.
 
@@ -12,24 +10,23 @@ Use the native javascript fullscreen API http://johndyer.name/native-fullscreen-
 
 Released under the MIT License http://opensource.org/licenses/mit-license.php
 
-How ?
-------
+## How ?
 
 Include Control.FullScreen.js and Control.FullScreen.css in your page:
 
-``` html
- <link rel="stylesheet" href="Control.FullScreen.css" />
- <script src="Control.FullScreen.js"></script>
+```html
+<link rel="stylesheet" href="Control.FullScreen.css" />
+<script src="Control.FullScreen.js"></script>
 ```
 
 Add the fullscreen control to the map:
 
-``` js
-var map = new L.Map('map', {
+```js
+var map = new L.Map("map", {
   fullscreenControl: true,
   fullscreenControlOptions: {
-    position: 'topleft'
-  }
+    position: "topleft",
+  },
 });
 ```
 
@@ -39,14 +36,16 @@ If your map doesn't have a zoomContron the fullscreen button will be added to to
 
 If you want to use the plugin on a map embedded in an iframe, don't forget to set `allowfullscreen` attribute on your iframe.
 
-__Events and options__:
+**Events and options**:
 
-``` js
+```js
 // create a fullscreen button and add it to the map
 L.control.fullscreen({
   position: 'topleft', // change the position of the button can be topleft, topright, bottomright or bottomleft, defaut topleft
-  title: 'Show me the fullscreen !', // change the title of the button, default Full Screen
-  titleCancel: 'Exit fullscreen mode', // change the title of the button when fullscreen is on, default Exit Full Screen
+  title: {
+    false: 'Show me the fullscreen !', // change the title of the button, default Full Screen
+    true: 'Exit fullscreen mode', // change the title of the button when fullscreen is on, default Exit Full Screen
+  }
   content: null, // change the content of the button, can be HTML, default null
   forceSeparateButton: true, // force seperate button to detach from zoom buttons, default false
   forcePseudoFullscreen: true, // force use of pseudo full screen even if full screen API is available, default false
@@ -66,8 +65,7 @@ map.on('exitFullscreen', function(){
 map.toggleFullScreen();
 ```
 
-Where ?
-------
+## Where ?
 
 Source code : https://github.com/brunob/leaflet.fullscreen
 
