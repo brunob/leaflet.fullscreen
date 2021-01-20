@@ -97,6 +97,7 @@
 					screenfull.exit();
 				} else {
 					L.DomUtil.removeClass(this.options.fullscreenElement ? this.options.fullscreenElement : map._container, 'leaflet-pseudo-fullscreen');
+					map.invalidateSize();
 				}
 				map.fire('exitFullscreen');
 				map._exitFired = true;
@@ -107,6 +108,7 @@
 					screenfull.request(this.options.fullscreenElement ? this.options.fullscreenElement : map._container);
 				} else {
 					L.DomUtil.addClass(this.options.fullscreenElement ? this.options.fullscreenElement : map._container, 'leaflet-pseudo-fullscreen');
+					map.invalidateSize();
 				}
 				map.fire('enterFullscreen');
 				map._isFullscreen = true;
