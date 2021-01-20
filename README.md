@@ -8,7 +8,7 @@ Simple plugin for Leaflet that adds fullscreen button to your maps.
 
 Inspired by http://elidupuis.github.com/leaflet.zoomfs/
 
-Use the native javascript fullscreen API http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugin/
+Use the native javascript fullscreen API with help of https://github.com/sindresorhus/screenfull.js
 
 Released under the MIT License http://opensource.org/licenses/mit-license.php
 
