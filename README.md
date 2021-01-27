@@ -73,4 +73,4 @@ Source code : https://github.com/brunob/leaflet.fullscreen
 
 Downloads : https://github.com/brunob/leaflet.fullscreen/releases
 
-Demo : http://brunob.github.com/leaflet.fullscreen/
+Demo : https://brunob.github.com/leaflet.fullscreen/
