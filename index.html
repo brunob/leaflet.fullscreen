@@ -57,7 +57,12 @@
 			subdomains: 'abcd',
 			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 		});
-		var map = L.map('map', {layers: [base], center: new L.LatLng(48.5, -4.5), zoom: 5});
+		var map = L.map('map', {
+			layers: [base],
+			tap: false, // ref https://github.com/Leaflet/Leaflet/issues/7255
+			center: new L.LatLng(48.5, -4.5),
+			zoom: 5
+		});
 		
 		// create fullscreen control
 		var fsControl = L.control.fullscreen();
