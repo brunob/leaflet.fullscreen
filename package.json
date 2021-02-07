@@ -16,6 +16,12 @@
     "maps",
     "fullscreen"
   ],
+  "dependencies": {
+    "screenfull": "^5.1.0"
+  },
+  "peerDependencies": {
+    "leaflet": "^1.7.0"
+  },
   "devDependencies": {
     "eslint": "^7.19.0"
   },

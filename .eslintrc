@@ -20,7 +20,11 @@
     "no-shadow": 0,
     "no-unused-vars": 2
   },
-  "globals": {
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+},
+"globals": {
     "L": true,
     "module": false,
     "define": false,

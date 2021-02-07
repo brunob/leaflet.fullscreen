@@ -15,10 +15,11 @@ Released under the MIT License http://opensource.org/licenses/mit-license.php
 How ?
 ------
 
-Include Control.FullScreen.js and Control.FullScreen.css in your page:
+Include `screenfull.js`, `Control.FullScreen.js` and `Control.FullScreen.css` in your page (`screenfull.js` **must** stand before `Control.FullScreen.js`):
 
 ``` html
  <link rel="stylesheet" href="Control.FullScreen.css" />
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/5.1.0/screenfull.min.js"></script>
  <script src="Control.FullScreen.js"></script>
 ```
 
@@ -66,6 +67,11 @@ map.on('exitFullscreen', function(){
 map.toggleFullScreen();
 ```
 
+__Typescript environments__:
+
+This package includes the type definitions needed in typescript environments.
+
+
 Where ?
 ------
 
@@ -74,3 +80,5 @@ Source code : https://github.com/brunob/leaflet.fullscreen
 Downloads : https://github.com/brunob/leaflet.fullscreen/releases
 
 Demo : https://brunob.github.com/leaflet.fullscreen/
+
+External dependencies : https://www.npmjs.com/package/screenfull
