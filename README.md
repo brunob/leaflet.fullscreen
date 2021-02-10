@@ -66,6 +66,40 @@ map.on('exitFullscreen', function(){
 map.toggleFullScreen();
 ```
 
+__Tipps for typescript environments__:
+
+Installation
+```
+npm i leaflet.fullscreen
+npm i screenfull
+npm i -D @types/leaflet.fullscreen
+```
+
+Usage
+```
+import * as leaflet from 'leaflet';
+import 'leaflet.fullscreen';
+
+@Component({
+    :
+})
+export class AppComponent implements AfterViewInit {
+  private map: leaflet.Map;
+  private mapOptions: leaflet.MapOptions = {
+    :
+    fullscreenControl: true,
+    fullscreenControlOptions: {
+      position: 'topleft'
+    }
+  } ;
+
+  ngAfterViewInit(): void {
+    this.map = new leaflet.Map('map', this.mapOptions);
+  }
+    :
+}
+```
+
 Where ?
 ------
 
