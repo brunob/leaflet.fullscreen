@@ -66,7 +66,7 @@ map.on('exitFullscreen', function(){
 map.toggleFullScreen();
 ```
 
-__Tipps for typescript environments__:
+__Tips for typescript environments__:
 
 Installation
 ```
