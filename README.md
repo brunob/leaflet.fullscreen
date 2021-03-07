@@ -71,7 +71,6 @@ __Tips for typescript environments__:
 Installation
 ```
 npm i leaflet.fullscreen
-npm i screenfull
 npm i -D @types/leaflet.fullscreen
 ```
 
