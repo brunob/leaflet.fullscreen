@@ -14,6 +14,9 @@
 		.leaflet-container:full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
 		.leaflet-container:fullscreen { width: 100% !important; height: 100% !important; z-index: 99999; }
 		.leaflet-pseudo-fullscreen { position: fixed !important; width: 100% !important; height: 100% !important; top: 0px !important; left: 0px !important; z-index: 99999; }
+		#test-screenfull { width: 400px; height: 400px; margin: 8px; background-color: yellow; padding: 8px; }
+		.panel { margin-top: 16px; border: 1px solid darkgray; box-shadow: 10px 5px 5px gray; display: inline-block; }
+		.zoom-button { margin: 0 8px 8px; }
 	</style>
 	<script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
 	<script src="Control.FullScreen.js"></script>
@@ -21,6 +24,10 @@
 <body>
 
 	<div id="map"></div>
+	<div class="panel">
+		<div id=test-screenfull>Test screenfull package included in leaflet.fullscreen</div>
+		<button onclick="showFullscreen()" class="zoom-button">show yellow area as Fullscreen</button>
+	</div>
 
 	<script>
 		var base = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
@@ -48,6 +55,16 @@
 		map.on('exitFullscreen', function(){
 			if(window.console) window.console.log('exitFullscreen');
 		});
+	</script>
+
+	<script>
+		function showFullscreen() {
+			const screenfull = window.screenfull;
+			const element = document.getElementById('test-screenfull');
+			if (screenfull.isEnabled) {
+				screenfull.request(element);
+			}
+		}
 	</script>
 </body>
 </html>
