@@ -189,6 +189,7 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
 		// define an AMD module that requires 'leaflet' and 'screenfull'
+		// and resolve to an object containing leaflet and screenfull
 		define('leafletFullScreen', ['leaflet', 'screenfull'], factory);
   } else if (typeof module === 'object' && module.exports) {
 		// define a CommonJS module that requires 'leaflet' and 'screenfull'
@@ -336,5 +337,8 @@
 		return new leaflet.Control.FullScreen(options);
 	};
 
-  return leaflet;
+	// must return an object containing also screenfull to make screenfull
+	// available outside of this package, if used as an amd module,
+	// as webpack cannot handle amd define with moduleid
+	return {leaflet: leaflet, screenfull: screenfull};
 }));
