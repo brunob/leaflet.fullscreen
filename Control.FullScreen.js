@@ -1,13 +1,24 @@
 /*!
-* screenfull
+* Based on package 'screenfull'
 * v5.1.0 - 2020-12-24
 * (c) Sindre Sorhus; MIT License
+* Added definition for using screenfull as an amd module
+* Must be placed before the definition of leaflet.fullscreen
+* as it is required by that
 */
-(function () {
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		define('screenfull', factory);
+  } else if (typeof module === 'object' && module.exports) {
+		module.exports.screenfull = factory();
+  } else {
+		// Save 'screenfull' into global window variable
+		root.screenfull = factory();
+	}
+}(this, function () {
 	'use strict';
 
 	var document = typeof window !== 'undefined' && typeof window.document !== 'undefined' ? window.document : {};
-	var isCommonjs = typeof module !== 'undefined' && module.exports;
 
 	var fn = (function () {
 		var val;
@@ -146,42 +157,31 @@
 	};
 
 	if (!fn) {
-		if (isCommonjs) {
-			module.exports = {isEnabled: false};
-		} else {
-			window.screenfull = {isEnabled: false};
-		}
-
-		return;
-	}
-
-	Object.defineProperties(screenfull, {
-		isFullscreen: {
-			get: function () {
-				return Boolean(document[fn.fullscreenElement]);
-			}
-		},
-		element: {
-			enumerable: true,
-			get: function () {
-				return document[fn.fullscreenElement];
-			}
-		},
-		isEnabled: {
-			enumerable: true,
-			get: function () {
-				// Coerce to boolean in case of old WebKit
-				return Boolean(document[fn.fullscreenEnabled]);
-			}
-		}
-	});
-
-	if (isCommonjs) {
-		module.exports = screenfull;
+		return {isEnabled: false};
 	} else {
-		window.screenfull = screenfull;
+		Object.defineProperties(screenfull, {
+			isFullscreen: {
+				get: function () {
+					return Boolean(document[fn.fullscreenElement]);
+				}
+			},
+			element: {
+				enumerable: true,
+				get: function () {
+					return document[fn.fullscreenElement];
+				}
+			},
+			isEnabled: {
+				enumerable: true,
+				get: function () {
+					// Coerce to boolean in case of old WebKit
+					return Boolean(document[fn.fullscreenEnabled]);
+				}
+			}
+		});
+		return screenfull;
 	}
-})();
+}));
 
 (function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
