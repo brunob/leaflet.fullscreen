@@ -58,8 +58,11 @@
 	</script>
 
 	<script>
+		screenfull.onchange(ev => {
+			console.log(`screenfull fullscreen state of element with id '${ev.srcElement.id}' changed; new state: ${screenfull.isFullscreen}`);
+		});
+
 		function showFullscreen() {
-			const screenfull = window.screenfull;
 			const element = document.getElementById('test-screenfull');
 			if (screenfull.isEnabled) {
 				screenfull.request(element);
