@@ -1,5 +1,9 @@
-.fullscreen-icon { background-image: url(icon-fullscreen.png); }
-.leaflet-retina .fullscreen-icon { background-image: url(icon-fullscreen-2x.png); background-size: 26px 26px; }
+a.fullscreen-icon {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26' width='26' height='26'%3E%3Cpath d='m5 15v6h6v-2h-4v-4z'/%3E%3Cpath d='m21 15v6h-6v-2h4v-4z'/%3E%3Cpath d='m5 11v-6h6v2h-4v4z'/%3E%3Cpath d='m21 11v-6h-6v2h4v4z'/%3E%3C/svg%3E") no-repeat 0 0/26px 26px #fff !important;
+}
+.leaflet-touch a.fullscreen-icon {
+  background-position: 2px 2px !important;
+}
 /* one selector per rule as explained here : http://www.sitepoint.com/html5-full-screen-api/ */
 .leaflet-container:-webkit-full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
 .leaflet-container:-ms-fullscreen { width: 100% !important; height: 100% !important; z-index: 99999; }
