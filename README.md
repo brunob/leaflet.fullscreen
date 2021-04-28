@@ -33,9 +33,9 @@ var map = new L.Map('map', {
 });
 ```
 
-If your map have a zoomControl the fullscreen button will be added at the bottom of this one.
+If your map has a zoomControl the fullscreen button will be added at the bottom of this one.
 
-If your map doesn't have a zoomContron the fullscreen button will be added to topleft corner of the map (same as the zoomcontrol).
+If your map doesn't have a zoomControl the fullscreen button will be added to topleft corner of the map (same as the zoomControl).
 
 If you want to use the plugin on a map embedded in an iframe, don't forget to set `allowfullscreen` attribute on your iframe.
 
@@ -44,11 +44,11 @@ __Events and options__:
 ``` js
 // create a fullscreen button and add it to the map
 L.control.fullscreen({
-  position: 'topleft', // change the position of the button can be topleft, topright, bottomright or bottomleft, defaut topleft
+  position: 'topleft', // change the position of the button can be topleft, topright, bottomright or bottomleft, default topleft
   title: 'Show me the fullscreen !', // change the title of the button, default Full Screen
   titleCancel: 'Exit fullscreen mode', // change the title of the button when fullscreen is on, default Exit Full Screen
   content: null, // change the content of the button, can be HTML, default null
-  forceSeparateButton: true, // force seperate button to detach from zoom buttons, default false
+  forceSeparateButton: true, // force separate button to detach from zoom buttons, default false
   forcePseudoFullscreen: true, // force use of pseudo full screen even if full screen API is available, default false
   fullscreenElement: false // Dom element to render in full screen, false by default, fallback to map._container
 }).addTo(map);
@@ -107,4 +107,4 @@ Source code : https://github.com/brunob/leaflet.fullscreen
 
 Downloads : https://github.com/brunob/leaflet.fullscreen/releases
 
-Demo : https://brunob.github.com/leaflet.fullscreen/
+Demo : https://brunob.github.io/leaflet.fullscreen/
