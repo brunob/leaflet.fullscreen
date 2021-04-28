@@ -72,8 +72,9 @@
 			this.link.setAttribute('aria-label', title);
 
 			L.DomEvent
-				.on(this.link, 'click', L.DomEvent.stopPropagation)
+                .on(this.link, 'mousedown dblclick click', L.DomEvent.stopPropagation)
 				.on(this.link, 'click', L.DomEvent.preventDefault)
+                .on(this.link, 'click', this._refocusOnMap, this)
 				.on(this.link, 'click', fn, context);
 			
 			L.DomEvent
