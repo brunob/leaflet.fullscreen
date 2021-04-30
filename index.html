@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset='utf-8'>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Leaflet.Control.FullScreen Demo</title>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
 	<style type="text/css">
 		body { margin-top: 1.0em; background-color: #444; font-family: Helvetica, Arial, FreeSans, san-serif; color: #ffffff; }
-		#container { margin: 0 auto; width: 700px; }
-		h1 { font-size: 3.8em; color: #809bc0; margin-bottom: 3px; }
+		#container { margin: 0 auto; max-width: 700px; }
+		h1 { font-size: 3.8em; color: #809bc0; margin-bottom: 3px; word-break: break-all; }
 		h1 a { text-decoration: none }
 		h2 { font-size: 1.5em; color: #809bc0; }
 		h3 { text-align: center; color: #809bc0; }
 		a { color: #809bc0; }
 		.description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
 		.download { float: right; }
-		#map { width: 700px; height: 600px; border: 1px solid #ccc }
+		#map { width: 100%; height: 600px; border: 1px solid #ccc }
 		/* one selector per rule as explained here : http://www.sitepoint.com/html5-full-screen-api/ */
 		#map:-webkit-full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
 		#map:-ms-fullscreen { width: 100% !important; height: 100% !important; z-index: 99999; }
