@@ -4,6 +4,9 @@ a.fullscreen-icon {
 .leaflet-touch a.fullscreen-icon {
   background-position: 2px 2px !important;
 }
+@media print {
+  a.fullscreen-icon { display: none; }
+}
 /* one selector per rule as explained here : http://www.sitepoint.com/html5-full-screen-api/ */
 .leaflet-container:-webkit-full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
 .leaflet-container:-ms-fullscreen { width: 100% !important; height: 100% !important; z-index: 99999; }
