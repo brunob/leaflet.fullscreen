@@ -105,8 +105,8 @@ Usage In React using react-leaflet
 import React from "react";
 import L from "leaflet";
 import {MapContainer} from "react-leaflet";
-import "leaflet.fullscreen/Control.Fullscreen";
-import "leaflet.fullscreen/Control.Fullscreen.css";
+import "leaflet.fullscreen/Control.FullScreen";
+import "leaflet.fullscreen/Control.FullScreen.css";
 
 export default function MyMap(){
  return (
