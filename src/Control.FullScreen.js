@@ -214,7 +214,9 @@
 		_screenfull: screenfull,
 
 		onAdd: function (map) {
-			var className = 'leaflet-control-zoom-fullscreen', container, content = '';
+			var className = 'leaflet-control-zoom-fullscreen';
+			var container;
+			var content = '<span class="fullscreen-icon fullscreen-icon-expand"></span>';
 
 			if (map.zoomControl && !this.options.forceSeparateButton) {
 				container = map.zoomControl._container;
@@ -224,14 +226,13 @@
 
 			if (this.options.content) {
 				content = this.options.content;
-			} else {
-				className += ' fullscreen-icon';
 			}
 
 			this._createButton(this.options.title, className, content, container, this.toggleFullScreen, this);
 			this._map.fullscreenControl = this;
 
 			this._map.on('enterFullscreen exitFullscreen', this._toggleTitle, this);
+			this._map.on('enterFullscreen exitFullscreen', this._toggleContent, this);
 
 			return container;
 		},
@@ -308,6 +309,12 @@
 
 		_toggleTitle: function () {
 			this.link.title = this._map._isFullscreen ? this.options.title : this.options.titleCancel;
+		},
+
+		_toggleContent: function () {
+			if (!this.options.content) {
+				this.link.innerHTML = this._map._isFullscreen ? '<span class="fullscreen-icon fullscreen-icon-expand"></span>': '<span class="fullscreen-icon fullscreen-icon-compress"></span>';
+			}
 		},
 
 		_handleFullscreenChange: function () {

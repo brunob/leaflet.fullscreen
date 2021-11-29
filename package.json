@@ -4,7 +4,10 @@
   "description": "Simple plugin for Leaflet that adds fullscreen button to your maps.",
   "main": "Control.FullScreen.js",
   "scripts": {
-    "test": "eslint --config .eslintrc Control.FullScreen.js"
+    "test": "eslint --config .eslintrc src/Control.FullScreen.js",
+    "uglifyjs": "uglifyjs src/Control.FullScreen.js > dist/Control.FullScreen.min.js",
+    "sass": "sass -s compressed src/Control.FullScreen.scss dist/Control.FullScreen.min.css",
+    "build": "npm run uglifyjs; npm run sass"
   },
   "repository": {
     "type": "git",
@@ -17,7 +20,9 @@
     "fullscreen"
   ],
   "devDependencies": {
-    "eslint": "^8.1.0"
+    "eslint": "^8.1.0",
+    "sass": "^1.43.5",
+    "uglify-js": "^3.14.3"
   },
   "author": "b_b",
   "license": "MIT License",

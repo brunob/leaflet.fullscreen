@@ -47,7 +47,7 @@ L.control.fullscreen({
   position: 'topleft', // change the position of the button can be topleft, topright, bottomright or bottomleft, default topleft
   title: 'Show me the fullscreen !', // change the title of the button, default Full Screen
   titleCancel: 'Exit fullscreen mode', // change the title of the button when fullscreen is on, default Exit Full Screen
-  content: null, // change the content of the button, can be HTML, default null
+  content: null, // change the content of the button, can be HTML, default '<span class="fullscreen-icon fullscreen-icon-expand"></span>'
   forceSeparateButton: true, // force separate button to detach from zoom buttons, default false
   forcePseudoFullscreen: true, // force use of pseudo full screen even if full screen API is available, default false
   fullscreenElement: false // Dom element to render in full screen, false by default, fallback to map._container
@@ -74,3 +74,11 @@ Source code : https://github.com/brunob/leaflet.fullscreen
 Downloads : https://github.com/brunob/leaflet.fullscreen/releases
 
 Demo : https://brunob.github.io/leaflet.fullscreen/
+
+
+LICENSE
+-------
+
+MIT
+
+SVG icons from [Font Awesome v5.15.4](https://github.com/FortAwesome/Font-Awesome/releases/tag/5.15.4): [Creative Commons Attribution 4.0](https://fontawesome.com/license/free)
