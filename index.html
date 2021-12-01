@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Leaflet.Control.FullScreen Demo</title>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen@latest/Control.FullScreen.css" />
 	<style type="text/css">
 		body { margin-top: 1.0em; background-color: #444; font-family: Helvetica, Arial, FreeSans, san-serif; color: #ffffff; }
 		#container { margin: 0 auto; max-width: 700px; }
@@ -16,14 +17,6 @@
 		.description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
 		.download { float: right; }
 		#map { width: 100%; height: 600px; border: 1px solid #ccc }
-		/* one selector per rule as explained here : http://www.sitepoint.com/html5-full-screen-api/ */
-		#map:-webkit-full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
-		#map:-ms-fullscreen { width: 100% !important; height: 100% !important; z-index: 99999; }
-		#map:full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
-		#map:fullscreen { width: 100% !important; height: 100% !important; z-index: 99999; }
-		.leaflet-pseudo-fullscreen { position: fixed !important; width: 100% !important; height: 100% !important; top: 0px !important; left: 0px !important; z-index: 99999; }
-		.leaflet-control-zoom-fullscreen { background-image: url(https://github.com/brunob/leaflet.fullscreen/raw/master/icon-fullscreen.png); }
-		.leaflet-retina .leaflet-control-zoom-fullscreen { background-image: url(https://github.com/brunob/leaflet.fullscreen/raw/master/icon-fullscreen-2x.png); background-size: 26px 26px; }
 	</style>
 	<script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
 	<script src="https://unpkg.com/leaflet.fullscreen@latest/Control.FullScreen.js"></script>
