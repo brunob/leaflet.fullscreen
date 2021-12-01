@@ -231,7 +231,7 @@
 			this._createButton(this.options.title, className, content, container, this.toggleFullScreen, this);
 			this._map.fullscreenControl = this;
 
-			this._map.on('enterFullscreen exitFullscreen', this._toggleTitle, this);
+			this._map.on('enterFullscreen exitFullscreen', this._toggleState, this);
 
 			return container;
 		},
@@ -306,8 +306,9 @@
 			}
 		},
 
-		_toggleTitle: function () {
+		_toggleState: function () {
 			this.link.title = this._map._isFullscreen ? this.options.title : this.options.titleCancel;
+			this._map._isFullscreen ? L.DomUtil.removeClass(this.link, 'leaflet-fullscreen-on') : L.DomUtil.addClass(this.link, 'leaflet-fullscreen-on');
 		},
 
 		_handleFullscreenChange: function () {
