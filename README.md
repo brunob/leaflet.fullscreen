@@ -10,6 +10,8 @@ Inspired by http://elidupuis.github.com/leaflet.zoomfs/
 
 Use the native javascript fullscreen API with help of https://github.com/sindresorhus/screenfull.js
 
+Icons from [Font Awesome v5.15.4](https://github.com/FortAwesome/Font-Awesome/releases/tag/5.15.4): [Creative Commons Attribution 4.0](https://fontawesome.com/license/free)
+
 Released under the MIT License http://opensource.org/licenses/mit-license.php
 
 How ?
