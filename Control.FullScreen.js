@@ -1,6 +1,6 @@
 /*!
 * Based on package 'screenfull'
-* v5.1.0 - 2020-12-24
+* v5.2.0 - 2021-11-03
 * (c) Sindre Sorhus; MIT License
 * Added definition for using screenfull as an amd module
 * Must be placed before the definition of leaflet.fullscreen
