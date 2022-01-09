@@ -238,18 +238,15 @@
 
 		onRemove: function () {
 			leaflet.DomEvent
-				.off(this.link, 'click', leaflet.DomEvent.stopPropagation)
-				.off(this.link, 'click', leaflet.DomEvent.preventDefault)
+				.off(this.link, 'click', leaflet.DomEvent.stop)
 				.off(this.link, 'click', this.toggleFullScreen, this);
 
 			leaflet.DomEvent
-				.off(this._container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stopPropagation)
-				.off(this._container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.preventDefault)
+				.off(this._container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
 				.off(this._container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, this);
 
 			leaflet.DomEvent
-				.off(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stopPropagation)
-				.off(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.preventDefault)
+				.off(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
 				.off(document, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, this);
 		},
 
@@ -262,19 +259,18 @@
 			this.link.setAttribute('role', 'button');
 			this.link.setAttribute('aria-label', title);
 
+			L.DomEvent.disableClickPropagation(container);
+
 			leaflet.DomEvent
-				.on(this.link, 'click', leaflet.DomEvent.stopPropagation)
-				.on(this.link, 'click', leaflet.DomEvent.preventDefault)
+				.on(this.link, 'click', leaflet.DomEvent.stop)
 				.on(this.link, 'click', fn, context);
 
 			leaflet.DomEvent
-				.on(container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stopPropagation)
-				.on(container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.preventDefault)
+				.on(container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
 				.on(container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, context);
 
 			leaflet.DomEvent
-				.on(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stopPropagation)
-				.on(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.preventDefault)
+				.on(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
 				.on(document, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, context);
 
 			return this.link;
