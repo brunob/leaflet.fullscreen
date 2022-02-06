@@ -9,9 +9,9 @@
 (function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define('screenfull', factory);
-  } else if (typeof module === 'object' && module.exports) {
+	} else if (typeof module === 'object' && module.exports) {
 		module.exports.screenfull = factory();
-  } else {
+	} else {
 		// Save 'screenfull' into global window variable
 		root.screenfull = factory();
 	}
@@ -157,7 +157,7 @@
 	};
 
 	if (!fn) {
-		return {isEnabled: false};
+		return { isEnabled: false };
 	} else {
 		Object.defineProperties(screenfull, {
 			isFullscreen: {
@@ -187,14 +187,14 @@
 * leaflet.fullscreen
 */
 (function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
+	if (typeof define === 'function' && define.amd) {
 		// define an AMD module that requires 'leaflet' and 'screenfull'
 		// and resolve to an object containing leaflet and screenfull
 		define('leafletFullScreen', ['leaflet', 'screenfull'], factory);
-  } else if (typeof module === 'object' && module.exports) {
+	} else if (typeof module === 'object' && module.exports) {
 		// define a CommonJS module that requires 'leaflet' and 'screenfull'
 		module.exports = factory(require('leaflet'), require('screenfull'));
-  } else {
+	} else {
 		// Assume 'leaflet' and 'screenfull' are loaded into global variable already
 		factory(root.L, root.screenfull);
 	}
@@ -241,13 +241,15 @@
 				.off(this.link, 'click', leaflet.DomEvent.stop)
 				.off(this.link, 'click', this.toggleFullScreen, this);
 
-			leaflet.DomEvent
-				.off(this._container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
-				.off(this._container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, this);
+			if (this._screenfull.raw) {
+				leaflet.DomEvent
+					.off(this._container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
+					.off(this._container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, this);
 
-			leaflet.DomEvent
-				.off(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
-				.off(document, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, this);
+				leaflet.DomEvent
+					.off(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
+					.off(document, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, this);
+			}
 		},
 
 		_createButton: function (title, className, content, container, fn, context) {
@@ -265,13 +267,15 @@
 				.on(this.link, 'click', leaflet.DomEvent.stop)
 				.on(this.link, 'click', fn, context);
 
-			leaflet.DomEvent
-				.on(container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
-				.on(container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, context);
+			if (this._screenfull.raw) {
+				leaflet.DomEvent
+					.on(container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
+					.on(container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, context);
 
-			leaflet.DomEvent
-				.on(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
-				.on(document, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, context);
+				leaflet.DomEvent
+					.on(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
+					.on(document, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, context);
+			}
 
 			return this.link;
 		},
@@ -337,5 +341,5 @@
 	// must return an object containing also screenfull to make screenfull
 	// available outside of this package, if used as an amd module,
 	// as webpack cannot handle amd define with moduleid
-	return {leaflet: leaflet, screenfull: screenfull};
+	return { leaflet: leaflet, screenfull: screenfull };
 }));
