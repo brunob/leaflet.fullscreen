@@ -15,7 +15,7 @@
 		// Save 'screenfull' into global window variable
 		root.screenfull = factory();
 	}
-}(this, function () {
+}(typeof self !== 'undefined' ? self : this, function () {
 	'use strict';
 
 	var document = typeof window !== 'undefined' && typeof window.document !== 'undefined' ? window.document : {};
@@ -198,7 +198,7 @@
 		// Assume 'leaflet' and 'screenfull' are loaded into global variable already
 		factory(root.L, root.screenfull);
 	}
-}(this, function (leaflet, screenfull) {
+}(typeof self !== 'undefined' ? self : this, function (leaflet, screenfull) {
 	'use strict';
 
 	leaflet.Control.FullScreen = leaflet.Control.extend({
