@@ -65,7 +65,7 @@ map.on('exitFullscreen', function(){
 });
 
 // you can also toggle fullscreen from map object
-map.toggleFullScreen();
+map.toggleFullscreen();
 ```
 
 Where ?
