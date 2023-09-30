@@ -13,9 +13,11 @@
 	<script src="Control.FullScreen.js"></script>
 </head>
 <body>
-
 	<div id="map"></div>
-
+	<div style="margin:1em 0 0;">
+		<span style="padding:0 0.25em 0 0;">Demonstration of 'toggleFullscreen' method</span>
+		<button type="button" onclick="toggleFullscreen();">Show map in fullscreen mode</button>
+	</div>
 	<script>
 		var base = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
 			maxZoom: 19,
@@ -42,6 +44,11 @@
 		map.on('exitFullscreen', function(){
 			if(window.console) window.console.log('exitFullscreen');
 		});
-	</script>
+
+		// toggler into fullscreen mode
+		const toggleFullscreen = function(){
+			map.toggleFullscreen();
+		}
+</script>
 </body>
 </html>
