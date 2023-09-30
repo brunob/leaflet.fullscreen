@@ -1,6 +1,18 @@
 Leaflet.Control.FullScreen
 ============
 
+What's new ?
+------
+
+**Version 3**
+
+Integrates usage of the Full Screen API without using the screenfull package.
+
+This plugin requires browsers supporting the Full Screen API (i.e. all quite current browsers) or Safari from version 6 on.  
+For details about what browsers do support this api see the [CanIuse](https://caniuse.com/fullscreen) web site.
+
+This version does no longer support the MS Internet Explorer.
+
 What ?
 ------
 
@@ -41,7 +53,7 @@ If your map doesn't have a zoomControl the fullscreen button will be added to to
 
 If you want to use the plugin on a map embedded in an iframe, don't forget to set `allowfullscreen` attribute on your iframe.
 
-__Events and options__:
+__Option, events and methods__:
 
 ``` js
 // create a fullscreen button and add it to the map
