@@ -65,7 +65,7 @@
 		error: nativeAPI.fullscreenerror,
 	};
 
-	const screenfull = {
+	const fullscreenAPI = {
 		request: function (element, options) {
 			return new Promise(function (resolve, reject) {
 				const onFullScreenEntered = function () {
@@ -115,7 +115,7 @@
 		nativeAPI: nativeAPI
 };
 
-	Object.defineProperties(screenfull, {
+	Object.defineProperties(fullscreenAPI, {
 		isFullscreen: {
 			get: function () {
 				return Boolean(document[nativeAPI.fullscreenElement]);
@@ -140,7 +140,7 @@
 			fullscreenElement: false
 		},
 
-		_screenfull: screenfull,
+		_screenfull: fullscreenAPI,
 
 		onAdd: function (map) {
 			var className = 'leaflet-control-zoom-fullscreen', container, content = '';
