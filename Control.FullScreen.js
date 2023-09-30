@@ -1,29 +1,31 @@
-/*!
-* Based on package 'screenfull'
-* v5.2.0 - 2021-11-03
-* (c) Sindre Sorhus; MIT License
-* Added definition for using screenfull as an amd module
-* Must be placed before the definition of leaflet.fullscreen
-* as it is required by that
+/*!_map
+* leaflet.fullscreen
+* (c) Bruno B.; MIT License
+* Uses fragments from the package 'screenfull'
 */
 (function (root, factory) {
-	if (typeof define === 'function' && define.amd) {
-		define('screenfull', factory);
+  if (typeof define === 'function' && define.amd) {
+		// define an AMD module that requires 'leaflet'
+		// and resolve to an object containing leaflet
+		define('leafletFullScreen', ['leaflet'], factory);
   } else if (typeof module === 'object' && module.exports) {
-		module.exports.screenfull = factory();
+		// define a CommonJS module that requires 'leaflet'
+		module.exports = factory(require('leaflet'));
   } else {
-		// Save 'screenfull' into global window variable
-		root.screenfull = factory();
+		// Assume 'leaflet' are loaded into global variable already
+		factory(root.L);
 	}
-}(typeof self !== 'undefined' ? self : this, function () {
+}(typeof self !== 'undefined' ? self : this, function (leaflet) {
 	'use strict';
 
-	var document = typeof window !== 'undefined' && typeof window.document !== 'undefined' ? window.document : {};
+	if (typeof document === 'undefined') {
+		console.warn('"window.document" is undefined; leaflet.fullscreen requires this object to access the DOM');
+		return false;
+	}
 
-	var fn = (function () {
-		var val;
-
-		var fnMap = [
+	const nativeAPI = (() => {
+		const methodMap = [
+			// Standard
 			[
 				'requestFullscreen',
 				'exitFullscreen',
@@ -40,45 +42,16 @@
 				'webkitFullscreenEnabled',
 				'webkitfullscreenchange',
 				'webkitfullscreenerror'
-
-			],
-			// Old WebKit
-			[
-				'webkitRequestFullScreen',
-				'webkitCancelFullScreen',
-				'webkitCurrentFullScreenElement',
-				'webkitCancelFullScreen',
-				'webkitfullscreenchange',
-				'webkitfullscreenerror'
-
-			],
-			[
-				'mozRequestFullScreen',
-				'mozCancelFullScreen',
-				'mozFullScreenElement',
-				'mozFullScreenEnabled',
-				'mozfullscreenchange',
-				'mozfullscreenerror'
-			],
-			[
-				'msRequestFullscreen',
-				'msExitFullscreen',
-				'msFullscreenElement',
-				'msFullscreenEnabled',
-				'MSFullscreenChange',
-				'MSFullscreenError'
 			]
 		];
 
-		var i = 0;
-		var l = fnMap.length;
-		var ret = {};
+		const baseList = methodMap[0];
+		const ret = {};
 
-		for (; i < l; i++) {
-			val = fnMap[i];
-			if (val && val[1] in document) {
-				for (i = 0; i < val.length; i++) {
-					ret[fnMap[0][i]] = val[i];
+		for (const methodList of methodMap) {
+			if (methodList[1] in document) {
+				for (let i = 0; i < methodList.length; i++) {
+					ret[baseList[i]] = methodList[i];
 				}
 				return ret;
 			}
@@ -87,25 +60,22 @@
 		return false;
 	})();
 
-	var eventNameMap = {
-		change: fn.fullscreenchange,
-		error: fn.fullscreenerror
+	const eventNameMap = {
+		change: nativeAPI.fullscreenchange,
+		error: nativeAPI.fullscreenerror,
 	};
 
-	var screenfull = {
+	const screenfull = {
 		request: function (element, options) {
 			return new Promise(function (resolve, reject) {
-				var onFullScreenEntered = function () {
+				const onFullScreenEntered = function () {
 					this.off('change', onFullScreenEntered);
 					resolve();
 				}.bind(this);
 
 				this.on('change', onFullScreenEntered);
-
 				element = element || document.documentElement;
-
-				var returnPromise = element[fn.requestFullscreen](options);
-
+				const returnPromise = element[nativeAPI.requestFullscreen](options);
 				if (returnPromise instanceof Promise) {
 					returnPromise.then(onFullScreenEntered).catch(reject);
 				}
@@ -118,28 +88,17 @@
 					return;
 				}
 
-				var onFullScreenExit = function () {
+				const onFullScreenExit = function () {
 					this.off('change', onFullScreenExit);
 					resolve();
 				}.bind(this);
 
 				this.on('change', onFullScreenExit);
-
-				var returnPromise = document[fn.exitFullscreen]();
-
+				const returnPromise = document[nativeAPI.exitFullscreen]();
 				if (returnPromise instanceof Promise) {
 					returnPromise.then(onFullScreenExit).catch(reject);
 				}
 			}.bind(this));
-		},
-		toggle: function (element, options) {
-			return this.isFullscreen ? this.exit() : this.request(element, options);
-		},
-		onchange: function (callback) {
-			this.on('change', callback);
-		},
-		onerror: function (callback) {
-			this.on('error', callback);
 		},
 		on: function (event, callback) {
 			var eventName = eventNameMap[event];
@@ -153,53 +112,23 @@
 				document.removeEventListener(eventName, callback, false);
 			}
 		},
-		raw: fn
-	};
+		nativeAPI: nativeAPI
+};
 
-	if (!fn) {
-		return {isEnabled: false};
-	} else {
-		Object.defineProperties(screenfull, {
-			isFullscreen: {
-				get: function () {
-					return Boolean(document[fn.fullscreenElement]);
-				}
-			},
-			element: {
-				enumerable: true,
-				get: function () {
-					return document[fn.fullscreenElement];
-				}
-			},
-			isEnabled: {
-				enumerable: true,
-				get: function () {
-					// Coerce to boolean in case of old WebKit
-					return Boolean(document[fn.fullscreenEnabled]);
-				}
+	Object.defineProperties(screenfull, {
+		isFullscreen: {
+			get: function () {
+				return Boolean(document[nativeAPI.fullscreenElement]);
 			}
-		});
-		return screenfull;
-	}
-}));
-
-/*!
-* leaflet.fullscreen
-*/
-(function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
-		// define an AMD module that requires 'leaflet' and 'screenfull'
-		// and resolve to an object containing leaflet and screenfull
-		define('leafletFullScreen', ['leaflet', 'screenfull'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-		// define a CommonJS module that requires 'leaflet' and 'screenfull'
-		module.exports = factory(require('leaflet'), require('screenfull'));
-  } else {
-		// Assume 'leaflet' and 'screenfull' are loaded into global variable already
-		factory(root.L, root.screenfull);
-	}
-}(typeof self !== 'undefined' ? self : this, function (leaflet, screenfull) {
-	'use strict';
+		},
+		isEnabled: {
+			enumerable: true,
+			get: function () {
+				// Coerce to boolean in case of old WebKit
+				return Boolean(document[nativeAPI.fullscreenEnabled]);
+			}
+		}
+	});
 
 	leaflet.Control.FullScreen = leaflet.Control.extend({
 		options: {
@@ -243,12 +172,12 @@
 
 			if (this._screenfull.isEnabled) {
 				leaflet.DomEvent
-					.off(this._container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
-					.off(this._container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, this);
+					.off(this._container, this._screenfull.nativeAPI.fullscreenchange, leaflet.DomEvent.stop)
+					.off(this._container, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, this);
 
 				leaflet.DomEvent
-					.off(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
-					.off(document, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, this);
+					.off(document, this._screenfull.nativeAPI.fullscreenchange, leaflet.DomEvent.stop)
+					.off(document, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, this);
 			}
 		},
 
@@ -269,12 +198,12 @@
 
 			if (this._screenfull.isEnabled) {
 				leaflet.DomEvent
-					.on(container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
-					.on(container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, context);
+					.on(container, this._screenfull.nativeAPI.fullscreenchange, leaflet.DomEvent.stop)
+					.on(container, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, context);
 
 				leaflet.DomEvent
-					.on(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
-					.on(document, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, context);
+					.on(document, this._screenfull.nativeAPI.fullscreenchange, leaflet.DomEvent.stop)
+					.on(document, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, context);
 			}
 
 			return this.link;
@@ -338,8 +267,5 @@
 		return new leaflet.Control.FullScreen(options);
 	};
 
-	// must return an object containing also screenfull to make screenfull
-	// available outside of this package, if used as an amd module,
-	// as webpack cannot handle amd define with moduleid
-	return {leaflet: leaflet, screenfull: screenfull};
+	return {leaflet: leaflet};
 }));
