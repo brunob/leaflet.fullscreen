@@ -18,7 +18,10 @@
     "strict": 0,
     "key-spacing": 0,
     "no-shadow": 0,
-    "no-unused-vars": 2
+    "no-unused-vars": 2,
+    "curly": 2,
+    "no-unused-expressions": [2, {"allowShortCircuit": true}],
+    "spaced-comment": 2
   },
   "globals": {
     "L": true,

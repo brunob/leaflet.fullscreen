@@ -1,8 +1,8 @@
-/*!_map
-* leaflet.fullscreen
-* (c) Bruno B.; MIT License
-* Uses fragments from the package 'screenfull'
-*/
+/*
+ * leaflet.fullscreen
+ * (c) Bruno B.; MIT License
+ * Uses fragments from the package 'screenfull'
+ */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
 		// define an AMD module that requires 'leaflet'
@@ -237,6 +237,7 @@
 
 		_toggleState: function () {
 			this.link.title = this._map._isFullscreen ? this.options.title : this.options.titleCancel;
+			// eslint-disable-next-line no-unused-expressions
 			this._map._isFullscreen ? L.DomUtil.removeClass(this.link, 'leaflet-fullscreen-on') : L.DomUtil.addClass(this.link, 'leaflet-fullscreen-on');
 		},
 
