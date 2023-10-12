@@ -18,7 +18,7 @@
     "fullscreen"
   ],
   "devDependencies": {
-    "eslint": "^8.1.0"
+    "eslint": "^8.51.0"
   },
   "author": "b_b",
   "license": "MIT License",
