@@ -240,10 +240,10 @@
 			this._map._isFullscreen ? L.DomUtil.removeClass(this.link, 'leaflet-fullscreen-on') : L.DomUtil.addClass(this.link, 'leaflet-fullscreen-on');
 		},
 
-		_handleFullscreenChange: function () {
+		_handleFullscreenChange: function (ev) {
 			var map = this._map;
-			map.invalidateSize();
-			if (!this._screenfull.isFullscreen && !map._exitFired) {
+			if (ev.target === map.getContainer() && !this._screenfull.isFullscreen && !map._exitFired) {
+				map.invalidateSize();
 				map.fire('exitFullscreen');
 				map._exitFired = true;
 				map._isFullscreen = false;
