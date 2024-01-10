@@ -1,0 +1,8 @@
+{
+  "extends": ["plugin:prettier/recommended"],
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2023": true
+  }
+}
