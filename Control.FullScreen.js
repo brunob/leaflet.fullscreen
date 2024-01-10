@@ -91,13 +91,13 @@
       );
     },
     on: function (event, callback) {
-      var eventName = eventNameMap[event];
+      const eventName = eventNameMap[event];
       if (eventName) {
         document.addEventListener(eventName, callback, false);
       }
     },
     off: function (event, callback) {
-      var eventName = eventNameMap[event];
+      const eventName = eventNameMap[event];
       if (eventName) {
         document.removeEventListener(eventName, callback, false);
       }
@@ -133,9 +133,9 @@
     _screenfull: fullscreenAPI,
 
     onAdd: function (map) {
-      var className = "leaflet-control-zoom-fullscreen",
-        container,
-        content = "";
+      let className = "leaflet-control-zoom-fullscreen";
+      let container;
+      let content = "";
 
       if (map.zoomControl && !this.options.forceSeparateButton) {
         container = map.zoomControl._container;
