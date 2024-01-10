@@ -1,8 +1,19 @@
 {
-  "extends": ["plugin:prettier/recommended"],
-  "root": true,
   "env": {
     "browser": true,
     "es2023": true
+  },
+  "extends": ["plugin:prettier/recommended"],
+  "globals": {
+    "define": "readonly",
+    "L": "writable",
+    "module": "readonly",
+    "require": "writable"
+  },
+  "root": true,
+  "rules": {
+    "no-lonely-if": 2,
+    "no-undef": 2,
+    "no-unused-expressions": [2, { "allowTernary": true }]
   }
 }
