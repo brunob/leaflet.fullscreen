@@ -210,7 +210,7 @@
     },
 
     toggleFullScreen: function () {
-      var map = this._map;
+      let map = this._map;
       map._exitFired = false;
       if (map._isFullscreen) {
         if (this._screenfull.isEnabled && !this.options.forcePseudoFullscreen) {
@@ -240,7 +240,7 @@
     },
 
 		_handleFullscreenChange: function (ev) {
-			var map = this._map;
+			let map = this._map;
 			if (ev.target === map.getContainer() && !this._screenfull.isFullscreen && !map._exitFired) {
 				map.invalidateSize();
 				map.fire('exitFullscreen');

@@ -23,13 +23,13 @@
       <button type="button" onclick="toggleFullscreen();">Show map in fullscreen mode</button>
     </div>
     <script>
-      var base = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png", {
+      const base = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png", {
         maxZoom: 19,
         subdomains: "abcd",
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
       });
 
-      var map = L.map("map", {
+      let map = L.map("map", {
         layers: [base],
         tap: false, // ref https://github.com/Leaflet/Leaflet/issues/7255
         center: new L.LatLng(48.5, -4.5),
