@@ -33,10 +33,10 @@ Include Control.FullScreen.js and Control.FullScreen.css in your page:
 Add the fullscreen control to the map:
 
 ```js
-let map = new L.Map("map", {
+let map = new L.Map('map', {
   fullscreenControl: true,
   fullscreenControlOptions: {
-    position: "topleft"
+    position: 'topleft'
   }
 });
 ```
@@ -53,9 +53,9 @@ If you want to use the plugin on a map embedded in an iframe, don't forget to se
 // create a fullscreen button and add it to the map
 L.control
   .fullscreen({
-    position: "topleft", // change the position of the button can be topleft, topright, bottomright or bottomleft, default topleft
-    title: "Show me the fullscreen !", // change the title of the button, default Full Screen
-    titleCancel: "Exit fullscreen mode", // change the title of the button when fullscreen is on, default Exit Full Screen
+    position: 'topleft', // change the position of the button can be topleft, topright, bottomright or bottomleft, default topleft
+    title: 'Show me the fullscreen !', // change the title of the button, default Full Screen
+    titleCancel: 'Exit fullscreen mode', // change the title of the button when fullscreen is on, default Exit Full Screen
     content: null, // change the content of the button, can be HTML, default null
     forceSeparateButton: true, // force separate button to detach from zoom buttons, default false
     forcePseudoFullscreen: true, // force use of pseudo full screen even if full screen API is available, default false
@@ -64,12 +64,12 @@ L.control
   .addTo(map);
 
 // events are fired when entering or exiting fullscreen.
-map.on("enterFullscreen", function () {
-  console.log("entered fullscreen");
+map.on('enterFullscreen', function () {
+  console.log('entered fullscreen');
 });
 
-map.on("exitFullscreen", function () {
-  console.log("exited fullscreen");
+map.on('exitFullscreen', function () {
+  console.log('exited fullscreen');
 });
 
 // you can also toggle fullscreen from map object

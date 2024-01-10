@@ -23,13 +23,13 @@
       <button type="button" onclick="toggleFullscreen();">Show map in fullscreen mode</button>
     </div>
     <script>
-      const base = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png", {
+      const base = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        subdomains: "abcd",
+        subdomains: 'abcd',
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>'
       });
 
-      let map = L.map("map", {
+      let map = L.map('map', {
         layers: [base],
         tap: false, // ref https://github.com/Leaflet/Leaflet/issues/7255
         center: new L.LatLng(48.5, -4.5),
@@ -37,17 +37,17 @@
         fullscreenControl: true,
         fullscreenControlOptions: {
           // optional
-          title: "Show me the fullscreen !",
-          titleCancel: "Exit fullscreen mode"
+          title: 'Show me the fullscreen !',
+          titleCancel: 'Exit fullscreen mode'
         }
       });
 
       // detect fullscreen toggling
-      map.on("enterFullscreen", function () {
-        if (window.console) window.console.log("enterFullscreen");
+      map.on('enterFullscreen', function () {
+        if (window.console) window.console.log('enterFullscreen');
       });
-      map.on("exitFullscreen", function () {
-        if (window.console) window.console.log("exitFullscreen");
+      map.on('exitFullscreen', function () {
+        if (window.console) window.console.log('exitFullscreen');
       });
 
       // toggler into fullscreen mode
