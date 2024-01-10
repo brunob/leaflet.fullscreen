@@ -239,16 +239,16 @@
       this._map._isFullscreen ? L.DomUtil.removeClass(this.link, 'leaflet-fullscreen-on') : L.DomUtil.addClass(this.link, 'leaflet-fullscreen-on');
     },
 
-		_handleFullscreenChange: function (ev) {
-			let map = this._map;
-			if (ev.target === map.getContainer() && !this._screenfull.isFullscreen && !map._exitFired) {
-				map.invalidateSize();
-				map.fire('exitFullscreen');
-				map._exitFired = true;
-				map._isFullscreen = false;
-			}
-		}
-	});
+    _handleFullscreenChange: function (ev) {
+      let map = this._map;
+      if (ev.target === map.getContainer() && !this._screenfull.isFullscreen && !map._exitFired) {
+        map.invalidateSize();
+        map.fire('exitFullscreen');
+        map._exitFired = true;
+        map._isFullscreen = false;
+      }
+    }
+  });
 
   leaflet.Map.include({
     toggleFullscreen: function () {
