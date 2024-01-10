@@ -4,8 +4,8 @@
   "description": "Simple plugin for Leaflet that adds fullscreen button to your maps.",
   "main": "Control.FullScreen.js",
   "scripts": {
-    "lint": "npx eslint . && stylelint **/*.css && prettier --check .",
-    "lint:fix": "npx eslint --fix . && stylelint --fix **/*.css && prettier --write .",
+    "lint": "eslint . && stylelint **/*.css && prettier --check .",
+    "lint:fix": "eslint --fix . && stylelint --fix **/*.css && prettier --write .",
     "postversion": "git push && git push --tags && npm publish"
   },
   "repository": {
