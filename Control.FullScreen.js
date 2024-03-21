@@ -218,7 +218,7 @@
 			map._exitFired = false;
 			if (map._isFullscreen) {
 				if (this._screenfull.isEnabled && !this.options.forcePseudoFullscreen) {
-					this._screenfull.exit();
+					this._screenfull.exit().then(() => map.invalidateSize());
 				} else {
 					leaflet.DomUtil.removeClass(this.options.fullscreenElement
 						? this.options.fullscreenElement
@@ -232,7 +232,7 @@
 				if (this._screenfull.isEnabled && !this.options.forcePseudoFullscreen) {
 					this._screenfull.request(this.options.fullscreenElement
 						? this.options.fullscreenElement
-						: map._container);
+						: map._container).then(() => map.invalidateSize());
 				} else {
 					leaflet.DomUtil.addClass(this.options.fullscreenElement
 						? this.options.fullscreenElement
@@ -256,7 +256,7 @@
 		_handleFullscreenChange(ev) {
 			const map = this._map;
 			if (ev.target === map.getContainer() && !this._screenfull.isFullscreen && !map._exitFired) {
-				map.invalidateSize();
+				this._screenfull.exit().then(() => map.invalidateSize());
 				map.fire('exitFullscreen');
 				map._exitFired = true;
 				map._isFullscreen = false;
