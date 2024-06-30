@@ -83,3 +83,23 @@ Source code : <https://github.com/brunob/leaflet.fullscreen>
 Downloads : <https://github.com/brunob/leaflet.fullscreen/releases>
 
 Demo : <https://brunob.github.io/leaflet.fullscreen/>
+
+## Use as ESM module
+
+To use this plugin in the code of a project (based on e.g. React or Angular) follow these steps:
+
+1. install leaflet.fullscreen with your package manager (e.g. `npm install leaflet.fullscreen`).
+
+2. Update your code
+
+```
+import L from 'leaflet';
+import 'leaflet.fullscreen';
+
+const let map = new L.Map('map', {
+	fullscreenControl: true,
+	fullscreenControlOptions: {
+		position: 'topleft'
+	}
+});
+```
