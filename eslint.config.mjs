@@ -1,6 +1,6 @@
-const globals = require('globals');
-const eslintPluginEslint = require('@eslint/js');
-const eslintPluginStylistic = require('@stylistic/eslint-plugin');
+import globals from 'globals';
+import eslintPluginEslint from '@eslint/js';
+import eslintPluginStylistic from '@stylistic/eslint-plugin';
 
 const config = [
 	{
@@ -30,4 +30,4 @@ const config = [
 	}
 ];
 
-module.exports = config;
+export default config;
