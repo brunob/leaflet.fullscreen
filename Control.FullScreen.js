@@ -3,7 +3,7 @@
  * (c) Bruno B.; MIT License
  * Uses fragments from the package 'screenfull'
  */
-(function (root, factory) {
+(function(root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		// define an AMD module that requires 'leaflet'
 		// and resolve to an object containing leaflet
@@ -70,7 +70,7 @@
 	const fullscreenAPI = {
 		request(element, options) {
 			return new Promise((resolve, reject) => {
-				const onFullScreenEntered = function () {
+				const onFullScreenEntered = function() {
 					this.off('change', onFullScreenEntered);
 					resolve();
 				}.bind(this);
@@ -90,7 +90,7 @@
 					return;
 				}
 
-				const onFullScreenExit = function () {
+				const onFullScreenExit = function() {
 					this.off('change', onFullScreenExit);
 					resolve();
 				}.bind(this);
@@ -270,13 +270,13 @@
 		}
 	});
 
-	leaflet.Map.addInitHook(function () {
+	leaflet.Map.addInitHook(function() {
 		if (this.options.fullscreenControl) {
 			this.addControl(leaflet.control.fullscreen(this.options.fullscreenControlOptions));
 		}
 	});
 
-	leaflet.control.fullscreen = function (options) {
+	leaflet.control.fullscreen = function(options) {
 		return new leaflet.Control.FullScreen(options);
 	};
 
