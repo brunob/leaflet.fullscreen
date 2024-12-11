@@ -1,17 +1,17 @@
-.fullscreen-icon {
+.leaflet-fullscreen-icon {
 	background-image: url('icon-fullscreen.svg');
 	background-size: 26px 52px;
 }
 
-.fullscreen-icon.leaflet-fullscreen-on {
+.leaflet-fullscreen-icon.leaflet-fullscreen-on {
 	background-position: 0 -26px;
 }
 
-.leaflet-touch .fullscreen-icon {
+.leaflet-touch .leaflet-fullscreen-icon {
 	background-position: 2px 2px;
 }
 
-.leaflet-touch .fullscreen-icon.leaflet-fullscreen-on {
+.leaflet-touch .leaflet-fullscreen-icon.leaflet-fullscreen-on {
 	background-position: 2px -24px;
 }
 
