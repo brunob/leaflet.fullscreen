@@ -95,6 +95,7 @@ To use this plugin in the code of a project (based on e.g. React or Angular) fol
 ```
 import L from 'leaflet';
 import 'leaflet.fullscreen';
+import 'leaflet.fullscreen/Control.FullScreen.css';
 
 const let map = new L.Map('map', {
 	fullscreenControl: true,
