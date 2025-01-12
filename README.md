@@ -1,29 +1,14 @@
 # Leaflet.Control.FullScreen
 
-## What's new ?
-
-**Version 3**
-
-Integrates usage of the Full Screen API without using the screenfull package.
-
-This plugin requires browsers supporting the Full Screen API (i.e. all quite current browsers) or Safari from version 6 on.  
-For details about what browsers do support this api see the [CanIuse](https://caniuse.com/fullscreen) web site.
-
-This version does no longer support the MS Internet Explorer.
-
 ## What ?
 
-Simple plugin for Leaflet that adds fullscreen button to your maps.
+**Leaflet.Control.FullScreen** is a simple plugin for [Leaflet](https://leafletjs.com/) that adds a fullscreen button to your maps using the Fullscreen API.
 
-Inspired by <http://elidupuis.github.com/leaflet.zoomfs/>
-
-Icons from [Font Awesome v5.15.4](https://github.com/FortAwesome/Font-Awesome/releases/tag/5.15.4): [Creative Commons Attribution 4.0](https://fontawesome.com/license/free)
-
-Released under the MIT License <http://opensource.org/licenses/mit-license.php>
+All major browsers support the Fullscreen API. For details about which browsers support this API, see the [CanIuse](https://caniuse.com/fullscreen) website.
 
 ## How ?
 
-Include Control.FullScreen.js and Control.FullScreen.css in your page:
+Include `Control.FullScreen.js` and `Control.FullScreen.css` in your page:
 
 ```html
 <link rel="stylesheet" href="Control.FullScreen.css" />
@@ -78,11 +63,9 @@ map.toggleFullscreen();
 
 ## Where ?
 
-Source code : <https://github.com/brunob/leaflet.fullscreen>
-
-Downloads : <https://github.com/brunob/leaflet.fullscreen/releases>
-
-Demo : <https://brunob.github.io/leaflet.fullscreen/>
+- Source code: <https://github.com/brunob/leaflet.fullscreen>
+- Downloads: <https://github.com/brunob/leaflet.fullscreen/releases>
+- Demo: <https://brunob.github.io/leaflet.fullscreen/>
 
 ## Use as ESM module
 
@@ -92,7 +75,7 @@ To use this plugin in the code of a project (based on e.g. React or Angular) fol
 
 2. Update your code
 
-```
+```js
 import L from 'leaflet';
 import 'leaflet.fullscreen';
 
@@ -103,3 +86,23 @@ const let map = new L.Map('map', {
 	}
 });
 ```
+
+## Contributing
+
+If you find any problems, bugs or have questions, please [open a GitHub issue](https://github.com/brunob/leaflet.fullscreen/issues) in this repository.
+
+Pull requests are of course also very welcome 🙂
+
+### Developer commands
+
+- `npm run lint` - Run linting and formatter checks.
+- `npm run lint:fix` - Fix linting and formatter issues.
+
+## Credits
+
+- This plugin is inspired by [leaflet.zoomfs](https://github.com/elidupuis/leaflet.zoomfs) from elidupuis.
+- Icons from [Font Awesome v5.15.4](https://github.com/FortAwesome/Font-Awesome/releases/tag/5.15.4): [Creative Commons Attribution 4.0](https://fontawesome.com/license/free).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
