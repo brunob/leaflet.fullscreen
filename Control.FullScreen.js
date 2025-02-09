@@ -158,7 +158,7 @@
 			if (this.options.content) {
 				content = this.options.content;
 			} else {
-				className += ' fullscreen-icon';
+				className += ' leaflet-fullscreen-icon';
 			}
 
 			this._createButton(this.options.title, className, content, container, this.toggleFullScreen, this);
