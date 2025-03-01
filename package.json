@@ -20,7 +20,7 @@
   ],
   "devDependencies": {
     "@eslint/js": "^9.18.0",
-    "@stylistic/eslint-plugin-js": "^3.0.1",
+    "@stylistic/eslint-plugin-js": "^4.1.0",
     "eslint": "^9.18.0",
     "prettier": "^3.4.2",
     "stylelint": "^16.13.0",
