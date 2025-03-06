@@ -67,6 +67,12 @@ map.toggleFullscreen();
 - Downloads: <https://github.com/brunob/leaflet.fullscreen/releases>
 - Demo: <https://brunob.github.io/leaflet.fullscreen/>
 
+## News
+
+**Version 4**
+
+This version introduce a small breaking change for case where people use a customized icon for the fullscreen button. The class of the icon have been switched from `.fullscreen-icon` to `.leaflet-fullscreen-icon` which is more specific in order to avoid side effects with other CSS libs.
+
 ## Use as ESM module
 
 To use this plugin in the code of a project (based on e.g. React or Angular) follow these steps:
