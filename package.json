@@ -6,7 +6,12 @@
   "scripts": {
     "lint": "eslint && stylelint **/*.css && prettier . --check",
     "lint:fix": "eslint --fix && stylelint **/*.css --fix && prettier . --write",
-    "postversion": "git push && git push --tags && npm publish"
+    "release": "commit-and-tag-version"
+  },
+  "commit-and-tag-version": {
+    "scripts": {
+      "posttag": "git push && git push --tags && npm publish"
+    }
   },
   "repository": {
     "type": "git",
