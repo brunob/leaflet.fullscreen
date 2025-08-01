@@ -248,6 +248,9 @@
 			this.link.title = this._map._isFullscreen
 				? this.options.title
 				: this.options.titleCancel;
+			this.link.setAttribute('aria-label', this._map._isFullscreen
+				? this.options.title
+				: this.options.titleCancel);
 			this._map._isFullscreen
 				? L.DomUtil.removeClass(this.link, 'leaflet-fullscreen-on')
 				: L.DomUtil.addClass(this.link, 'leaflet-fullscreen-on');
