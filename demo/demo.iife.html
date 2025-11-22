@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Leaflet.Control.FullScreen Demo (Script Tags)</title>
+		<link rel="icon" type="image/svg+xml" href="../icon-fullscreen.svg" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
+		<link rel="stylesheet" href="../dist/Control.FullScreen.css" />
+		<link rel="stylesheet" href="demo.css" />
+
+		<script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+		<script src="../dist/Control.FullScreen.iife.js"></script>
+	</head>
+	<body>
+		<div id="map"></div>
+		<div id="description">
+			<div class="nav-buttons">
+				<a href="../index.html" class="back-button">← Back to Home</a>
+				<a href="https://github.com/brunob/leaflet.fullscreen/blob/master/demo/demo.umd.html" target="_blank" class="view-source-button">📄 View Source</a>
+			</div>
+
+			<div class="description-content">
+				<h3>Script Tags Demo</h3>
+				<p>This example demonstrates traditional script tag usage with the IIFE build for direct browser use.</p>
+
+				<p><strong>Features:</strong></p>
+				<ul>
+					<li>Uses global <code>L</code> object</li>
+					<li>Works without build tools</li>
+					<li>CDN-ready for quick prototyping</li>
+					<li>Programmatic control API</li>
+				</ul>
+
+				<p><strong>Try it:</strong> Use the fullscreen button (top-left of the map) to enter/exit fullscreen mode.</p>
+
+				<p style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #dee2e6"><strong>Programmatic API:</strong></p>
+				<p style="font-size: 13px; color: #6c757d">You can also control fullscreen via JavaScript using <code>map.fullscreenControl.toggleFullScreen()</code></p>
+				<button type="button" class="demo-button" onclick="toggleFullscreen();" style="background: #6c757d; font-size: 13px; padding: 8px 12px">Test API Toggle</button>
+			</div>
+		</div>
+		<script>
+			const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				maxZoom: 18,
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			});
+
+			const map = L.map('map', {
+				layers: [tiles],
+				center: new L.LatLng(48.5, -4.5),
+				zoom: 5
+			});
+
+			// Add fullscreen control
+			map.addControl(
+				new L.Control.FullScreen.FullScreen({
+					position: 'topleft',
+					title: 'Show me the fullscreen!',
+					titleCancel: 'Exit fullscreen mode'
+				})
+			);
+
+			// Detect fullscreen toggling
+			map.on('enterFullscreen', () => console.log('enterFullscreen'));
+			map.on('exitFullscreen', () => console.log('exitFullscreen'));
+
+			// Programmatic toggle function
+			function toggleFullscreen() {
+				map.fullscreenControl.toggleFullScreen();
+			}
+		</script>
+	</body>
+</html>

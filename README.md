@@ -67,19 +67,49 @@ map.toggleFullscreen();
 - Downloads: <https://github.com/brunob/leaflet.fullscreen/releases>
 - Demo: <https://brunob.github.io/leaflet.fullscreen/>
 
-## Use as ESM module
+## Use as ES module
 
-To use this plugin in the code of a project (based on e.g. React or Angular) follow these steps:
+To use this plugin with a bundler (Webpack, Vite, etc.):
 
-1. install leaflet.fullscreen with your package manager (e.g. `npm install leaflet.fullscreen`).
+1. Install leaflet.fullscreen with your package manager:
 
-2. Update your code
+   ```bash
+   npm install leaflet.fullscreen
+   ```
+
+2. Import the module in your code:
+
+   ```js
+   import { FullScreen } from 'leaflet.fullscreen';
+
+   // Add control to your map
+   map.addControl(
+   	new FullScreen({
+   		position: 'topleft'
+   	})
+   );
+   ```
+
+3. Import the CSS (if your bundler supports it):
+
+   ```js
+   import 'leaflet.fullscreen/dist/Control.FullScreen.css';
+   ```
+
+   Or add it manually to your HTML:
+
+   ```html
+   <link rel="stylesheet" href="node_modules/leaflet.fullscreen/dist/Control.FullScreen.css" />
+   ```
+
+Alternatively, you can use the classic approach with side effects:
 
 ```js
 import L from 'leaflet';
 import 'leaflet.fullscreen';
+import 'leaflet.fullscreen/dist/Control.FullScreen.css';
 
-const let map = new L.Map('map', {
+const map = new L.Map('map', {
 	fullscreenControl: true,
 	fullscreenControlOptions: {
 		position: 'topleft'
@@ -124,6 +154,7 @@ BREAKING CHANGE: <description of what is broken by this commit>
 
 ### Developer commands
 
+- `npm run build` - Build the distribution files from source.
 - `npm run lint` - Run linting and formatter checks.
 - `npm run lint:fix` - Fix linting and formatter issues.
 

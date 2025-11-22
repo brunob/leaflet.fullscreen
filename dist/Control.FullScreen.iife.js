@@ -1,28 +1,16 @@
-/*
+/*!
  * leaflet.fullscreen
  * (c) Bruno B.; MIT License
- * Uses fragments from the package 'screenfull'
+ * https://github.com/brunob/leaflet.fullscreen
  */
-(function(root, factory) {
-	if (typeof define === 'function' && define.amd) {
-		// define an AMD module that requires 'leaflet'
-		// and resolve to an object containing leaflet
-		define('leafletFullScreen', ['leaflet'], factory);
-	} else if (typeof module === 'object' && module.exports) {
-		// define a CommonJS module that requires 'leaflet'
-		module.exports = factory(require('leaflet'));
-	} else {
-		// Assume 'leaflet' are loaded into global variable already
-		factory(root.L);
-	}
-}(typeof self !== 'undefined'
-	? self
-	: this, (leaflet) => {
+/*! GENERATED FILE - DO NOT EDIT DIRECTLY. Edit files in src/ and run 'npm run build' */
+this.L = this.L || {};
+this.L.Control = this.L.Control || {};
+this.L.Control.FullScreen = (function (exports, leaflet) {
 	'use strict';
 
 	if (typeof document === 'undefined') {
 		console.warn('"window.document" is undefined; leaflet.fullscreen requires this object to access the DOM');
-		return false;
 	}
 
 	const nativeAPI = (() => {
@@ -132,7 +120,7 @@
 		}
 	});
 
-	leaflet.Control.FullScreen = leaflet.Control.extend({
+	const FullScreen = leaflet.Control.extend({
 		options: {
 			position: 'topleft',
 			title: 'Full Screen',
@@ -194,7 +182,7 @@
 			this.link.setAttribute('role', 'button');
 			this.link.setAttribute('aria-label', title);
 
-			L.DomEvent.disableClickPropagation(container);
+			leaflet.DomEvent.disableClickPropagation(container);
 
 			leaflet.DomEvent
 				.on(this.link, 'click', leaflet.DomEvent.stop)
@@ -220,9 +208,12 @@
 				if (this._screenfull.isEnabled && !this.options.forcePseudoFullscreen) {
 					this._screenfull.exit().then(() => map.invalidateSize());
 				} else {
-					leaflet.DomUtil.removeClass(this.options.fullscreenElement
+					const _targetExit = this.options.fullscreenElement
 						? this.options.fullscreenElement
-						: map._container, 'leaflet-pseudo-fullscreen');
+						: map._container;
+					if (_targetExit && _targetExit.classList) {
+						_targetExit.classList.remove('leaflet-pseudo-fullscreen');
+					}
 					map.invalidateSize();
 				}
 				map.fire('exitFullscreen');
@@ -234,9 +225,12 @@
 						? this.options.fullscreenElement
 						: map._container).then(() => map.invalidateSize());
 				} else {
-					leaflet.DomUtil.addClass(this.options.fullscreenElement
+					const _targetEnter = this.options.fullscreenElement
 						? this.options.fullscreenElement
-						: map._container, 'leaflet-pseudo-fullscreen');
+						: map._container;
+					if (_targetEnter && _targetEnter.classList) {
+						_targetEnter.classList.add('leaflet-pseudo-fullscreen');
+					}
 					map.invalidateSize();
 				}
 				map.fire('enterFullscreen');
@@ -248,12 +242,13 @@
 			this.link.title = this._map._isFullscreen
 				? this.options.title
 				: this.options.titleCancel;
-			this.link.setAttribute('aria-label', this._map._isFullscreen
-				? this.options.title
-				: this.options.titleCancel);
-			this._map._isFullscreen
-				? L.DomUtil.removeClass(this.link, 'leaflet-fullscreen-on')
-				: L.DomUtil.addClass(this.link, 'leaflet-fullscreen-on');
+			if (this.link && this.link.classList) {
+				if (this._map._isFullscreen) {
+					this.link.classList.remove('leaflet-fullscreen-on');
+				} else {
+					this.link.classList.add('leaflet-fullscreen-on');
+				}
+			}
 		},
 
 		_handleFullscreenChange(ev) {
@@ -273,15 +268,8 @@
 		}
 	});
 
-	leaflet.Map.addInitHook(function() {
-		if (this.options.fullscreenControl) {
-			this.addControl(leaflet.control.fullscreen(this.options.fullscreenControlOptions));
-		}
-	});
+	exports.FullScreen = FullScreen;
 
-	leaflet.control.fullscreen = function(options) {
-		return new leaflet.Control.FullScreen(options);
-	};
+	return exports;
 
-	return { leaflet };
-}));
+})({}, L);
