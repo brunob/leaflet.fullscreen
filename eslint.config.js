@@ -4,6 +4,9 @@ import eslintPluginStylistic from '@stylistic/eslint-plugin-js';
 
 const config = [
 	{
+		ignores: ['dist/**']
+	},
+	{
 		files: ['**/*.js'],
 		languageOptions: {
 			globals: {
@@ -14,11 +17,12 @@ const config = [
 			}
 		},
 		plugins: {
-			...eslintPluginStylistic.configs['all-flat'].plugins
+			...eslintPluginStylistic.configs['all'].plugins
 		},
 		rules: {
 			...eslintPluginEslint.configs['recommended'].rules,
-			...eslintPluginStylistic.configs['all-flat'].rules,
+			...eslintPluginStylistic.configs['all'].rules,
+			'@stylistic/js/array-element-newline': ['error', 'consistent'],
 			'@stylistic/js/brace-style': ['error', '1tbs'],
 			'@stylistic/js/comma-dangle': ['error', 'only-multiline'],
 			'@stylistic/js/dot-location': ['error', 'property'],

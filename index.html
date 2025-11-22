@@ -1,60 +1,280 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>Leaflet.Control.FullScreen Demo</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
-		<link rel="stylesheet" href="Control.FullScreen.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Leaflet.Control.FullScreen</title>
 		<link rel="icon" type="image/svg+xml" href="icon-fullscreen.svg" />
-		<style type="text/css">
-			#map {
-				width: 700px;
-				max-width: 100%;
-				height: 433px;
+		<style>
+			:root {
+				--bg: #0a0e13;
+				--bg-subtle: #0f1419;
+				--text: #e6edf3;
+				--text-muted: #8b949e;
+				--link: #58a6ff;
+				--link-hover: #79c0ff;
+				--border: #21262d;
+				--accent: #238636;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				background: var(--bg);
+				color: var(--text);
+				font:
+					16px/1.6 -apple-system,
+					BlinkMacSystemFont,
+					'Segoe UI',
+					Roboto,
+					'Helvetica Neue',
+					Arial,
+					sans-serif;
+				margin: 0;
+				padding: 0;
+			}
+
+			a {
+				color: var(--link);
+				text-decoration: none;
+				transition: color 0.2s ease;
+			}
+
+			a:hover {
+				color: var(--link-hover);
+			}
+
+			.container {
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: 0 24px;
+			}
+
+			header {
+				padding: 64px 0 48px;
+			}
+
+			.header-content {
+				text-align: center;
+			}
+
+			h1 {
+				margin: 0 0 24px;
+				font-size: 48px;
+				font-weight: 600;
+				letter-spacing: -0.025em;
+				background: linear-gradient(135deg, #e6edf3 0%, #8b949e 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			.header-description {
+				color: var(--text-muted);
+				font-size: 17px;
+				line-height: 1.7;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+
+			.header-description p {
+				margin: 0 0 16px;
+			}
+
+			.header-description p:last-child {
+				margin-bottom: 0;
+			}
+
+			main {
+				padding-bottom: 80px;
+			}
+
+			h2 {
+				margin: 0 0 32px;
+				font-size: 28px;
+				font-weight: 600;
+				text-align: center;
+				color: var(--text);
+			}
+
+			.demo-links {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 24px;
+				margin-bottom: 64px;
+				max-width: 800px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			.demo-link {
+				display: block;
+				padding: 24px 32px;
+				background: var(--bg-subtle);
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				color: var(--text);
+				transition: all 0.2s ease;
+				text-align: center;
+				font-size: 18px;
+				font-weight: 500;
+			}
+
+			.demo-link:hover {
+				border-color: var(--link);
+				background: rgba(88, 166, 255, 0.05);
+				transform: translateY(-2px);
+				color: var(--link-hover);
+			}
+
+			.demo-link-title {
+				display: block;
+				font-size: 20px;
+				margin-bottom: 8px;
+			}
+
+			.demo-link-desc {
+				display: block;
+				font-size: 14px;
+				color: var(--text-muted);
+				font-weight: normal;
+			}
+
+			.features {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 24px;
+				margin-bottom: 64px;
+			}
+
+			.feature {
+				padding: 24px;
+				background: var(--bg-subtle);
+				border: 1px solid var(--border);
+				border-radius: 8px;
+			}
+
+			.feature h3 {
+				margin: 0 0 12px;
+				font-size: 18px;
+				font-weight: 600;
+				color: var(--text);
+			}
+
+			.feature p {
+				margin: 0;
+				color: var(--text-muted);
+				font-size: 15px;
+				line-height: 1.6;
+			}
+
+			code {
+				background: rgba(110, 118, 129, 0.15);
+				border: 1px solid var(--border);
+				padding: 2px 6px;
+				border-radius: 4px;
+				font-size: 0.9em;
+				font-family: 'SF Mono', Monaco, 'Cascadia Mono', 'Roboto Mono', Consolas, monospace;
+			}
+
+			@media (max-width: 768px) {
+				h1 {
+					font-size: 36px;
+				}
+
+				header {
+					padding: 48px 0 32px;
+				}
+
+				.header-description {
+					font-size: 16px;
+				}
+
+				h2 {
+					font-size: 24px;
+					margin-bottom: 24px;
+				}
+
+				.features {
+					grid-template-columns: 1fr;
+				}
+
+				.demo-link {
+					font-size: 16px;
+					padding: 20px 24px;
+				}
 			}
 		</style>
-		<script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
-		<script src="Control.FullScreen.js"></script>
+		<meta name="description" content="Simple plugin for Leaflet that adds fullscreen button to your maps. Supports both ES6 modules and UMD." />
+		<link rel="canonical" href="." />
+		<meta property="og:title" content="Leaflet.Control.FullScreen" />
+		<meta property="og:description" content="Simple plugin for Leaflet that adds fullscreen button to your maps. Supports both ES6 modules and UMD." />
+		<meta property="og:type" content="website" />
+		<meta name="twitter:card" content="summary_large_image" />
 	</head>
 	<body>
-		<div id="map"></div>
-		<div style="margin: 1em 0 0">
-			<span style="padding: 0 0.25em 0 0">Demonstration of 'toggleFullscreen' method</span>
-			<button type="button" onclick="toggleFullscreen();">Show map in fullscreen mode</button>
-		</div>
-		<script>
-			const base = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-				maxZoom: 19,
-				subdomains: 'abcd',
-				attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>'
-			});
+		<header>
+			<div class="container">
+				<div class="header-content">
+					<h1>Leaflet.Control.FullScreen</h1>
+					<div class="header-description">
+						<p>
+							Simple plugin for Leaflet that adds a fullscreen button to your maps. Supports true fullscreen mode using the Fullscreen API with a pseudo-fullscreen fallback for
+							browsers without support.
+						</p>
+						<p>
+							MIT Licensed – View on
+							<a href="https://github.com/brunob/leaflet.fullscreen" target="_blank" rel="noopener">GitHub</a>
+							or read the
+							<a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet documentation</a>.
+						</p>
+					</div>
+				</div>
+			</div>
+		</header>
 
-			let map = L.map('map', {
-				layers: [base],
-				tap: false, // ref https://github.com/Leaflet/Leaflet/issues/7255
-				center: new L.LatLng(48.5, -4.5),
-				zoom: 5,
-				fullscreenControl: true,
-				fullscreenControlOptions: {
-					// optional
-					title: 'Show me the fullscreen!',
-					titleCancel: 'Exit fullscreen mode'
-				}
-			});
+		<main class="container">
+			<h2>Interactive Demos</h2>
+			<div class="demo-links">
+				<a href="demo/demo.iife.html" class="demo-link">
+					<span class="demo-link-title">🌐 Script Tags Demo</span>
+					<span class="demo-link-desc">Traditional script tags with global L object</span>
+				</a>
+				<a href="demo/demo.esm.html" class="demo-link">
+					<span class="demo-link-title">📦 ES Module Demo</span>
+					<span class="demo-link-desc">Modern ES6 imports for bundlers</span>
+				</a>
+			</div>
 
-			// detect fullscreen toggling
-			map.on('enterFullscreen', function () {
-				if (window.console) window.console.log('enterFullscreen');
-			});
-			map.on('exitFullscreen', function () {
-				if (window.console) window.console.log('exitFullscreen');
-			});
-
-			// toggler into fullscreen mode
-			const toggleFullscreen = function () {
-				map.toggleFullscreen();
-			};
-		</script>
+			<h2>Features</h2>
+			<div class="features">
+				<div class="feature">
+					<h3>🖥️ True Fullscreen</h3>
+					<p>Uses the native Fullscreen API for immersive map viewing. Automatically falls back to pseudo-fullscreen mode when the API is unavailable.</p>
+				</div>
+				<div class="feature">
+					<h3>📦 ES6 Modules</h3>
+					<p>Pure ES6 module exports with named imports. UMD version auto-generated from ESM source. Works with modern bundlers and Import Maps.</p>
+				</div>
+				<div class="feature">
+					<h3>🎨 Customizable</h3>
+					<p>Configure position, button titles, icons, and behavior. Supports custom fullscreen elements and forced pseudo-fullscreen mode.</p>
+				</div>
+				<div class="feature">
+					<h3>🔧 Programmatic API</h3>
+					<p>Control fullscreen mode with <code>map.toggleFullscreen()</code> method. Listen to <code>enterFullscreen</code> and <code>exitFullscreen</code> events.</p>
+				</div>
+				<div class="feature">
+					<h3>⚡ Lightweight</h3>
+					<p>No dependencies beyond Leaflet. Minimal footprint with clean, modern code. Just import and use.</p>
+				</div>
+				<div class="feature">
+					<h3>🌍 Wide Support</h3>
+					<p>Compatible with Leaflet 1.7+ and 2.x. Works in all modern browsers with graceful fallback for older ones.</p>
+				</div>
+			</div>
+		</main>
 	</body>
 </html>
