@@ -7,8 +7,7 @@
   "module": "dist/Control.FullScreen.js",
   "exports": {
     ".": {
-      "import": "./dist/Control.FullScreen.js",
-      "require": "./dist/Control.FullScreen.iife.js"
+      "import": "./dist/Control.FullScreen.js"
     },
     "./dist/Control.FullScreen.css": "./dist/Control.FullScreen.css"
   },
