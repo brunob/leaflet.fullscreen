@@ -5,12 +5,17 @@
   "type": "module",
   "main": "dist/Control.FullScreen.js",
   "module": "dist/Control.FullScreen.js",
+  "browser": "dist/Control.FullScreen.umd.js",
   "exports": {
     ".": {
-      "import": "./dist/Control.FullScreen.js"
+      "import": "./dist/Control.FullScreen.js",
+      "require": "./dist/Control.FullScreen.umd.js"
     },
     "./dist/Control.FullScreen.css": "./dist/Control.FullScreen.css"
   },
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint && stylelint **/*.css && prettier . --check",
