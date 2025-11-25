@@ -4,10 +4,11 @@
  * https://github.com/brunob/leaflet.fullscreen
  */
 /*! GENERATED FILE - DO NOT EDIT DIRECTLY. Edit files in src/ and run 'npm run build' */
-this.L = this.L || {};
-this.L.Control = this.L.Control || {};
-this.L.Control.FullScreen = (function (exports, leaflet) {
-	'use strict';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('leaflet')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'leaflet'], factory) :
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.L = global.L || {}, global.L.Control = global.L.Control || {}, global.L.Control.FullScreen = {}), global.L));
+})(this, (function (exports, leaflet) { 'use strict';
 
 	if (typeof document === 'undefined') {
 		console.warn('"window.document" is undefined; leaflet.fullscreen requires this object to access the DOM');
@@ -270,6 +271,4 @@ this.L.Control.FullScreen = (function (exports, leaflet) {
 
 	exports.FullScreen = FullScreen;
 
-	return exports;
-
-})({}, L);
+}));

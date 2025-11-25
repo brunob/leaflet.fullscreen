@@ -16,8 +16,8 @@ export default {
 			sourcemap: false
 		},
 		{
-			file: 'dist/Control.FullScreen.iife.js',
-			format: 'iife',
+			file: 'dist/Control.FullScreen.umd.js',
+			format: 'umd',
 			name: 'L.Control.FullScreen',
 			globals: {
 				leaflet: 'L'
