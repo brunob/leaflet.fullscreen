@@ -14,7 +14,8 @@
     "./dist/Control.FullScreen.css": "./dist/Control.FullScreen.css"
   },
   "files": [
-    "dist/"
+    "dist/",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "rollup -c",
