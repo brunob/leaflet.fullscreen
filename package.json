@@ -21,7 +21,7 @@
     "build": "rollup -c",
     "lint": "eslint && stylelint **/*.css && prettier . --check",
     "lint:fix": "eslint --fix && stylelint **/*.css --fix && prettier . --write",
-    "release": "commit-and-tag-version",
+    "release": "npm run build && commit-and-tag-version",
     "publish": "git push --follow-tags && npm publish"
   },
   "peerDependencies": {
