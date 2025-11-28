@@ -1,4 +1,4 @@
-import { copyFileSync } from 'fs';
+import { copyFileSync, mkdirSync } from 'fs';
 
 export default {
 	input: 'src/Control.FullScreen.js',
@@ -34,6 +34,9 @@ export default {
 	plugins: [
 		{
 			name: 'copy-assets',
+			buildStart() {
+				mkdirSync('dist', { recursive: true });
+			},
 			buildEnd() {
 				copyFileSync('src/Control.FullScreen.css', 'dist/Control.FullScreen.css');
 				copyFileSync('icon-fullscreen.svg', 'dist/icon-fullscreen.svg');
