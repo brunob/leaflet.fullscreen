@@ -8,12 +8,14 @@ All major browsers support the Fullscreen API. For details about which browsers 
 
 ## How ?
 
-Include `Control.FullScreen.js` and `Control.FullScreen.css` in your page:
+Include `Control.FullScreen.umd.js` and `Control.FullScreen.css` in your page:
 
 ```html
-<link rel="stylesheet" href="Control.FullScreen.css" />
-<script src="Control.FullScreen.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen/dist/Control.FullScreen.css" />
+<script src="https://unpkg.com/leaflet.fullscreen/dist/Control.FullScreen.umd.js"></script>
 ```
+
+If you want to host the files yourself, you can download them from [npm](https://www.npmjs.com/package/leaflet.fullscreen) or clone this repository and run `npm run build`.
 
 Add the fullscreen control to the map:
 
