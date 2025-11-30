@@ -1,0 +1,50 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ['master']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Ensure only one deployment runs at a time.
+# We set 'cancel-in-progress: false' to let active deployments finish safely before starting a new one.
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Copy only necessary files to a clean '_site' directory for deployment.
+      - name: Prepare deployment
+        run: |
+          mkdir _site
+          cp index.html _site/
+          cp icon-fullscreen.svg _site/
+          cp -r demo _site/
+          cp -r dist _site/
+          # Create .nojekyll to disable Jekyll processing (speeds up build and allows files starting with _)
+          touch _site/.nojekyll
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: '_site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
