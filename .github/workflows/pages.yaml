@@ -3,6 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ['master']
+    paths:
+      - 'index.html'
+      - 'icon-fullscreen.svg'
+      - 'demo/**'
+      - 'dist/**'
   workflow_dispatch:
 
 permissions:
