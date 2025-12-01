@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.0.0](https://github.com/brunob/leaflet.fullscreen/compare/v4.0.0...v5.0.0) (2025-12-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* Source files moved to src/ directory, built files in dist/
+
+- Restructure project: source in src/, distribution files in dist/
+- Add Rollup build system to generate ES module and IIFE distributions
+- Use named imports from Leaflet (Control, DomUtil, DomEvent, Map)
+- Configure dual package exports in package.json (ESM + IIFE)
+- Add Leaflet as peerDependency (^1.7.0 || >=2.0.0-alpha.1)
+- Add demo pages for both ESM and IIFE usage patterns with Import Maps
+- Create landing page with feature overview and demo links
+- Update README with build command documentation
+
+### Features
+
+* **ci:** update release script to include build step ([2cadd79](https://github.com/brunob/leaflet.fullscreen/commit/2cadd79548a8cfd7188c69f76875966ba4fd465a))
+* restructure project with ES module build system ([c13d336](https://github.com/brunob/leaflet.fullscreen/commit/c13d33610734d8ec8b00de11c8a114c1d906ed04))
+
+
+### Bug Fixes
+
+* add aria-label to fullscreen toggle state ([e77db6e](https://github.com/brunob/leaflet.fullscreen/commit/e77db6ee1e99e798c18dc8c47ea431abfdf9e78e))
+* add missing charset meta tag in demo HTML files ([3cc995b](https://github.com/brunob/leaflet.fullscreen/commit/3cc995bfe39a1062bf2cb977f4c459c7becbc23d))
+* remove CommonJS require export from package.json ([86153b2](https://github.com/brunob/leaflet.fullscreen/commit/86153b22830b5714535d35d3af31d478b87daadd))
+
 ## [4.0.0](https://github.com/brunob/leaflet.fullscreen/compare/v3.0.2...v4.0.1) (2025-03-07)
 
 
