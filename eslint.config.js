@@ -1,13 +1,14 @@
+import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
-import eslintPluginEslint from '@eslint/js';
-import eslintPluginStylistic from '@stylistic/eslint-plugin-js';
+import js from '@eslint/js';
+import stylistic from '@stylistic/eslint-plugin';
 
-const config = [
-	{
-		ignores: ['dist/**']
-	},
+export default defineConfig([
+	globalIgnores(['dist/**']),
 	{
 		files: ['**/*.js'],
+		plugins: { js, stylistic },
+		extends: ['js/recommended', 'stylistic/all'],
 		languageOptions: {
 			globals: {
 				...globals.browser,
@@ -16,30 +17,24 @@ const config = [
 				L: 'writable'
 			}
 		},
-		plugins: {
-			...eslintPluginStylistic.configs['all'].plugins
-		},
 		rules: {
-			...eslintPluginEslint.configs['recommended'].rules,
-			...eslintPluginStylistic.configs['all'].rules,
-			'@stylistic/js/array-element-newline': ['error', 'consistent'],
-			'@stylistic/js/brace-style': ['error', '1tbs'],
-			'@stylistic/js/comma-dangle': ['error', 'only-multiline'],
-			'@stylistic/js/dot-location': ['error', 'property'],
-			'@stylistic/js/function-call-argument-newline': ['error', 'consistent'],
-			'@stylistic/js/indent': ['error', 'tab'],
-			'@stylistic/js/multiline-comment-style': 'off',
-			'@stylistic/js/no-tabs': 'off',
-			'@stylistic/js/object-curly-spacing': ['error', 'always'],
-			'@stylistic/js/padded-blocks': 'off',
-			'@stylistic/js/quotes': ['error', 'single'],
-			'@stylistic/js/quote-props': ['error', 'consistent-as-needed'],
-			'@stylistic/js/semi': ['error', 'always'],
-			'@stylistic/js/space-before-function-paren': ['error', 'never'],
+			'@stylistic/array-element-newline': ['error', 'consistent'],
+			'@stylistic/brace-style': ['error', '1tbs'],
+			'@stylistic/comma-dangle': ['error', 'only-multiline'],
+			'@stylistic/dot-location': ['error', 'property'],
+			'@stylistic/function-call-argument-newline': ['error', 'consistent'],
+			'@stylistic/indent': ['error', 'tab'],
+			'@stylistic/multiline-comment-style': 'off',
+			'@stylistic/no-tabs': 'off',
+			'@stylistic/object-curly-spacing': ['error', 'always'],
+			'@stylistic/object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }],
+			'@stylistic/padded-blocks': 'off',
+			'@stylistic/quote-props': ['error', 'consistent-as-needed'],
+			'@stylistic/quotes': ['error', 'single'],
+			'@stylistic/semi': ['error', 'always'],
+			'@stylistic/space-before-function-paren': ['error', 'never'],
 			'no-lonely-if': 'error',
 			'no-unused-expressions': ['error', { allowTernary: true }]
 		}
 	}
-];
-
-export default config;
+]);
