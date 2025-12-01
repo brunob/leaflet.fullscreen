@@ -38,15 +38,15 @@
     "fullscreen"
   ],
   "devDependencies": {
-    "@eslint/js": "^9.18.0",
-    "@stylistic/eslint-plugin-js": "^4.1.0",
-    "commit-and-tag-version": "^12.5.0",
-    "eslint": "^9.18.0",
-    "prettier": "^3.4.2",
+    "@eslint/js": "^9.39.1",
+    "@stylistic/eslint-plugin-js": "^4.4.1",
+    "commit-and-tag-version": "^12.6.1",
+    "eslint": "^9.39.1",
+    "prettier": "^3.7.3",
     "rollup": "^4.53.3",
-    "stylelint": "^16.13.0",
-    "stylelint-config-standard": "^39.0.0",
-    "stylelint-prettier": "^5.0.2"
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1",
+    "stylelint-prettier": "^5.0.3"
   },
   "author": "b_b",
   "license": "MIT",
