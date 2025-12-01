@@ -10,12 +10,7 @@ export default defineConfig([
 		plugins: { js, stylistic },
 		extends: ['js/recommended', 'stylistic/all'],
 		languageOptions: {
-			globals: {
-				...globals.browser,
-				...globals.node,
-				define: 'readonly',
-				L: 'writable'
-			}
+			globals: globals.browser
 		},
 		rules: {
 			'@stylistic/array-element-newline': ['error', 'consistent'],
