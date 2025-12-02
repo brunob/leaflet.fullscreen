@@ -36,7 +36,6 @@ export default {
 			name: 'copy-assets',
 			buildEnd() {
 				copyFileSync('src/Control.FullScreen.css', 'dist/Control.FullScreen.css');
-				copyFileSync('icon-fullscreen.svg', 'dist/icon-fullscreen.svg');
 			}
 		}
 	]
