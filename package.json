@@ -22,7 +22,7 @@
     "lint": "eslint && stylelint **/*.css && prettier . --check",
     "lint:fix": "eslint --fix && stylelint **/*.css --fix && prettier . --write",
     "release": "npm run build && commit-and-tag-version",
-    "publish": "git push --follow-tags && npm publish"
+    "prepublishOnly": "git push --follow-tags"
   },
   "peerDependencies": {
     "leaflet": "^1.7.0 || >=2.0.0-alpha.1"
