@@ -244,7 +244,8 @@ const FullScreen = Control.extend({
 
 	_handleFullscreenChange(ev) {
 		const map = this._map;
-		if (ev.target === map.getContainer() && !this._screenfull.isFullscreen && !map._exitFired) {
+		const targetElement = this.options.fullscreenElement || map.getContainer();
+		if (ev.target === targetElement && !this._screenfull.isFullscreen && !map._exitFired) {
 			this._screenfull.exit().then(() => map.invalidateSize());
 			map.fire('exitFullscreen');
 			map._exitFired = true;
