@@ -4,7 +4,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Leaflet.Control.FullScreen</title>
-		<link rel="icon" type="image/svg+xml" href="icon-fullscreen.svg" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href='data:image/svg+xml,<svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg"><path d="M5 10.3V5.9c0-.5.4-.9.9-.9h4.4c.2 0 .4.2.4.4V7c0 .2-.2.4-.4.4h-3v3c0 .2-.2.4-.4.4H5.4a.4.4 0 0 1-.4-.4zm10.3-4.9V7c0 .2.2.4.4.4h3v3c0 .2.2.4.4.4h1.5c.2 0 .4-.2.4-.4V5.9c0-.5-.4-.9-.9-.9h-4.4c-.2 0-.4.2-.4.4zm5.3 9.9H19c-.2 0-.4.2-.4.4v3h-3c-.2 0-.4.2-.4.4v1.5c0 .2.2.4.4.4h4.4c.5 0 .9-.4.9-.9v-4.4c0-.2-.2-.4-.4-.4zm-9.9 5.3V19c0-.2-.2-.4-.4-.4h-3v-3c0-.2-.2-.4-.4-.4H5.4c-.2 0-.4.2-.4.4v4.4c0 .5.4.9.9.9h4.4c.2 0 .4-.2.4-.4z" fill="%23333"/></svg>'
+		/>
 		<style>
 			:root {
 				--bg: #0a0e13;
@@ -101,10 +105,10 @@
 
 			.demo-links {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 				gap: 24px;
 				margin-bottom: 64px;
-				max-width: 800px;
+				max-width: 900px;
 				margin-left: auto;
 				margin-right: auto;
 			}
@@ -245,6 +249,10 @@
 				<a href="demo/demo.esm.html" class="demo-link">
 					<span class="demo-link-title">📦 ES Module Demo</span>
 					<span class="demo-link-desc">Modern ES6 imports for bundlers</span>
+				</a>
+				<a href="demo/demo-darkmode.html" class="demo-link">
+					<span class="demo-link-title">🌓 Dark Mode Demo</span>
+					<span class="demo-link-desc">Light/dark theme support with CSS variables</span>
 				</a>
 			</div>
 

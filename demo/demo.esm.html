@@ -3,7 +3,11 @@
 	<head>
 		<title>Leaflet.Control.FullScreen Demo (ESM)</title>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="../icon-fullscreen.svg" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href='data:image/svg+xml,<svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg"><path d="M5 10.3V5.9c0-.5.4-.9.9-.9h4.4c.2 0 .4.2.4.4V7c0 .2-.2.4-.4.4h-3v3c0 .2-.2.4-.4.4H5.4a.4.4 0 0 1-.4-.4zm10.3-4.9V7c0 .2.2.4.4.4h3v3c0 .2.2.4.4.4h1.5c.2 0 .4-.2.4-.4V5.9c0-.5-.4-.9-.9-.9h-4.4c-.2 0-.4.2-.4.4zm5.3 9.9H19c-.2 0-.4.2-.4.4v3h-3c-.2 0-.4.2-.4.4v1.5c0 .2.2.4.4.4h4.4c.5 0 .9-.4.9-.9v-4.4c0-.2-.2-.4-.4-.4zm-9.9 5.3V19c0-.2-.2-.4-.4-.4h-3v-3c0-.2-.2-.4-.4-.4H5.4c-.2 0-.4.2-.4.4v4.4c0 .5.4.9.9.9h4.4c.2 0 .4-.2.4-.4z" fill="%23333"/></svg>'
+		/>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
@@ -41,9 +45,11 @@
 
 				<p><strong>Try it:</strong> Use the fullscreen button (top-left of the map) to enter/exit fullscreen mode.</p>
 
-				<p style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #dee2e6"><strong>Programmatic API:</strong></p>
-				<p style="font-size: 13px; color: #6c757d">You can also control fullscreen via JavaScript using <code>map.fullscreenControl.toggleFullScreen()</code></p>
-				<button type="button" class="demo-button" onclick="toggleFullscreen()" style="background: #6c757d; font-size: 13px; padding: 8px 12px">Test API Toggle</button>
+				<div class="api-section">
+					<p><strong>Programmatic API:</strong></p>
+					<p class="text-muted">You can also control fullscreen via JavaScript using <code>map.fullscreenControl.toggleFullScreen()</code></p>
+					<button type="button" class="demo-button api-button" onclick="toggleFullscreen()">Test API Toggle</button>
+				</div>
 			</div>
 		</div>
 		<script type="module">
