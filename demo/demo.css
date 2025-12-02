@@ -1,3 +1,80 @@
+/* stylelint-disable property-no-vendor-prefix */
+
+:root {
+	--bg-color: #fff;
+	--text-color: #495057;
+	--heading-color: #212529;
+	--border-color: #dee2e6;
+	--code-bg: #e9ecef;
+	--code-color: #d63384;
+	--pre-bg: #f8f9fa;
+	--pre-color: #212529;
+	--pre-border: #dee2e6;
+	--muted-color: #6c757d;
+	--icon-color: #333;
+	--button-bg: #28a745;
+	--button-hover-bg: #218838;
+	--toggle-bg: #6c757d;
+	--toggle-hover-bg: #5a6268;
+	--leaflet-bar-bg: #fff;
+	--leaflet-bar-color: #000;
+	--leaflet-bar-border: rgb(0 0 0 / 20%);
+	--leaflet-bar-hover-bg: #f4f4f4;
+	--leaflet-attribution-bg: rgb(255 255 255 / 70%);
+	--leaflet-attribution-color: #333;
+	--leaflet-attribution-link: #0078a8;
+}
+
+:root[data-theme='light'] {
+	color-scheme: light;
+
+	--bg-color: #fff;
+	--text-color: #495057;
+	--heading-color: #212529;
+	--border-color: #dee2e6;
+	--code-bg: #e9ecef;
+	--code-color: #d63384;
+	--pre-bg: #f8f9fa;
+	--pre-color: #212529;
+	--pre-border: #dee2e6;
+	--muted-color: #6c757d;
+	--icon-color: #333;
+	--toggle-bg: #6c757d;
+	--toggle-hover-bg: #5a6268;
+	--leaflet-bar-bg: #fff;
+	--leaflet-bar-color: #000;
+	--leaflet-bar-border: rgb(0 0 0 / 20%);
+	--leaflet-bar-hover-bg: #f4f4f4;
+	--leaflet-attribution-bg: rgb(255 255 255 / 70%);
+	--leaflet-attribution-color: #333;
+	--leaflet-attribution-link: #0078a8;
+}
+
+:root[data-theme='dark'] {
+	color-scheme: dark;
+
+	--bg-color: #1a1a1a;
+	--text-color: #c0c0c0;
+	--heading-color: #f0f0f0;
+	--border-color: #404040;
+	--code-bg: #404040;
+	--code-color: #ff79c6;
+	--pre-bg: #1f1f1f;
+	--pre-color: #e0e0e0;
+	--pre-border: #404040;
+	--muted-color: #a0a0a0;
+	--icon-color: #fff;
+	--toggle-bg: #495057;
+	--toggle-hover-bg: #343a40;
+	--leaflet-bar-bg: #3a3a3a;
+	--leaflet-bar-color: #fff;
+	--leaflet-bar-border: rgb(255 255 255 / 20%);
+	--leaflet-bar-hover-bg: #555;
+	--leaflet-attribution-bg: rgb(58 58 58 / 80%);
+	--leaflet-attribution-color: #fff;
+	--leaflet-attribution-link: #6db3f2;
+}
+
 /* Base styles */
 body {
 	padding: 0;
@@ -6,6 +83,8 @@ body {
 	display: flex;
 	height: 100vh;
 	overflow: hidden;
+	background: var(--bg-color);
+	color: var(--text-color);
 }
 
 #map {
@@ -14,13 +93,18 @@ body {
 }
 
 #description {
-	width: 400px;
+	width: 600px;
 	height: 100vh;
 	overflow-y: auto;
-	background: #f8f9fa;
-	border-left: 1px solid #dee2e6;
+	background: var(--bg-color);
+	border-left: 1px solid var(--border-color);
 	padding: 24px;
 	box-sizing: border-box;
+	color: var(--text-color);
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease,
+		border-color 0.3s ease;
 }
 
 .nav-buttons {
@@ -56,14 +140,14 @@ body {
 h3 {
 	margin: 0 0 16px;
 	font-size: 20px;
-	color: #212529;
+	color: var(--heading-color);
 }
 
 p {
 	margin: 12px 0;
 	font-size: 14px;
 	line-height: 1.6;
-	color: #495057;
+	color: var(--text-color);
 }
 
 ul {
@@ -71,7 +155,7 @@ ul {
 	padding-left: 24px;
 	font-size: 14px;
 	line-height: 1.6;
-	color: #495057;
+	color: var(--text-color);
 }
 
 li {
@@ -79,18 +163,35 @@ li {
 }
 
 code {
-	background: #e9ecef;
+	background: var(--code-bg);
 	padding: 2px 6px;
 	border-radius: 3px;
 	font-family: 'Courier New', Monaco, monospace;
 	font-size: 13px;
-	color: #d63384;
+	color: var(--code-color);
+}
+
+pre {
+	background: var(--pre-bg);
+	padding: 12px;
+	border-radius: 4px;
+	border: 1px solid var(--pre-border);
+	overflow-x: auto;
+	margin: 12px 0;
+	color: var(--pre-color);
+}
+
+pre code {
+	background: transparent;
+	padding: 0;
+	color: inherit;
+	border-radius: 0;
 }
 
 button.demo-button {
 	width: 100%;
 	padding: 12px 16px;
-	background: #28a745;
+	background: var(--button-bg);
 	color: white;
 	border: none;
 	border-radius: 4px;
@@ -102,7 +203,61 @@ button.demo-button {
 }
 
 button.demo-button:hover {
-	background: #218838;
+	background: var(--button-hover-bg);
+}
+
+.customization-section {
+	margin-top: 20px;
+	padding-top: 16px;
+	border-top: 1px solid var(--border-color);
+}
+
+.text-muted {
+	font-size: 13px;
+	color: var(--muted-color);
+}
+
+/* Dark mode toggle button */
+#dark-mode-toggle.demo-button {
+	background: var(--toggle-bg);
+	color: white;
+	display: block;
+	position: static;
+	width: 100%;
+	height: auto;
+	box-shadow: none;
+	border: none;
+	margin-bottom: 20px;
+}
+
+#dark-mode-toggle.demo-button:hover {
+	background: var(--toggle-hover-bg);
+}
+
+/* Advanced Theming: Use masks instead of background-image */
+.leaflet-fullscreen-icon {
+	background-image: none !important;
+}
+
+.leaflet-fullscreen-icon::before {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	-webkit-mask-image: var(--fullscreen-icon-enter);
+	mask-image: var(--fullscreen-icon-enter);
+	-webkit-mask-size: 26px 26px;
+	mask-size: 26px 26px;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	mask-position: center;
+	background-color: var(--icon-color);
+}
+
+.leaflet-fullscreen-icon.leaflet-fullscreen-on::before {
+	-webkit-mask-image: var(--fullscreen-icon-exit);
+	mask-image: var(--fullscreen-icon-exit);
 }
 
 /* Responsive layout */
@@ -119,47 +274,45 @@ button.demo-button:hover {
 		width: 100%;
 		height: 50vh;
 		border-left: none;
-		border-top: 1px solid #dee2e6;
+		border-top: 1px solid var(--border-color);
 	}
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-	:root {
-		color-scheme: dark;
-	}
+/* Leaflet overrides for dark mode */
+.leaflet-bar a {
+	background: var(--leaflet-bar-bg);
+	color: var(--leaflet-bar-color);
+	border-color: var(--leaflet-bar-border);
+}
 
-	body {
-		background: #1a1a1a;
-	}
+.leaflet-control-attribution a {
+	color: var(--leaflet-attribution-link);
+}
 
-	#description {
-		background: #2d2d2d;
-		border-left-color: #404040;
-		color: #e0e0e0;
-	}
+.leaflet-bar a:hover,
+.leaflet-bar a:focus {
+	background: var(--leaflet-bar-hover-bg);
+}
 
-	h3 {
-		color: #f0f0f0;
-	}
+.leaflet-control-attribution {
+	background: var(--leaflet-attribution-bg);
+	color: var(--leaflet-attribution-color);
+}
 
-	p,
-	ul {
-		color: #c0c0c0;
-	}
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+	color: var(--leaflet-bar-color);
+}
 
-	code {
-		background: #404040;
-		color: #ff79c6;
-	}
+/* Helper classes for inline styles replacement */
+.api-section {
+	margin-top: 20px;
+	padding-top: 16px;
+	border-top: 1px solid var(--border-color);
+}
 
-	.description-content {
-		border-top-color: #404040;
-	}
-
-	@media (width <= 900px) {
-		#description {
-			border-top-color: #404040;
-		}
-	}
+.api-button {
+	background: var(--toggle-bg) !important;
+	font-size: 13px;
+	padding: 8px 12px;
 }
