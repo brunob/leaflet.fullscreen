@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Leaflet.Control.FullScreen Demo (fullscreenElement)</title>
+		<meta charset="utf-8" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href='data:image/svg+xml,<svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg"><path d="M5 10.3V5.9c0-.5.4-.9.9-.9h4.4c.2 0 .4.2.4.4V7c0 .2-.2.4-.4.4h-3v3c0 .2-.2.4-.4.4H5.4a.4.4 0 0 1-.4-.4zm10.3-4.9V7c0 .2.2.4.4.4h3v3c0 .2.2.4.4.4h1.5c.2 0 .4-.2.4-.4V5.9c0-.5-.4-.9-.9-.9h-4.4c-.2 0-.4.2-.4.4zm5.3 9.9H19c-.2 0-.4.2-.4.4v3h-3c-.2 0-.4.2-.4.4v1.5c0 .2.2.4.4.4h4.4c.5 0 .9-.4.9-.9v-4.4c0-.2-.2-.4-.4-.4zm-9.9 5.3V19c0-.2-.2-.4-.4-.4h-3v-3c0-.2-.2-.4-.4-.4H5.4c-.2 0-.4.2-.4.4v4.4c0 .5.4.9.9.9h4.4c.2 0 .4-.2.4-.4z" fill="%23333"/></svg>'
+		/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
+		<link rel="stylesheet" href="../dist/Control.FullScreen.css" />
+		<link rel="stylesheet" href="demo.css" />
+
+		<script type="importmap">
+			{
+				"imports": {
+					"leaflet": "https://unpkg.com/leaflet@latest/dist/leaflet-src.esm.js"
+				}
+			}
+		</script>
+
+		<style>
+			/* Custom styles for this demo */
+			#map-wrapper {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				height: 100vh;
+				background: #f0f0f0;
+			}
+
+			#toolbar {
+				background: #2c3e50;
+				color: white;
+				padding: 16px 24px;
+				display: flex;
+				align-items: center;
+				gap: 16px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			#toolbar h2 {
+				margin: 0;
+				font-size: 18px;
+				font-weight: 500;
+			}
+
+			#toolbar .toolbar-info {
+				font-size: 13px;
+				color: #ecf0f1;
+				background: rgba(255, 255, 255, 0.1);
+				padding: 4px 12px;
+				border-radius: 4px;
+			}
+
+			#map {
+				flex: 1;
+			}
+
+			#legend {
+				background: #d4e9f0;
+				padding: 16px 24px;
+				border-top: 1px solid #a8d0df;
+				box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+			}
+
+			#legend h3 {
+				margin: 0 0 8px;
+				font-size: 14px;
+				color: #212529;
+			}
+
+			#legend p {
+				margin: 4px 0;
+				font-size: 13px;
+				color: #6c757d;
+			}
+
+			.api-section {
+				margin-top: 20px;
+				padding-top: 16px;
+				border-top: 1px solid #dee2e6;
+			}
+
+			.text-muted {
+				font-size: 13px;
+				color: #6c757d;
+				margin: 8px 0;
+			}
+
+			.api-button {
+				background: #6c757d;
+				font-size: 13px;
+				padding: 8px 12px;
+			}
+
+			pre {
+				background: #f8f9fa;
+				border: 1px solid #dee2e6;
+				border-radius: 4px;
+				padding: 12px;
+				overflow-x: auto;
+				margin: 12px 0;
+			}
+
+			pre code {
+				background: none;
+				border: none;
+				padding: 0;
+				font-size: 13px;
+				line-height: 1.5;
+				color: #212529;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="map-wrapper">
+			<div id="toolbar">
+				<h2>🗺️ Map Application</h2>
+				<span class="toolbar-info">Custom Wrapper Demo</span>
+			</div>
+			<div id="map"></div>
+			<div id="legend">
+				<h3>Legend</h3>
+				<p>🔵 Blue markers: Cities</p>
+				<p>🟢 Green markers: Parks</p>
+			</div>
+		</div>
+		<div id="description">
+			<div class="nav-buttons">
+				<a href="../index.html" class="back-button">← Back to Home</a>
+				<a href="https://github.com/brunob/leaflet.fullscreen/blob/master/demo/demo.fullscreenElement.html" target="_blank" class="view-source-button">📄 View Source</a>
+			</div>
+
+			<div class="description-content">
+				<h3>Custom Element Demo</h3>
+				<p>
+					This example demonstrates the <code>fullscreenElement</code> option, which allows you to specify a custom DOM element to go fullscreen instead of just the map container.
+				</p>
+
+				<p><strong>Why use this?</strong></p>
+				<p>
+					When building map applications with additional UI elements (toolbars, legends, sidebars), you often want the entire interface to go fullscreen, not just the map itself.
+				</p>
+
+				<p><strong>In this demo:</strong></p>
+				<p>The entire wrapper (<code>#map-wrapper</code>) goes fullscreen, including:</p>
+				<ul>
+					<li>📊 Toolbar at the top</li>
+					<li>🗺️ Map in the center</li>
+					<li>📋 Legend at the bottom</li>
+				</ul>
+
+				<p>
+					<strong>Without <code>fullscreenElement</code>:</strong><br />
+					Only the map would go fullscreen, leaving the toolbar and legend behind.
+				</p>
+
+				<p>
+					<strong>With <code>fullscreenElement</code>:</strong><br />
+					The entire wrapper goes fullscreen, preserving your complete UI layout.
+				</p>
+
+				<p><strong>Code Example:</strong></p>
+				<pre><code>const mapWrapper = document.getElementById('map-wrapper');
+
+map.addControl(
+  new FullScreen({
+    position: 'topleft',
+    fullscreenElement: mapWrapper
+  })
+);</code></pre>
+
+				<div class="api-section">
+					<p><strong>Try it:</strong></p>
+					<p class="text-muted">Click the fullscreen button and see how the entire interface goes fullscreen together.</p>
+					<button type="button" class="demo-button api-button" onclick="toggleFullscreen()">Toggle Fullscreen</button>
+				</div>
+			</div>
+		</div>
+		<script type="module">
+			import { TileLayer, LatLng, Map } from 'leaflet';
+			import { FullScreen } from '../dist/Control.FullScreen.js';
+
+			const tiles = new TileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				maxZoom: 18,
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			});
+
+			const latlng = new LatLng(48.5, -4.5);
+
+			const map = new Map('map', {
+				layers: [tiles],
+				center: latlng,
+				zoom: 5
+			});
+
+			// Add fullscreen control with fullscreenElement option
+			// This makes the entire #map-wrapper go fullscreen, not just the map
+			const mapWrapper = document.getElementById('map-wrapper');
+			map.addControl(
+				new FullScreen({
+					position: 'topleft',
+					title: 'Show me the fullscreen!',
+					titleCancel: 'Exit fullscreen mode',
+					fullscreenElement: mapWrapper
+				})
+			);
+
+			// Detect fullscreen toggling
+			map.on('enterFullscreen', () => {
+				console.log('enterFullscreen');
+			});
+			map.on('exitFullscreen', () => {
+				console.log('exitFullscreen');
+			});
+
+			// Programmatic toggle function
+			window.toggleFullscreen = function () {
+				map.fullscreenControl.toggleFullScreen();
+			};
+		</script>
+	</body>
+</html>
