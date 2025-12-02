@@ -5,7 +5,6 @@ on:
     branches: ['master']
     paths:
       - 'index.html'
-      - 'icon-fullscreen.svg'
       - 'demo/**'
       - 'dist/**'
   workflow_dispatch:
@@ -36,7 +35,6 @@ jobs:
         run: |
           mkdir _site
           cp index.html _site/
-          cp icon-fullscreen.svg _site/
           cp -r demo _site/
           cp -r dist _site/
           # Create .nojekyll to disable Jekyll processing (speeds up build and allows files starting with _)

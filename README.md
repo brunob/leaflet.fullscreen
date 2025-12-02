@@ -63,6 +63,17 @@ map.on('exitFullscreen', function () {
 map.toggleFullscreen();
 ```
 
+## Customization
+
+This plugin uses CSS variables for icons, eliminating the need for external image files. You can easily customize the icons by overriding the CSS variables:
+
+```css
+:root {
+	--fullscreen-icon-enter: url('data:image/svg+xml;...');
+	--fullscreen-icon-exit: url('data:image/svg+xml;...');
+}
+```
+
 ## Where ?
 
 - Source code: <https://github.com/brunob/leaflet.fullscreen>
