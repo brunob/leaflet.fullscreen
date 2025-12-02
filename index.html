@@ -11,13 +11,14 @@
 		/>
 		<style>
 			:root {
-				--bg: #0a0e13;
-				--bg-subtle: #0f1419;
+				--bg: #0d1117;
+				--bg-subtle: #161b22;
+				--bg-elevated: #1c2128;
 				--text: #e6edf3;
 				--text-muted: #8b949e;
 				--link: #58a6ff;
 				--link-hover: #79c0ff;
-				--border: #21262d;
+				--border: #30363d;
 				--accent: #238636;
 			}
 
@@ -58,6 +59,8 @@
 
 			header {
 				padding: 64px 0 48px;
+				background: linear-gradient(180deg, #262c36 0%, var(--bg) 100%);
+				position: relative;
 			}
 
 			.header-content {
@@ -69,10 +72,7 @@
 				font-size: 48px;
 				font-weight: 600;
 				letter-spacing: -0.025em;
-				background: linear-gradient(135deg, #e6edf3 0%, #8b949e 100%);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
+				color: #ffffff;
 			}
 
 			.header-description {
@@ -105,7 +105,7 @@
 
 			.demo-links {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+				grid-template-columns: repeat(2, 1fr);
 				gap: 24px;
 				margin-bottom: 64px;
 				max-width: 900px;
@@ -205,9 +205,58 @@
 					grid-template-columns: 1fr;
 				}
 
+				.demo-links {
+					grid-template-columns: 1fr;
+				}
+
 				.demo-link {
 					font-size: 16px;
 					padding: 20px 24px;
+				}
+			}
+
+			footer {
+				background: var(--bg-subtle);
+				border-top: 1px solid var(--border);
+				padding: 32px 0;
+				margin-top: 80px;
+			}
+
+			.footer-content {
+				text-align: center;
+			}
+
+			.footer-links {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 8px;
+				flex-wrap: wrap;
+				font-size: 14px;
+			}
+
+			.footer-links a {
+				color: var(--text-muted);
+				transition: color 0.2s ease;
+			}
+
+			.footer-links a:hover {
+				color: var(--link-hover);
+			}
+
+			.footer-separator {
+				color: var(--text-muted);
+				user-select: none;
+			}
+
+			@media (max-width: 600px) {
+				.footer-separator {
+					display: none;
+				}
+
+				.footer-links {
+					flex-direction: column;
+					gap: 12px;
 				}
 			}
 		</style>
@@ -228,12 +277,6 @@
 							Simple plugin for Leaflet that adds a fullscreen button to your maps. Supports true fullscreen mode using the Fullscreen API with a pseudo-fullscreen fallback for
 							browsers without support.
 						</p>
-						<p>
-							MIT Licensed – View on
-							<a href="https://github.com/brunob/leaflet.fullscreen" target="_blank" rel="noopener">GitHub</a>
-							or read the
-							<a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet documentation</a>.
-						</p>
 					</div>
 				</div>
 			</div>
@@ -249,6 +292,10 @@
 				<a href="demo/demo.esm.html" class="demo-link">
 					<span class="demo-link-title">📦 ES Module Demo</span>
 					<span class="demo-link-desc">Modern ES6 imports for bundlers</span>
+				</a>
+				<a href="demo/demo.fullscreenElement.html" class="demo-link">
+					<span class="demo-link-title">🖼️ Custom Element Demo</span>
+					<span class="demo-link-desc">Fullscreen with custom wrapper element</span>
 				</a>
 				<a href="demo/demo-darkmode.html" class="demo-link">
 					<span class="demo-link-title">🌓 Dark Mode Demo</span>
@@ -268,7 +315,7 @@
 				</div>
 				<div class="feature">
 					<h3>🎨 Customizable</h3>
-					<p>Configure position, button titles, icons, and behavior. Supports custom fullscreen elements and forced pseudo-fullscreen mode.</p>
+					<p>Configure position, button titles, icons, and behavior. Use <code>fullscreenElement</code> to make custom wrapper elements go fullscreen with your map.</p>
 				</div>
 				<div class="feature">
 					<h3>🔧 Programmatic API</h3>
@@ -284,5 +331,21 @@
 				</div>
 			</div>
 		</main>
+
+		<footer>
+			<div class="container">
+				<div class="footer-content">
+					<div class="footer-links">
+						<a href="https://www.npmjs.com/package/leaflet.fullscreen" target="_blank" rel="noopener">📦 npm</a>
+						<span class="footer-separator">•</span>
+						<a href="https://github.com/brunob/leaflet.fullscreen" target="_blank" rel="noopener">📚 GitHub</a>
+						<span class="footer-separator">•</span>
+						<a href="https://github.com/brunob/leaflet.fullscreen#readme" target="_blank" rel="noopener">📖 Documentation</a>
+						<span class="footer-separator">•</span>
+						<a href="https://github.com/brunob/leaflet.fullscreen/blob/master/LICENSE.md" target="_blank" rel="noopener">⚖️ MIT License</a>
+					</div>
+				</div>
+			</div>
+		</footer>
 	</body>
 </html>
