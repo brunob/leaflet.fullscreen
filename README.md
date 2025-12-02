@@ -136,7 +136,7 @@ If you find any problems, bugs or have questions, please [open a GitHub issue](h
 
 Pull requests are of course also very welcome 🙂
 
-The [CHANGELOG.md](CHANGELOG.md) is generated with `standard-changelog` (using the command `npm run release`).
+The [CHANGELOG.md](CHANGELOG.md) is generated with `commit-and-tag-version` (using the command `npm run release`).
 
 To make this possible the commit messages / pull request titles must follow the [conventional commits specification](https://www.conventionalcommits.org/en/v1.0.0/).
 
