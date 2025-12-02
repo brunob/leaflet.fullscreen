@@ -251,11 +251,19 @@ const FullScreen = Control.extend({
 	_handleFullscreenChange(ev) {
 		const map = this._map;
 		const targetElement = this.options.fullscreenElement || map.getContainer();
-		if (ev.target === targetElement && !this._screenfull.isFullscreen && !map._exitFired) {
-			this._screenfull.exit().then(() => map.invalidateSize());
-			map.fire('exitFullscreen');
+
+		// Check if the event is for our element and fullscreen was exited via browser (ESC or UI)
+		const isOurElement = ev.target === targetElement;
+		const wasExitedExternally = !this._screenfull.isFullscreen && !map._exitFired;
+
+		if (isOurElement && wasExitedExternally) {
+			// Sync internal state with browser state
 			map._exitFired = true;
+
+			// Notify listeners and adjust map size
+			map.fire('exitFullscreen');
 			map._isFullscreen = false;
+			this._screenfull.exit().then(() => map.invalidateSize());
 		}
 	}
 });
