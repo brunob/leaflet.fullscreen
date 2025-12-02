@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0](https://github.com/brunob/leaflet.fullscreen/compare/v5.0.0...v5.1.0) (2025-12-02)
+
+
+### Features
+
+* switch to inline SVGs for improved theming and bundling ([8c69c07](https://github.com/brunob/leaflet.fullscreen/commit/8c69c07a82c38fe6fdde525a098637efabddebe6))
+
+
+### Bug Fixes
+
+* handle fullscreenElement in ESC/browser exit ([0e118f0](https://github.com/brunob/leaflet.fullscreen/commit/0e118f0f1a4ed21b459ac58afc2f7d09e00492eb)), closes [#165](https://github.com/brunob/leaflet.fullscreen/issues/165)
+
 ## [5.0.0](https://github.com/brunob/leaflet.fullscreen/compare/v4.0.0...v5.0.0) (2025-12-01)
 
 
