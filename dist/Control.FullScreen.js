@@ -53,50 +53,57 @@ const eventNameMap = {
 };
 
 const fullscreenAPI = {
-	request(element, options) {
-		return new Promise((resolve, reject) => {
-			const onFullScreenEntered = function() {
-				this.off('change', onFullScreenEntered);
-				resolve();
-			}.bind(this);
+	// Request fullscreen for a specific element
+	async request(element, options) {
+		element = element || document.documentElement;
+		const requestMethod = nativeAPI.requestFullscreen;
 
-			this.on('change', onFullScreenEntered);
-			element = element || document.documentElement;
-			const returnPromise = element[nativeAPI.requestFullscreen](options);
-			if (returnPromise instanceof Promise) {
-				returnPromise.then(onFullScreenEntered).catch(reject);
-			}
+		await this._callNative(() => {
+			return element[requestMethod](options);
 		});
 	},
-	exit() {
-		return new Promise((resolve, reject) => {
-			if (!this.isFullscreen) {
-				resolve();
-				return;
-			}
+	// Exit fullscreen mode
+	async exit() {
+		if (!this.isFullscreen) {
+			return;
+		}
+		const exitMethod = nativeAPI.exitFullscreen;
 
-			const onFullScreenExit = function() {
-				this.off('change', onFullScreenExit);
-				resolve();
-			}.bind(this);
-
-			this.on('change', onFullScreenExit);
-			const returnPromise = document[nativeAPI.exitFullscreen]();
-			if (returnPromise instanceof Promise) {
-				returnPromise.then(onFullScreenExit).catch(reject);
-			}
+		await this._callNative(() => {
+			return document[exitMethod]();
 		});
 	},
+	// Helper to handle browser differences (Promise vs Event)
+	async _callNative(action) {
+		const result = action();
+
+		// Modern browsers return a Promise from requestFullscreen/exitFullscreen
+		if (result instanceof Promise) {
+			await result;
+			return;
+		}
+
+		// Fallback for Safari < 16.4 (March 2023) which doesn't return a Promise
+		await new Promise((resolve) => {
+			const listener = () => {
+				this.off('change', listener);
+				resolve();
+			};
+			this.on('change', listener);
+		});
+	},
+	// Add event listener for fullscreen changes
 	on(event, callback) {
 		const eventName = eventNameMap[event];
 		if (eventName) {
-			document.addEventListener(eventName, callback, false);
+			document.addEventListener(eventName, callback);
 		}
 	},
+	// Remove event listener
 	off(event, callback) {
 		const eventName = eventNameMap[event];
 		if (eventName) {
-			document.removeEventListener(eventName, callback, false);
+			document.removeEventListener(eventName, callback);
 		}
 	},
 	nativeAPI: nativeAPI
