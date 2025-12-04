@@ -274,4 +274,4 @@ Map.include({
 	}
 });
 
-export { FullScreen };
+export { FullScreen, FullScreen as default };

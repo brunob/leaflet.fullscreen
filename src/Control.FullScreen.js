@@ -268,5 +268,5 @@ Map.include({
 	}
 });
 
-// Export for ES modules
 export { FullScreen };
+export default FullScreen;
