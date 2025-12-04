@@ -5,10 +5,10 @@
  */
 /*! GENERATED FILE - DO NOT EDIT DIRECTLY. Edit files in src/ and run 'npm run build' */
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('leaflet')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'leaflet'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.L = global.L || {}, global.L.Control = global.L.Control || {}, global.L.Control.FullScreen = {}), global.L));
-})(this, (function (exports, leaflet) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('leaflet')) :
+	typeof define === 'function' && define.amd ? define(['leaflet'], factory) :
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.L = global.L || {}, global.L.Control = global.L.Control || {}, global.L.Control.FullScreen = factory(global.L)));
+})(this, (function (leaflet) { 'use strict';
 
 	if (typeof document === 'undefined') {
 		console.warn('"window.document" is undefined; leaflet.fullscreen requires this object to access the DOM');
@@ -278,6 +278,6 @@
 		}
 	});
 
-	exports.FullScreen = FullScreen;
+	return FullScreen;
 
 }));
