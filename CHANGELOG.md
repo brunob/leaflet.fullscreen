@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.1](https://github.com/brunob/leaflet.fullscreen/compare/v5.1.0...v5.1.1) (2025-12-05)
+
+
+### Bug Fixes
+
+* **build:** simplify UMD global to L.Control.FullScreen ([b3ef3f9](https://github.com/brunob/leaflet.fullscreen/commit/b3ef3f99021a0d3b023660e278f65aaef61178ec))
+* **scripts:** move `git push` to `prepublishOnly` to fix double invocation ([fb0792c](https://github.com/brunob/leaflet.fullscreen/commit/fb0792ce8a27c179b616fe65bbf80beafe9c628b))
+
 ## [5.1.0](https://github.com/brunob/leaflet.fullscreen/compare/v5.0.0...v5.1.0) (2025-12-02)
 
 
