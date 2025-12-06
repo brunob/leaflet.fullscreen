@@ -237,16 +237,15 @@ const FullScreen = Control.extend({
 	},
 
 	_toggleState() {
-		this.link.title = this._map._isFullscreen
-			? this.options.title
-			: this.options.titleCancel;
-		if (this.link && this.link.classList) {
-			if (this._map._isFullscreen) {
-				this.link.classList.remove('leaflet-fullscreen-on');
-			} else {
-				this.link.classList.add('leaflet-fullscreen-on');
-			}
-		}
+		const { title, titleCancel } = this.options;
+		const isFullscreen = this._map._isFullscreen;
+
+		// Update Title & Aria Label
+		this.link.title = isFullscreen ? title : titleCancel;
+		this.link.setAttribute('aria-label', this.link.title);
+
+		// Update Icon Class
+		this.link.classList.toggle('leaflet-fullscreen-on', !isFullscreen);
 	},
 
 	_handleFullscreenChange(ev) {
