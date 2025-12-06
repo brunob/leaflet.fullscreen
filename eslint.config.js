@@ -20,6 +20,7 @@ export default defineConfig([
 			'@stylistic/function-call-argument-newline': ['error', 'consistent'],
 			'@stylistic/indent': ['error', 'tab'],
 			'@stylistic/multiline-comment-style': 'off',
+			'@stylistic/multiline-ternary': 'off',
 			'@stylistic/no-tabs': 'off',
 			'@stylistic/object-curly-spacing': ['error', 'always'],
 			'@stylistic/object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }],
