@@ -205,40 +205,45 @@ const FullScreen = Control.extend({
 		return this.link;
 	},
 
-	toggleFullScreen() {
+	async toggleFullScreen() {
 		const map = this._map;
-		map._exitFired = false;
+		const { fullscreenElement, forcePseudoFullscreen } = this.options;
+
+		// Target element: use custom element if provided, otherwise the map container
+		const container = fullscreenElement || map.getContainer();
+
+		// Check if we should use the native Fullscreen API
+		const useNative = this._screenfull.isEnabled && !forcePseudoFullscreen;
+
 		if (map._isFullscreen) {
-			if (this._screenfull.isEnabled && !this.options.forcePseudoFullscreen) {
-				this._screenfull.exit().then(() => map.invalidateSize());
-			} else {
-				const _targetExit = this.options.fullscreenElement
-					? this.options.fullscreenElement
-					: map._container;
-				if (_targetExit && _targetExit.classList) {
-					_targetExit.classList.remove('leaflet-pseudo-fullscreen');
-				}
-				map.invalidateSize();
-			}
-			map.fire('exitFullscreen');
+			// --- EXIT FULLSCREEN ---
+
+			// Set flag to prevent the 'fullscreenchange' listener from firing a duplicate exit event
 			map._exitFired = true;
-			map._isFullscreen = false;
-		} else {
-			if (this._screenfull.isEnabled && !this.options.forcePseudoFullscreen) {
-				this._screenfull.request(this.options.fullscreenElement
-					? this.options.fullscreenElement
-					: map._container).then(() => map.invalidateSize());
+
+			if (useNative) {
+				await this._screenfull.exit();
 			} else {
-				const _targetEnter = this.options.fullscreenElement
-					? this.options.fullscreenElement
-					: map._container;
-				if (_targetEnter && _targetEnter.classList) {
-					_targetEnter.classList.add('leaflet-pseudo-fullscreen');
-				}
-				map.invalidateSize();
+				container.classList.remove('leaflet-pseudo-fullscreen');
 			}
-			map.fire('enterFullscreen');
+
+			map.invalidateSize();
+			map._isFullscreen = false;
+			map.fire('exitFullscreen');
+		} else {
+			// --- ENTER FULLSCREEN ---
+
+			map._exitFired = false;
+
+			if (useNative) {
+				await this._screenfull.request(container);
+			} else {
+				container.classList.add('leaflet-pseudo-fullscreen');
+			}
+
+			map.invalidateSize();
 			map._isFullscreen = true;
+			map.fire('enterFullscreen');
 		}
 	},
 
@@ -247,29 +252,28 @@ const FullScreen = Control.extend({
 		const isFullscreen = this._map._isFullscreen;
 
 		// Update Title & Aria Label
-		this.link.title = isFullscreen ? title : titleCancel;
+		this.link.title = isFullscreen ? titleCancel : title;
 		this.link.setAttribute('aria-label', this.link.title);
 
 		// Update Icon Class
-		this.link.classList.toggle('leaflet-fullscreen-on', !isFullscreen);
+		this.link.classList.toggle('leaflet-fullscreen-on', isFullscreen);
 	},
 
-	_handleFullscreenChange(ev) {
+	_handleFullscreenChange() {
 		const map = this._map;
-		const targetElement = this.options.fullscreenElement || map.getContainer();
 
-		// Check if the event is for our element and fullscreen was exited via browser (ESC or UI)
-		const isOurElement = ev.target === targetElement;
-		const wasExitedExternally = !this._screenfull.isFullscreen && !map._exitFired;
+		// Check if fullscreen was exited via browser (ESC key or browser UI)
+		// and we didn't trigger the exit ourselves
+		const wasExitedExternally = !this._screenfull.isFullscreen && map._isFullscreen && !map._exitFired;
 
-		if (isOurElement && wasExitedExternally) {
+		if (wasExitedExternally) {
 			// Sync internal state with browser state
 			map._exitFired = true;
+			map._isFullscreen = false;
 
 			// Notify listeners and adjust map size
 			map.fire('exitFullscreen');
-			map._isFullscreen = false;
-			this._screenfull.exit().then(() => map.invalidateSize());
+			map.invalidateSize();
 		}
 	}
 });
