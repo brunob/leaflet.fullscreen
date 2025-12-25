@@ -173,10 +173,6 @@
 
 			if (this._screenfull.isEnabled) {
 				leaflet.DomEvent
-					.off(this._container, this._screenfull.nativeAPI.fullscreenchange, leaflet.DomEvent.stop)
-					.off(this._container, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, this);
-
-				leaflet.DomEvent
 					.off(document, this._screenfull.nativeAPI.fullscreenchange, leaflet.DomEvent.stop)
 					.off(document, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, this);
 			}
@@ -200,10 +196,6 @@
 				.on(this.link, 'click', fn, context);
 
 			if (this._screenfull.isEnabled) {
-				leaflet.DomEvent
-					.on(container, this._screenfull.nativeAPI.fullscreenchange, leaflet.DomEvent.stop)
-					.on(container, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, context);
-
 				leaflet.DomEvent
 					.on(document, this._screenfull.nativeAPI.fullscreenchange, leaflet.DomEvent.stop)
 					.on(document, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, context);
