@@ -71,7 +71,7 @@ declare module 'leaflet' {
 		/**
 		 * Toggle fullscreen mode on the map.
 		 */
-		toggleFullscreen(): void;
+		toggleFullscreen(): Promise<void>;
 	}
 
 	/**
@@ -101,7 +101,7 @@ declare module 'leaflet' {
 			/**
 			 * Toggle fullscreen mode.
 			 */
-			toggleFullScreen(): void;
+			toggleFullScreen(): Promise<void>;
 		}
 
 		/**
