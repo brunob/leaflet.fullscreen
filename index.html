@@ -67,7 +67,36 @@
 			}
 
 			.header-content {
-				text-align: center;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 48px;
+				align-items: center;
+			}
+
+			.header-left {
+				text-align: left;
+			}
+
+			.hero {
+				border-radius: 12px;
+				overflow: hidden;
+				box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+				transition:
+					transform 0.3s ease,
+					box-shadow 0.3s ease;
+			}
+
+			.hero:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 48px rgba(0, 0, 0, 0.5);
+			}
+
+			.hero img {
+				width: 100%;
+				height: auto;
+				display: block;
+				border: 1px solid var(--border);
+				border-radius: 12px;
 			}
 
 			h1 {
@@ -187,6 +216,15 @@
 			}
 
 			@media (max-width: 768px) {
+				.header-content {
+					grid-template-columns: 1fr;
+					gap: 32px;
+				}
+
+				.header-left {
+					text-align: center;
+				}
+
 				h1 {
 					font-size: 36px;
 				}
@@ -270,12 +308,17 @@
 		<header>
 			<div class="container">
 				<div class="header-content">
-					<h1>Leaflet.Control.FullScreen</h1>
-					<div class="header-description">
-						<p>
-							Simple plugin for Leaflet that adds a fullscreen button to your maps. Supports true fullscreen mode using the Fullscreen API with a pseudo-fullscreen fallback for
-							browsers without support.
-						</p>
+					<div class="header-left">
+						<h1>Leaflet.Control.FullScreen</h1>
+						<div class="header-description">
+							<p>
+								Simple plugin for Leaflet that adds a fullscreen button to your maps. Supports true fullscreen mode using the Fullscreen API with a pseudo-fullscreen fallback for
+								browsers without support.
+							</p>
+						</div>
+					</div>
+					<div class="hero">
+						<img src="demo/screencast.gif" alt="Leaflet FullScreen Control demonstration" />
 					</div>
 				</div>
 			</div>
