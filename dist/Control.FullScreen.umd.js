@@ -148,7 +148,8 @@
 			if (map.zoomControl && !this.options.forceSeparateButton) {
 				container = map.zoomControl._container;
 			} else {
-				container = leaflet.DomUtil.create('div', 'leaflet-bar');
+				container = document.createElement('div');
+				container.className = 'leaflet-bar';
 			}
 
 			if (this.options.content) {
@@ -172,17 +173,15 @@
 
 			if (this._screenfull.isEnabled) {
 				leaflet.DomEvent
-					.off(this._container, this._screenfull.nativeAPI.fullscreenchange, leaflet.DomEvent.stop)
-					.off(this._container, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, this);
-
-				leaflet.DomEvent
 					.off(document, this._screenfull.nativeAPI.fullscreenchange, leaflet.DomEvent.stop)
 					.off(document, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, this);
 			}
 		},
 
 		_createButton(title, className, content, container, fn, context) {
-			this.link = leaflet.DomUtil.create('a', className, container);
+			this.link = document.createElement('a');
+			this.link.className = className;
+			container.appendChild(this.link);
 			this.link.href = '#';
 			this.link.title = title;
 			this.link.innerHTML = content;
@@ -197,10 +196,6 @@
 				.on(this.link, 'click', fn, context);
 
 			if (this._screenfull.isEnabled) {
-				leaflet.DomEvent
-					.on(container, this._screenfull.nativeAPI.fullscreenchange, leaflet.DomEvent.stop)
-					.on(container, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, context);
-
 				leaflet.DomEvent
 					.on(document, this._screenfull.nativeAPI.fullscreenchange, leaflet.DomEvent.stop)
 					.on(document, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, context);
@@ -258,6 +253,7 @@
 			// Update Title & Aria Label
 			this.link.title = isFullscreen ? titleCancel : title;
 			this.link.setAttribute('aria-label', this.link.title);
+			this.link.setAttribute('aria-pressed', isFullscreen.toString());
 
 			// Update Icon Class
 			this.link.classList.toggle('leaflet-fullscreen-on', isFullscreen);
