@@ -10,20 +10,24 @@
 			href='data:image/svg+xml,<svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg"><path d="M5 10.3V5.9c0-.5.4-.9.9-.9h4.4c.2 0 .4.2.4.4V7c0 .2-.2.4-.4.4h-3v3c0 .2-.2.4-.4.4H5.4a.4.4 0 0 1-.4-.4zm10.3-4.9V7c0 .2.2.4.4.4h3v3c0 .2.2.4.4.4h1.5c.2 0 .4-.2.4-.4V5.9c0-.5-.4-.9-.9-.9h-4.4c-.2 0-.4.2-.4.4zm5.3 9.9H19c-.2 0-.4.2-.4.4v3h-3c-.2 0-.4.2-.4.4v1.5c0 .2.2.4.4.4h4.4c.5 0 .9-.4.9-.9v-4.4c0-.2-.2-.4-.4-.4zm-9.9 5.3V19c0-.2-.2-.4-.4-.4h-3v-3c0-.2-.2-.4-.4-.4H5.4c-.2 0-.4.2-.4.4v4.4c0 .5.4.9.9.9h4.4c.2 0 .4-.2.4-.4z" fill="%23333"/></svg>'
 		/>
 		<style>
-			:root {
-				--bg: #0d1117;
-				--bg-subtle: #161b22;
-				--bg-elevated: #1c2128;
-				--text: #e6edf3;
-				--text-muted: #8b949e;
-				--link: #58a6ff;
-				--link-hover: #79c0ff;
-				--border: #30363d;
-				--accent: #238636;
-			}
+				:root {
+					--bg: #0d1117;
+					--bg-subtle: #161b22;
+					--bg-elevated: #1c2128;
+					--text: #e6edf3;
+					--text-muted: #8b949e;
+					--link: #58a6ff;
+					--link-hover: #79c0ff;
+					--border: #30363d;
+					--accent: #238636;
+				}
 
-			* {
-				box-sizing: border-box;
+				* {
+					box-sizing: border-box;
+				}
+
+			html {
+				height: 100%;
 			}
 
 			body {
@@ -41,224 +45,264 @@
 				padding: 0;
 			}
 
+			.page {
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+			}
+
 			a {
 				color: var(--link);
 				text-decoration: none;
-				transition: color 0.2s ease;
-			}
+					transition: color 0.2s ease;
+				}
 
-			a:hover {
-				color: var(--link-hover);
-			}
+				a:hover {
+					color: var(--link-hover);
+				}
 
-			.container {
-				max-width: 1100px;
-				margin: 0 auto;
-				padding: 0 24px;
-			}
-
-			header {
-				padding: 64px 0 48px;
-				background: linear-gradient(180deg, #262c36 0%, var(--bg) 100%);
-				position: relative;
-			}
-
-			.header-content {
-				text-align: center;
-			}
-
-			h1 {
-				margin: 0 0 24px;
-				font-size: 48px;
-				font-weight: 600;
-				letter-spacing: -0.025em;
-				color: #ffffff;
-			}
-
-			.header-description {
-				color: var(--text-muted);
-				font-size: 17px;
-				line-height: 1.7;
-				max-width: 800px;
-				margin: 0 auto;
-			}
-
-			.header-description p {
-				margin: 0 0 16px;
-			}
-
-			.header-description p:last-child {
-				margin-bottom: 0;
-			}
-
-			main {
-				padding-bottom: 80px;
-			}
-
-			h2 {
-				margin: 0 0 32px;
-				font-size: 28px;
-				font-weight: 600;
-				text-align: center;
-				color: var(--text);
-			}
-
-			.demo-links {
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				gap: 24px;
-				margin-bottom: 64px;
-				max-width: 900px;
-				margin-left: auto;
-				margin-right: auto;
-			}
-
-			.demo-link {
-				display: block;
-				padding: 24px 32px;
-				background: var(--bg-subtle);
-				border: 1px solid var(--border);
-				border-radius: 8px;
-				color: var(--text);
-				transition: all 0.2s ease;
-				text-align: center;
-				font-size: 18px;
-				font-weight: 500;
-			}
-
-			.demo-link:hover {
-				border-color: var(--link);
-				background: rgba(88, 166, 255, 0.05);
-				transform: translateY(-2px);
-				color: var(--link-hover);
-			}
-
-			.demo-link-title {
-				display: block;
-				font-size: 20px;
-				margin-bottom: 8px;
-			}
-
-			.demo-link-desc {
-				display: block;
-				font-size: 14px;
-				color: var(--text-muted);
-				font-weight: normal;
-			}
-
-			.features {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-				gap: 24px;
-				margin-bottom: 64px;
-			}
-
-			.feature {
-				padding: 24px;
-				background: var(--bg-subtle);
-				border: 1px solid var(--border);
-				border-radius: 8px;
-			}
-
-			.feature h3 {
-				margin: 0 0 12px;
-				font-size: 18px;
-				font-weight: 600;
-				color: var(--text);
-			}
-
-			.feature p {
-				margin: 0;
-				color: var(--text-muted);
-				font-size: 15px;
-				line-height: 1.6;
-			}
-
-			code {
-				background: rgba(110, 118, 129, 0.15);
-				border: 1px solid var(--border);
-				padding: 2px 6px;
-				border-radius: 4px;
-				font-size: 0.9em;
-				font-family: 'SF Mono', Monaco, 'Cascadia Mono', 'Roboto Mono', Consolas, monospace;
-			}
-
-			@media (max-width: 768px) {
-				h1 {
-					font-size: 36px;
+				.container {
+					max-width: 1100px;
+					margin: 0 auto;
+					padding: 0 24px;
 				}
 
 				header {
-					padding: 48px 0 32px;
+					padding: 64px 0 48px;
+					background: linear-gradient(180deg, #262c36 0%, var(--bg) 100%);
+					position: relative;
+				}
+
+				.header-content {
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+					gap: 48px;
+					align-items: center;
+				}
+
+				.header-left {
+					text-align: left;
+				}
+
+				.hero {
+					border-radius: 12px;
+					overflow: hidden;
+					box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+					transition:
+						transform 0.3s ease,
+						box-shadow 0.3s ease;
+				}
+
+				.hero:hover {
+					transform: translateY(-4px);
+					box-shadow: 0 8px 48px rgba(0, 0, 0, 0.5);
+				}
+
+				.hero img {
+					width: 100%;
+					height: auto;
+					display: block;
+					border: 1px solid var(--border);
+					border-radius: 12px;
+				}
+
+				h1 {
+					margin: 0 0 24px;
+					font-size: 48px;
+					font-weight: 600;
+					letter-spacing: -0.025em;
+					color: #ffffff;
 				}
 
 				.header-description {
-					font-size: 16px;
+					color: var(--text-muted);
+					font-size: 17px;
+					line-height: 1.7;
+					max-width: 800px;
+					margin: 0 auto;
 				}
 
+				.header-description p {
+					margin: 0 0 16px;
+				}
+
+				.header-description p:last-child {
+					margin-bottom: 0;
+				}
+
+				main {
+					padding-bottom: 80px;
+					flex: 1;
+				}
 				h2 {
-					font-size: 24px;
-					margin-bottom: 24px;
-				}
-
-				.features {
-					grid-template-columns: 1fr;
+					margin: 0 0 32px;
+					font-size: 28px;
+					font-weight: 600;
+					text-align: center;
+					color: var(--text);
 				}
 
 				.demo-links {
-					grid-template-columns: 1fr;
+					display: grid;
+					grid-template-columns: repeat(2, 1fr);
+					gap: 24px;
+					margin-bottom: 64px;
+					max-width: 900px;
+					margin-left: auto;
+					margin-right: auto;
 				}
 
 				.demo-link {
-					font-size: 16px;
-					padding: 20px 24px;
+					display: block;
+					padding: 24px 32px;
+					background: var(--bg-subtle);
+					border: 1px solid var(--border);
+					border-radius: 8px;
+					color: var(--text);
+					transition: all 0.2s ease;
+					text-align: center;
+					font-size: 18px;
+					font-weight: 500;
 				}
-			}
 
-			footer {
-				background: var(--bg-subtle);
-				border-top: 1px solid var(--border);
-				padding: 32px 0;
-				margin-top: 80px;
-			}
-
-			.footer-content {
-				text-align: center;
-			}
-
-			.footer-links {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				gap: 8px;
-				flex-wrap: wrap;
-				font-size: 14px;
-			}
-
-			.footer-links a {
-				color: var(--text-muted);
-				transition: color 0.2s ease;
-			}
-
-			.footer-links a:hover {
-				color: var(--link-hover);
-			}
-
-			.footer-separator {
-				color: var(--text-muted);
-				user-select: none;
-			}
-
-			@media (max-width: 600px) {
-				.footer-separator {
-					display: none;
+				.demo-link:hover {
+					border-color: var(--link);
+					background: rgba(88, 166, 255, 0.05);
+					transform: translateY(-2px);
+					color: var(--link-hover);
 				}
+
+				.demo-link-title {
+					display: block;
+					font-size: 20px;
+					margin-bottom: 8px;
+				}
+
+				.demo-link-desc {
+					display: block;
+					font-size: 14px;
+					color: var(--text-muted);
+					font-weight: normal;
+				}
+
+				.features {
+					display: grid;
+					grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+					gap: 24px;
+					margin-bottom: 64px;
+				}
+
+				.feature {
+					padding: 24px;
+					background: var(--bg-subtle);
+					border: 1px solid var(--border);
+					border-radius: 8px;
+				}
+
+				.feature h3 {
+					margin: 0 0 12px;
+					font-size: 18px;
+					font-weight: 600;
+					color: var(--text);
+				}
+
+				.feature p {
+					margin: 0;
+					color: var(--text-muted);
+					font-size: 15px;
+					line-height: 1.6;
+				}
+
+				code {
+					background: rgba(110, 118, 129, 0.15);
+					border: 1px solid var(--border);
+					padding: 2px 6px;
+					border-radius: 4px;
+					font-size: 0.9em;
+					font-family: 'SF Mono', Monaco, 'Cascadia Mono', 'Roboto Mono', Consolas, monospace;
+				}
+
+				@media (max-width: 768px) {
+					.header-content {
+						grid-template-columns: 1fr;
+						gap: 32px;
+					}
+
+					.header-left {
+						text-align: center;
+					}
+
+					h1 {
+						font-size: 36px;
+					}
+
+					header {
+						padding: 48px 0 32px;
+					}
+
+					.header-description {
+						font-size: 16px;
+					}
+
+					h2 {
+						font-size: 24px;
+						margin-bottom: 24px;
+					}
+
+					.features {
+						grid-template-columns: 1fr;
+					}
+
+					.demo-links {
+						grid-template-columns: 1fr;
+					}
+
+					.demo-link {
+						font-size: 16px;
+						padding: 20px 24px;
+					}
+				}
+
+				footer {
+					background: var(--bg-subtle);
+					border-top: 1px solid var(--border);
+					padding: 32px 0;
+					margin-top: auto;
+
 
 				.footer-links {
-					flex-direction: column;
-					gap: 12px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					gap: 8px;
+					flex-wrap: wrap;
+					font-size: 14px;
 				}
-			}
+
+				.footer-links a {
+					color: var(--text-muted);
+					transition: color 0.2s ease;
+				}
+
+				.footer-links a:hover {
+					color: var(--link-hover);
+				}
+
+				.footer-separator {
+					color: var(--text-muted);
+					user-select: none;
+				}
+
+				@media (max-width: 600px) {
+					.footer-separator {
+						display: none;
+					}
+
+					.footer-links {
+						flex-direction: column;
+						gap: 12px;
+					}
+				}
 		</style>
 		<meta name="description" content="Simple plugin for Leaflet that adds fullscreen button to your maps. Supports both ES6 modules and UMD." />
 		<link rel="canonical" href="." />
@@ -268,84 +312,91 @@
 		<meta name="twitter:card" content="summary_large_image" />
 	</head>
 	<body>
-		<header>
-			<div class="container">
-				<div class="header-content">
-					<h1>Leaflet.Control.FullScreen</h1>
-					<div class="header-description">
-						<p>
-							Simple plugin for Leaflet that adds a fullscreen button to your maps. Supports true fullscreen mode using the Fullscreen API with a pseudo-fullscreen fallback for
-							browsers without support.
-						</p>
+		<div class="page">
+			<header>
+				<div class="container">
+					<div class="header-content">
+						<div class="header-left">
+							<h1>Leaflet.Control.FullScreen</h1>
+							<div class="header-description">
+								<p>
+									Simple plugin for Leaflet that adds a fullscreen button to your maps. Supports true fullscreen mode using the Fullscreen API with a pseudo-fullscreen fallback for
+									browsers without support.
+								</p>
+							</div>
+						</div>
+						<div class="hero">
+							<img src="demo/screencast.gif" alt="Leaflet FullScreen Control demonstration" />
+						</div>
 					</div>
 				</div>
-			</div>
-		</header>
+			</header>
 
-		<main class="container">
-			<h2>Interactive Demos</h2>
-			<div class="demo-links">
-				<a href="demo/demo.umd.html" class="demo-link">
-					<span class="demo-link-title">🌐 Script Tags Demo</span>
-					<span class="demo-link-desc">Traditional script tags with global L object</span>
-				</a>
-				<a href="demo/demo.esm.html" class="demo-link">
-					<span class="demo-link-title">📦 ES Module Demo</span>
-					<span class="demo-link-desc">Modern ES6 imports for bundlers</span>
-				</a>
-				<a href="demo/demo.fullscreenElement.html" class="demo-link">
-					<span class="demo-link-title">🖼️ Custom Element Demo</span>
-					<span class="demo-link-desc">Fullscreen with custom wrapper element</span>
-				</a>
-				<a href="demo/demo-darkmode.html" class="demo-link">
-					<span class="demo-link-title">🌓 Dark Mode Demo</span>
-					<span class="demo-link-desc">Light/dark theme support with CSS variables</span>
-				</a>
-			</div>
+			<main class="container">
+				<h2>Interactive Demos</h2>
+				<div class="demo-links">
+					<a href="demo/demo.umd.html" class="demo-link">
+						<span class="demo-link-title">🌐 Script Tags Demo</span>
+						<span class="demo-link-desc">Traditional script tags with global L object</span>
+					</a>
+					<a href="demo/demo.esm.html" class="demo-link">
+						<span class="demo-link-title">📦 ES Module Demo</span>
+						<span class="demo-link-desc">Modern ES6 imports for bundlers</span>
+					</a>
+					<a href="demo/demo.fullscreenElement.html" class="demo-link">
+						<span class="demo-link-title">🖼️ Custom Element Demo</span>
+						<span class="demo-link-desc">Fullscreen with custom wrapper element</span>
+					</a>
+					<a href="demo/demo-darkmode.html" class="demo-link">
+						<span class="demo-link-title">🌓 Dark Mode Demo</span>
+						<span class="demo-link-desc">Light/dark theme support with CSS variables</span>
+					</a>
+				</div>
 
-			<h2>Features</h2>
-			<div class="features">
-				<div class="feature">
-					<h3>🖥️ True Fullscreen</h3>
-					<p>Uses the native Fullscreen API for immersive map viewing. Automatically falls back to pseudo-fullscreen mode when the API is unavailable.</p>
-				</div>
-				<div class="feature">
-					<h3>📦 ES6 Modules</h3>
-					<p>Pure ES6 module exports with named imports. UMD version auto-generated from ESM source. Works with modern bundlers and Import Maps.</p>
-				</div>
-				<div class="feature">
-					<h3>🎨 Customizable</h3>
-					<p>Configure position, button titles, icons, and behavior. Use <code>fullscreenElement</code> to make custom wrapper elements go fullscreen with your map.</p>
-				</div>
-				<div class="feature">
-					<h3>🔧 Programmatic API</h3>
-					<p>Control fullscreen mode with <code>map.toggleFullscreen()</code> method. Listen to <code>enterFullscreen</code> and <code>exitFullscreen</code> events.</p>
-				</div>
-				<div class="feature">
-					<h3>⚡ Lightweight</h3>
-					<p>No dependencies beyond Leaflet. Minimal footprint with clean, modern code. Just import and use.</p>
-				</div>
-				<div class="feature">
-					<h3>🌍 Wide Support</h3>
-					<p>Compatible with Leaflet 1.7+ and 2.x. Works in all modern browsers with graceful fallback for older ones.</p>
-				</div>
-			</div>
-		</main>
-
-		<footer>
-			<div class="container">
-				<div class="footer-content">
-					<div class="footer-links">
-						<a href="https://www.npmjs.com/package/leaflet.fullscreen" target="_blank" rel="noopener">📦 npm</a>
-						<span class="footer-separator">•</span>
-						<a href="https://github.com/brunob/leaflet.fullscreen" target="_blank" rel="noopener">📚 GitHub</a>
-						<span class="footer-separator">•</span>
-						<a href="https://github.com/brunob/leaflet.fullscreen#readme" target="_blank" rel="noopener">📖 Documentation</a>
-						<span class="footer-separator">•</span>
-						<a href="https://github.com/brunob/leaflet.fullscreen/blob/master/LICENSE.md" target="_blank" rel="noopener">⚖️ MIT License</a>
+				<h2>Features</h2>
+				<div class="features">
+					<div class="feature">
+						<h3>🖥️ True Fullscreen</h3>
+						<p>Uses the native Fullscreen API for immersive map viewing. Automatically falls back to pseudo-fullscreen mode when the API is unavailable.</p>
+					</div>
+					<div class="feature">
+						<h3>📦 ES6 Modules</h3>
+						<p>Pure ES6 module exports with named imports. UMD version auto-generated from ESM source. Works with modern bundlers and Import Maps.</p>
+					</div>
+					<div class="feature">
+						<h3>🎨 Customizable</h3>
+						<p>Configure position, button titles, icons, and behavior. Use <code>fullscreenElement</code> to make custom wrapper elements go fullscreen with your map.</p>
+					</div>
+					<div class="feature">
+						<h3>🔧 Programmatic API</h3>
+						<p>Control fullscreen mode with <code>map.toggleFullscreen()</code> method. Listen to <code>enterFullscreen</code> and <code>exitFullscreen</code> events.</p>
+					</div>
+					<div class="feature">
+						<h3>⚡ Lightweight</h3>
+						<p>No dependencies beyond Leaflet. Minimal footprint with clean, modern code. Just import and use.</p>
+					</div>
+					<div class="feature">
+						<h3>🌍 Wide Support</h3>
+						<p>Compatible with Leaflet 1.7+ and 2.x. Works in all modern browsers with graceful fallback for older ones.</p>
 					</div>
 				</div>
-			</div>
-		</footer>
+			</main>
+
+			<footer>
+				<div class="container">
+					<div class="footer-content">
+						<div class="footer-links">
+							<a href="https://www.npmjs.com/package/leaflet.fullscreen" target="_blank" rel="noopener">📦 npm</a>
+							<span class="footer-separator">•</span>
+							<a href="https://github.com/brunob/leaflet.fullscreen" target="_blank" rel="noopener">📚 GitHub</a>
+							<span class="footer-separator">•</span>
+							<a href="https://github.com/brunob/leaflet.fullscreen#readme" target="_blank" rel="noopener">📖 Documentation</a>
+							<span class="footer-separator">•</span>
+							<a href="https://github.com/brunob/leaflet.fullscreen/blob/master/LICENSE.md" target="_blank" rel="noopener">⚖️ MIT License</a>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
 	</body>
 </html>
