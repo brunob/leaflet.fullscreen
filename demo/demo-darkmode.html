@@ -71,22 +71,17 @@
 			import { TileLayer, LatLng, Map } from 'leaflet';
 			import { FullScreen } from '../dist/Control.FullScreen.js';
 
-			// Create tile layers for light and dark mode
-			const lightTiles = new TileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			// Create a single tile layer
+			const tiles = new TileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				maxZoom: 18,
-				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-			});
-
-			const darkTiles = new TileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-				maxZoom: 18,
-				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-				subdomains: 'abcd'
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+				className: 'map-tiles'
 			});
 
 			const latlng = new LatLng(48.5, -4.5);
 
 			const map = new Map('map', {
-				layers: [darkTiles],
+				layers: [tiles],
 				center: latlng,
 				zoom: 5
 			});
@@ -123,25 +118,11 @@
 				return prefersDark ? 'dark' : 'light';
 			}
 
-			function updateMapTheme() {
-				if (getCurrentTheme() === 'dark') {
-					map.removeLayer(lightTiles);
-					map.addLayer(darkTiles);
-				} else {
-					map.removeLayer(darkTiles);
-					map.addLayer(lightTiles);
-				}
-			}
-
-			// Set initial map layer
-			updateMapTheme();
-
 			btn?.addEventListener('click', () => {
 				const currentTheme = getCurrentTheme();
 				const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 				root.setAttribute('data-theme', newTheme);
 				localStorage.setItem('theme', newTheme);
-				updateMapTheme();
 			});
 		</script>
 	</body>
