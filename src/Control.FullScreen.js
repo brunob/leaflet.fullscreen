@@ -243,6 +243,7 @@ const FullScreen = Control.extend({
 		// Update Title & Aria Label
 		this.link.title = isFullscreen ? titleCancel : title;
 		this.link.setAttribute('aria-label', this.link.title);
+		this.link.setAttribute('aria-pressed', isFullscreen.toString());
 
 		// Update Icon Class
 		this.link.classList.toggle('leaflet-fullscreen-on', isFullscreen);
