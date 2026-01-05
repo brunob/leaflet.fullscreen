@@ -163,10 +163,6 @@ const FullScreen = Control.extend({
 
 		if (this._screenfull.isEnabled) {
 			DomEvent
-				.off(this._container, this._screenfull.nativeAPI.fullscreenchange, DomEvent.stop)
-				.off(this._container, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, this);
-
-			DomEvent
 				.off(document, this._screenfull.nativeAPI.fullscreenchange, DomEvent.stop)
 				.off(document, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, this);
 		}
@@ -190,10 +186,6 @@ const FullScreen = Control.extend({
 			.on(this.link, 'click', fn, context);
 
 		if (this._screenfull.isEnabled) {
-			DomEvent
-				.on(container, this._screenfull.nativeAPI.fullscreenchange, DomEvent.stop)
-				.on(container, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, context);
-
 			DomEvent
 				.on(document, this._screenfull.nativeAPI.fullscreenchange, DomEvent.stop)
 				.on(document, this._screenfull.nativeAPI.fullscreenchange, this._handleFullscreenChange, context);
