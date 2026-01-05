@@ -148,7 +148,8 @@
 			if (map.zoomControl && !this.options.forceSeparateButton) {
 				container = map.zoomControl._container;
 			} else {
-				container = leaflet.DomUtil.create('div', 'leaflet-bar');
+				container = document.createElement('div');
+				container.className = 'leaflet-bar';
 			}
 
 			if (this.options.content) {
@@ -182,7 +183,9 @@
 		},
 
 		_createButton(title, className, content, container, fn, context) {
-			this.link = leaflet.DomUtil.create('a', className, container);
+			this.link = document.createElement('a');
+			this.link.className = className;
+			container.appendChild(this.link);
 			this.link.href = '#';
 			this.link.title = title;
 			this.link.innerHTML = content;
