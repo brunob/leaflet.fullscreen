@@ -15,7 +15,7 @@
 				--bg-subtle: #161b22;
 				--bg-elevated: #1c2128;
 				--text: #e6edf3;
-				--text-muted: #8b949e;
+				--text-muted: #b9bcc0;
 				--link: #58a6ff;
 				--link-hover: #79c0ff;
 				--border: #30363d;
@@ -26,26 +26,26 @@
 				box-sizing: border-box;
 			}
 
-		html {
-			height: 100%;
-		}
+			html {
+				height: 100%;
+			}
 
-		body {
-			background: var(--bg);
-			color: var(--text);
-			font:
-				16px/1.6 -apple-system,
-				BlinkMacSystemFont,
-				'Segoe UI',
-				Roboto,
-				'Helvetica Neue',
-				Arial,
-				sans-serif;
-			margin: 0;
-			padding: 0;
-			min-height: 100%;
-			display: flex;
-			flex-direction: column;
+			body {
+				background: var(--bg);
+				color: var(--text);
+				font:
+					16px/1.6 -apple-system,
+					BlinkMacSystemFont,
+					'Segoe UI',
+					Roboto,
+					'Helvetica Neue',
+					Arial,
+					sans-serif;
+				margin: 0;
+				padding: 0;
+				min-height: 100%;
+				display: flex;
+				flex-direction: column;
 				text-decoration: none;
 				transition: color 0.2s ease;
 			}
@@ -94,6 +94,22 @@
 				margin-bottom: 0;
 			}
 
+			.header-links {
+				margin-top: 24px;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px 12px;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.header-links a {
+				color: var(--link);
+				text-decoration: none;
+				font-size: 15px;
+				font-weight: 500;
+			}
+
 			main {
 				padding-bottom: 80px;
 				flex: 1;
@@ -127,6 +143,7 @@
 				text-align: center;
 				font-size: 18px;
 				font-weight: 500;
+				text-decoration: none;
 			}
 
 			.demo-link:hover {
@@ -216,46 +233,9 @@
 					font-size: 16px;
 					padding: 20px 24px;
 				}
-			}
 
-			footer {
-				background: var(--bg-subtle);
-				border-top: 1px solid var(--border);
-				padding: 32px 0;
-				margin-top: 80px;
-
-
-			.footer-links {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				gap: 8px;
-				flex-wrap: wrap;
-				font-size: 14px;
-			}
-
-			.footer-links a {
-				color: var(--text-muted);
-				transition: color 0.2s ease;
-			}
-
-			.footer-links a:hover {
-				color: var(--link-hover);
-			}
-
-			.footer-separator {
-				color: var(--text-muted);
-				user-select: none;
-			}
-
-			@media (max-width: 600px) {
-				.footer-separator {
+				.header-links span {
 					display: none;
-				}
-
-				.footer-links {
-					flex-direction: column;
-					gap: 12px;
 				}
 			}
 		</style>
@@ -276,6 +256,15 @@
 							Simple plugin for Leaflet that adds a fullscreen button to your maps. Supports true fullscreen mode using the Fullscreen API with a pseudo-fullscreen fallback for
 							browsers without support.
 						</p>
+					</div>
+					<div class="header-links">
+						<a href="https://www.npmjs.com/package/leaflet.fullscreen" target="_blank" rel="noopener">📦 npm</a>
+						<span>•</span>
+						<a href="https://github.com/brunob/leaflet.fullscreen" target="_blank" rel="noopener">📚 GitHub</a>
+						<span>•</span>
+						<a href="https://github.com/brunob/leaflet.fullscreen#readme" target="_blank" rel="noopener">📖 Documentation</a>
+						<span>•</span>
+						<a href="https://github.com/brunob/leaflet.fullscreen/blob/master/LICENSE.md" target="_blank" rel="noopener">⚖️ MIT License</a>
 					</div>
 				</div>
 			</div>
@@ -330,21 +319,5 @@
 				</div>
 			</div>
 		</main>
-
-		<footer>
-			<div class="container">
-				<div class="footer-content">
-					<div class="footer-links">
-						<a href="https://www.npmjs.com/package/leaflet.fullscreen" target="_blank" rel="noopener">📦 npm</a>
-						<span class="footer-separator">•</span>
-						<a href="https://github.com/brunob/leaflet.fullscreen" target="_blank" rel="noopener">📚 GitHub</a>
-						<span class="footer-separator">•</span>
-						<a href="https://github.com/brunob/leaflet.fullscreen#readme" target="_blank" rel="noopener">📖 Documentation</a>
-						<span class="footer-separator">•</span>
-						<a href="https://github.com/brunob/leaflet.fullscreen/blob/master/LICENSE.md" target="_blank" rel="noopener">⚖️ MIT License</a>
-					</div>
-				</div>
-			</div>
-		</footer>
 	</body>
 </html>
