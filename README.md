@@ -1,8 +1,8 @@
-# Leaflet.Control.FullScreen
+# Leaflet Control FullScreen
 
 ## What ?
 
-**Leaflet.Control.FullScreen** is a simple plugin for [Leaflet](https://leafletjs.com/) that adds a fullscreen button to your maps using the Fullscreen API.
+**Leaflet Control FullScreen** is a simple plugin for [Leaflet](https://leafletjs.com/) that adds a fullscreen button to your maps using the Fullscreen API.
 
 All major browsers support the Fullscreen API. For details about which browsers support this API, see the [CanIuse](https://caniuse.com/fullscreen) website.
 
