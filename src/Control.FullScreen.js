@@ -1,4 +1,4 @@
-import { Control, DomUtil, DomEvent, Map } from 'leaflet';
+import { Control, DomEvent, Map } from 'leaflet';
 
 if (typeof document === 'undefined') {
 	console.warn('"window.document" is undefined; leaflet.fullscreen requires this object to access the DOM');
@@ -138,7 +138,8 @@ const FullScreen = Control.extend({
 		if (map.zoomControl && !this.options.forceSeparateButton) {
 			container = map.zoomControl._container;
 		} else {
-			container = DomUtil.create('div', 'leaflet-bar');
+			container = document.createElement('div');
+			container.className = 'leaflet-bar';
 		}
 
 		if (this.options.content) {
@@ -172,7 +173,9 @@ const FullScreen = Control.extend({
 	},
 
 	_createButton(title, className, content, container, fn, context) {
-		this.link = DomUtil.create('a', className, container);
+		this.link = document.createElement('a');
+		this.link.className = className;
+		container.appendChild(this.link);
 		this.link.href = '#';
 		this.link.title = title;
 		this.link.innerHTML = content;
