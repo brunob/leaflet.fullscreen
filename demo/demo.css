@@ -295,13 +295,18 @@ button.demo-button:hover {
 }
 
 .leaflet-control-attribution {
-	background: var(--leaflet-attribution-bg);
-	color: var(--leaflet-attribution-color);
+	background: var(--leaflet-attribution-bg) !important;
+	color: var(--leaflet-attribution-color) !important;
 }
 
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
 	color: var(--leaflet-bar-color);
+}
+
+/* Tile filter for dark mode */
+:root[data-theme='dark'] .map-tiles {
+	filter: invert(1) hue-rotate(180deg) brightness(0.95) saturate(0.85);
 }
 
 /* Helper classes for inline styles replacement */
