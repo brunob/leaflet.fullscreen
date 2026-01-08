@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.2.0](https://github.com/brunob/leaflet.fullscreen/compare/v5.1.1...v5.2.0) (2026-01-08)
+
+
+### Features
+
+* **a11y:** add aria-pressed state to fullscreen button ([366b83e](https://github.com/brunob/leaflet.fullscreen/commit/366b83ec87b19891582f4f89ba12bdb5172ce8ae))
+* add TypeScript type definitions ([e18668c](https://github.com/brunob/leaflet.fullscreen/commit/e18668cb69f53ac47a11570aa493c1a731837447))
+
+
+### Bug Fixes
+
+* update TypeScript definitions to reflect async toggleFullScreen ([3f24c8e](https://github.com/brunob/leaflet.fullscreen/commit/3f24c8ec9400f1879aec700cb486c0a6ed27061d))
+
 ## [5.1.1](https://github.com/brunob/leaflet.fullscreen/compare/v5.1.0...v5.1.1) (2025-12-05)
 
 
