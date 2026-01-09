@@ -117,3 +117,24 @@ declare module 'leaflet' {
 		function fullscreen(options?: FullScreenOptions): Control.FullScreen;
 	}
 }
+
+// ES module exports
+import { Control } from 'leaflet';
+
+/**
+ * ES module named export (recommended).
+ * @example
+ * import { FullScreen } from 'leaflet.fullscreen';
+ * map.addControl(new FullScreen({ position: 'topleft' }));
+ */
+export class FullScreen extends Control.FullScreen {
+	constructor(options?: Control.FullScreenOptions);
+}
+
+/**
+ * ES module default export (also available).
+ * @example
+ * import FullScreen from 'leaflet.fullscreen';
+ * map.addControl(new FullScreen({ position: 'topleft' }));
+ */
+export default FullScreen;
