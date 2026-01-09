@@ -88,6 +88,7 @@ To use this plugin with a bundler (Webpack, Vite, etc.):
 2. Import the module in your code:
 
    ```js
+   // Named export (recommended)
    import { FullScreen } from 'leaflet.fullscreen';
 
    // Add control to your map
@@ -96,6 +97,15 @@ To use this plugin with a bundler (Webpack, Vite, etc.):
    		position: 'topleft'
    	})
    );
+   ```
+
+   Alternatively, you can use the default export:
+
+   ```js
+   // Default export (also works)
+   import FullScreen from 'leaflet.fullscreen';
+
+   map.addControl(new FullScreen());
    ```
 
 3. Import the CSS (if your bundler supports it):
@@ -109,16 +119,6 @@ To use this plugin with a bundler (Webpack, Vite, etc.):
    ```html
    <link rel="stylesheet" href="node_modules/leaflet.fullscreen/dist/Control.FullScreen.css" />
    ```
-
-Alternatively, you can use the default export:
-
-```js
-import FullScreen from 'leaflet.fullscreen';
-import 'leaflet.fullscreen/dist/Control.FullScreen.css';
-
-const map = L.map('map');
-map.addControl(new FullScreen());
-```
 
 ## Contributing
 
