@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.2.1](https://github.com/brunob/leaflet.fullscreen/compare/v5.2.0...v5.2.1) (2026-01-11)
+
+
+### Bug Fixes
+
+* **types:** add missing ES module exports for FullScreen class ([94c0d58](https://github.com/brunob/leaflet.fullscreen/commit/94c0d58dda97ca87b52ce4da46c2bb85a4fd3f9c)), closes [#250](https://github.com/brunob/leaflet.fullscreen/issues/250)
+
 ## [5.2.0](https://github.com/brunob/leaflet.fullscreen/compare/v5.1.1...v5.2.0) (2026-01-08)
 
 
