@@ -32,5 +32,14 @@ export default defineConfig([
 			'no-lonely-if': 'error',
 			'no-unused-expressions': ['error', { allowTernary: true }]
 		}
+	},
+	{
+		files: ['spec/**/*.js'],
+		languageOptions: {
+			globals: {
+				...globals.browser,
+				...globals.node
+			}
+		}
 	}
 ]);

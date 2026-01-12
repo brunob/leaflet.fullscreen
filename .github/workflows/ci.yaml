@@ -1,13 +1,16 @@
-name: Lint
+name: CI
 on: [push, pull_request]
 jobs:
-  lint:
-    runs-on: ubuntu-latest
+  ci:
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
+        with:
+          node-version: latest
       - run: npm ci
       - run: npm run lint
+      - run: npm test
   commitlint:
     runs-on: ubuntu-latest
     steps:
