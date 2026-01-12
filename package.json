@@ -7,9 +7,9 @@
   "main": "dist/Control.FullScreen.js",
   "module": "dist/Control.FullScreen.js",
   "browser": "dist/Control.FullScreen.umd.js",
-  "types": "types/index.d.ts",
   "exports": {
     ".": {
+      "types": "./types/index.d.ts",
       "import": "./dist/Control.FullScreen.js",
       "require": "./dist/Control.FullScreen.umd.js"
     },
