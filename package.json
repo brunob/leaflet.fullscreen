@@ -42,7 +42,7 @@
   ],
   "devDependencies": {
     "@eslint/js": "^9.39.2",
-    "@stylistic/eslint-plugin": "^5.6.1",
+    "@stylistic/eslint-plugin": "^5.7.0",
     "commit-and-tag-version": "^12.6.1",
     "eslint": "^9.39.2",
     "prettier": "^3.7.4",
