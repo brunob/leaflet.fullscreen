@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.3.0](https://github.com/brunob/leaflet.fullscreen/compare/v5.2.1...v5.3.0) (2026-01-16)
+
+
+### Features
+
+* **types:** export interfaces for external use ([3f87214](https://github.com/brunob/leaflet.fullscreen/commit/3f872141bb8f8fad43303eb5a79a112a9a06ae15))
+
 ## [5.2.1](https://github.com/brunob/leaflet.fullscreen/compare/v5.2.0...v5.2.1) (2026-01-11)
 
 
