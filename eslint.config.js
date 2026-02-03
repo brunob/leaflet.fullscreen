@@ -7,8 +7,8 @@ export default defineConfig([
 	globalIgnores(['dist/**']),
 	{
 		files: ['**/*.js'],
-		plugins: { js, stylistic },
-		extends: ['js/recommended', 'stylistic/all'],
+		plugins: { js },
+		extends: ['js/recommended', stylistic.configs.all],
 		languageOptions: {
 			globals: globals.browser
 		},
