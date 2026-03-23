@@ -7,8 +7,7 @@ export default defineConfig([
 	globalIgnores(['dist/**']),
 	{
 		files: ['**/*.js'],
-		plugins: { js },
-		extends: ['js/recommended', stylistic.configs.all],
+		extends: [js.configs.recommended, stylistic.configs.all],
 		languageOptions: {
 			globals: globals.browser
 		},
@@ -21,7 +20,6 @@ export default defineConfig([
 			'@stylistic/indent': ['error', 'tab'],
 			'@stylistic/multiline-comment-style': 'off',
 			'@stylistic/multiline-ternary': 'off',
-			'@stylistic/no-tabs': 'off',
 			'@stylistic/object-curly-spacing': ['error', 'always'],
 			'@stylistic/object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }],
 			'@stylistic/padded-blocks': 'off',
