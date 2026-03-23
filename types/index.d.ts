@@ -64,9 +64,6 @@ export interface FullScreenOptions extends ControlOptions {
 }
 
 declare module 'leaflet' {
-	// Re-export the interface in the Leaflet namespace for backwards compatibility
-	interface FullScreenOptions extends FullScreenOptions {}
-
 	interface MapOptions {
 		/**
 		 * Whether to add a fullscreen control to the map.
