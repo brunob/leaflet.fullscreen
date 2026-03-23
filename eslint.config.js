@@ -1,10 +1,17 @@
 import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
 import js from '@eslint/js';
+import css from '@eslint/css';
 import stylistic from '@stylistic/eslint-plugin';
 
 export default defineConfig([
 	globalIgnores(['dist/**']),
+	{
+		files: ['**/*.css'],
+		language: 'css/css',
+		extends: [css.configs.recommended],
+		rules: { 'css/use-baseline': 'off', 'css/no-important': 'off' }
+	},
 	{
 		files: ['**/*.js'],
 		extends: [js.configs.recommended, stylistic.configs.all],

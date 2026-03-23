@@ -244,7 +244,10 @@ button.demo-button:hover {
 	display: block;
 	width: 100%;
 	height: 100%;
+	/* defined in Control.FullScreen.css */
+	/* eslint-disable-next-line css/no-invalid-properties */
 	-webkit-mask-image: var(--fullscreen-icon-enter);
+	/* eslint-disable-next-line css/no-invalid-properties */
 	mask-image: var(--fullscreen-icon-enter);
 	-webkit-mask-size: 26px 26px;
 	mask-size: 26px 26px;
@@ -256,7 +259,10 @@ button.demo-button:hover {
 }
 
 .leaflet-fullscreen-icon.leaflet-fullscreen-on::before {
+	/* defined in Control.FullScreen.css */
+	/* eslint-disable-next-line css/no-invalid-properties */
 	-webkit-mask-image: var(--fullscreen-icon-exit);
+	/* eslint-disable-next-line css/no-invalid-properties */
 	mask-image: var(--fullscreen-icon-exit);
 }
 
