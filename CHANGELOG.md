@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.3.1](https://github.com/brunob/leaflet.fullscreen/compare/v5.3.0...v5.3.1) (2026-03-24)
+
+
+### Bug Fixes
+
+* add top-level types field for Node module resolution ([f5de7ff](https://github.com/brunob/leaflet.fullscreen/commit/f5de7ff8b65a24ff01863bffef06f66b22254f51))
+* **types:** remove recursive FullScreenOptions declaration ([3abd325](https://github.com/brunob/leaflet.fullscreen/commit/3abd32532801679c5182bd824f6277ce8541cc00))
+
 ## [5.3.0](https://github.com/brunob/leaflet.fullscreen/compare/v5.2.1...v5.3.0) (2026-01-16)
 
 
