@@ -274,5 +274,15 @@ Map.include({
 	}
 });
 
+Map.mergeOptions({
+	fullscreenControl: false
+});
+
+Map.addInitHook(function() {
+	if (this.options.fullscreenControl) {
+		this.addControl(new FullScreen(this.options.fullscreenControlOptions));
+	}
+});
+
 export { FullScreen };
 export default FullScreen;
