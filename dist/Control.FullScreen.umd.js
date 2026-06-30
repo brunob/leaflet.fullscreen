@@ -284,6 +284,16 @@
 		}
 	});
 
+	leaflet.Map.mergeOptions({
+		fullscreenControl: false
+	});
+
+	leaflet.Map.addInitHook(function() {
+		if (this.options.fullscreenControl) {
+			this.addControl(new FullScreen(this.options.fullscreenControlOptions));
+		}
+	});
+
 	return FullScreen;
 
 }));
