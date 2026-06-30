@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.3.2](https://github.com/brunob/leaflet.fullscreen/compare/v5.3.1...v5.3.2) (2026-06-30)
+
+
+### Bug Fixes
+
+* re-ennable fullscreenControl InitHook on Map object ([fe30e20](https://github.com/brunob/leaflet.fullscreen/commit/fe30e200b6d3af672553197cd2af726064983c38)), closes [#291](https://github.com/brunob/leaflet.fullscreen/issues/291)
+
 ## [5.3.1](https://github.com/brunob/leaflet.fullscreen/compare/v5.3.0...v5.3.1) (2026-03-24)
 
 
