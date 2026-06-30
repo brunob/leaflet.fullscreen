@@ -25,6 +25,17 @@ const map = L.map('map');
 map.addControl(new L.Control.FullScreen());
 ```
 
+You can also add the control on map init :
+
+```js
+new L.Map('map', {
+	fullscreenControl: true,
+	fullscreenControlOptions: {
+		position: 'topleft'
+	}
+});
+```
+
 If your map has a zoomControl, the fullscreen button will be added at the bottom of it.
 
 If your map doesn't have a zoomControl, the fullscreen button will be added to the topleft corner of the map (default position).
