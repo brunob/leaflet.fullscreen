@@ -25,7 +25,7 @@
     "build": "rollup -c",
     "lint": "eslint && prettier . --check",
     "lint:fix": "eslint --fix && prettier . --write",
-    "release": "npm run build && commit-and-tag-version",
+    "release": "npm run build && git add -A dist && commit-and-tag-version -a",
     "test": "node --test spec/**/*.spec.js",
     "prepublishOnly": "git push --follow-tags"
   },
