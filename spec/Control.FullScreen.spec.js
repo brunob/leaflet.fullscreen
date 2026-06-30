@@ -37,6 +37,26 @@ describe('FullScreen Control', () => {
 			assert.strictEqual(control.options.forceSeparateButton, false);
 			assert.strictEqual(control.options.forcePseudoFullscreen, false);
 		});
+
+		it('should auto-create fullscreen control via map options init hook', () => {
+			const mapContainer = document.createElement('div');
+			document.body.appendChild(mapContainer);
+
+			const mapWithControlOption = new Map(mapContainer, {
+				fullscreenControl: true,
+				fullscreenControlOptions: {
+					position: 'topright',
+					title: 'Go Fullscreen'
+				}
+			});
+
+			assert.ok(mapWithControlOption.fullscreenControl, 'Control should be auto-added from map options');
+			assert.ok(mapWithControlOption.fullscreenControl instanceof FullScreen, 'Control should be a FullScreen instance');
+			assert.strictEqual(mapWithControlOption.fullscreenControl.options.position, 'topright');
+			assert.strictEqual(mapWithControlOption.fullscreenControl.options.title, 'Go Fullscreen');
+
+			mapWithControlOption.remove();
+		});
 	});
 
 	describe('DOM Creation', () => {
