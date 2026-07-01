@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-slim
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       # Copy only necessary files to a clean '_site' directory for deployment.
       - name: Prepare deployment
