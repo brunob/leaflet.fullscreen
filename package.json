@@ -46,7 +46,7 @@
     "@eslint/css": "^1.0.0",
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
-    "commit-and-tag-version": "^12.7.1",
+    "commit-and-tag-version": "^13.1.2",
     "eslint": "^10.1.0",
     "globals": "^17.4.0",
     "happy-dom": "^20.8.4",
