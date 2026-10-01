@@ -43,7 +43,7 @@
     "fullscreen"
   ],
   "devDependencies": {
-    "@eslint/css": "^1.0.0",
+    "@eslint/css": "^2.0.0",
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
     "commit-and-tag-version": "^13.1.2",
