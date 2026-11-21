@@ -1,7 +1,10 @@
 import { describe, it, beforeEach } from 'node:test';
 import assert from 'node:assert';
-import './setup.js';
-import { Map } from 'leaflet';
+import { exitFullscreenExternally } from './setup.js';
+import * as Leaflet from 'leaflet';
+
+const { Map } = Leaflet;
+const isLeaflet2 = Boolean(Leaflet.FullscreenControl);
 
 // Import after setup (Fullscreen API is mocked)
 const { FullScreen } = await import('../src/Control.FullScreen.js');
@@ -17,6 +20,7 @@ describe('FullScreen Control', () => {
 	beforeEach(() => {
 		map = new Map(document.createElement('div'));
 		document.body.innerHTML = '';
+		document.fullscreenElement = null;
 	});
 
 	describe('Initialization & Options', () => {
@@ -67,10 +71,11 @@ describe('FullScreen Control', () => {
 	describe('DOM Creation', () => {
 		it('should create DOM elements when added to map', () => {
 			const control = mountControl();
-			const container = control._container;
+			const container = control.getContainer();
 
 			assert.ok(container instanceof HTMLElement, 'Should return an HTML element');
-			assert.ok(container.querySelector('a'), 'Should contain a link element');
+			assert.strictEqual(control.link.tagName, 'A', 'Should create a link element');
+			assert.ok(container.contains(control.link), 'Container should contain the link');
 		});
 
 		it('should support custom content in button', () => {
@@ -171,21 +176,14 @@ describe('FullScreen Control', () => {
 			assert.strictEqual(link.title, 'Full Screen');
 		});
 
-		it('should invalidate map size on toggle', async() => {
-			const control = mountControl();
+		it('should toggle via map.toggleFullscreen()', async() => {
+			mountControl();
 
-			let invalidateCalled = 0;
-			const originalInvalidateSize = map.invalidateSize;
-			map.invalidateSize = function() {
-				invalidateCalled++;
-				return originalInvalidateSize.call(this);
-			};
+			await map.toggleFullscreen();
+			assert.strictEqual(map._isFullscreen, true);
 
-			await control.toggleFullScreen();
-			assert.strictEqual(invalidateCalled, 1);
-
-			await control.toggleFullScreen();
-			assert.strictEqual(invalidateCalled, 2);
+			await map.toggleFullscreen();
+			assert.strictEqual(map._isFullscreen, false);
 		});
 	});
 
@@ -228,11 +226,10 @@ describe('FullScreen Control', () => {
 			await control.toggleFullScreen();
 			assert.strictEqual(map._isFullscreen, true);
 
-			// Simulate browser ESC key (external exit)
-			map._exitFired = false;
-			control._handleFullscreenChange();
+			exitFullscreenExternally();
 
 			assert.strictEqual(map._isFullscreen, false);
+			assert.strictEqual(control.link.getAttribute('aria-pressed'), 'false');
 			assert.ok(exitEventFired);
 		});
 	});
@@ -274,6 +271,59 @@ describe('FullScreen Control', () => {
 			assert.ok(control.toggleFullScreen);
 			assert.ok(map.fullscreenControl);
 			assert.strictEqual(map.fullscreenControl, control);
+		});
+
+		it('should add the button to the zoom bar unless forceSeparateButton is true', () => {
+			const grouped = mountControl();
+			assert.ok(map.zoomControl.getContainer().contains(grouped.link));
+
+			const separate = mountControl({ forceSeparateButton: true });
+			assert.ok(!map.zoomControl.getContainer().contains(separate.link));
+		});
+	});
+
+	describe('Leaflet 1', { skip: isLeaflet2 }, () => {
+		it('should invalidate map size on toggle', async() => {
+			const control = mountControl();
+
+			let invalidateCalled = 0;
+			const originalInvalidateSize = map.invalidateSize;
+			map.invalidateSize = function() {
+				invalidateCalled++;
+				return originalInvalidateSize.call(this);
+			};
+
+			await control.toggleFullScreen();
+			assert.strictEqual(invalidateCalled, 1);
+
+			await control.toggleFullScreen();
+			assert.strictEqual(invalidateCalled, 2);
+		});
+	});
+
+	describe('Leaflet 2', { skip: !isLeaflet2 }, () => {
+		it('should build on the built-in FullscreenControl', () => {
+			const control = mountControl({
+				title: 'Enter map',
+				titleCancel: 'Leave map',
+				forcePseudoFullscreen: true
+			});
+
+			assert.ok(control instanceof Leaflet.FullscreenControl);
+			assert.strictEqual(control.options.enterTitle, 'Enter map');
+			assert.strictEqual(control.options.exitTitle, 'Leave map');
+			assert.strictEqual(control.options.pseudo, true);
+		});
+
+		it('should fire both the core and the plugin events', async() => {
+			const control = mountControl({ forcePseudoFullscreen: true });
+			const fired = [];
+			map.on('enterfullscreen enterFullscreen exitfullscreen exitFullscreen', ({ type }) => fired.push(type));
+
+			await control.toggleFullScreen();
+			await control.toggleFullScreen();
+
+			assert.deepStrictEqual(fired.sort(), ['enterFullscreen', 'enterfullscreen', 'exitFullscreen', 'exitfullscreen']);
 		});
 	});
 
