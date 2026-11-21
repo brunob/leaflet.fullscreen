@@ -101,12 +101,12 @@ declare module 'leaflet' {
 		/**
 		 * Fired when the map enters fullscreen mode.
 		 */
-		enterFullscreen?: LeafletEventHandlerFn;
+		enterFullscreen?: (event: EnterFullscreenEvent) => void;
 
 		/**
 		 * Fired when the map exits fullscreen mode.
 		 */
-		exitFullscreen?: LeafletEventHandlerFn;
+		exitFullscreen?: (event: ExitFullscreenEvent) => void;
 	}
 
 	namespace Control {
@@ -114,7 +114,7 @@ declare module 'leaflet' {
 		 * A control that adds fullscreen functionality to the map.
 		 */
 		class FullScreen extends Control {
-			options: FullScreenOptions;
+			options: FullScreenOptions & { position: ControlPosition };
 
 			constructor(options?: FullScreenOptions);
 

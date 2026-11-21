@@ -3,12 +3,17 @@ on: [push, pull_request]
 jobs:
   ci:
     runs-on: ubuntu-slim
+    strategy:
+      matrix:
+        leaflet: ['1', '2.0.0-beta.5']
+    name: ci (Leaflet ${{ matrix.leaflet }})
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
         with:
           node-version: latest
       - run: npm ci
+      - run: npm install --no-save leaflet@${{ matrix.leaflet }}
       - run: npm run lint
       - run: npm test
   commitlint:
